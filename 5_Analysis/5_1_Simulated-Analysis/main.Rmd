@@ -1,0 +1,127 @@
+---
+title: "Simulated_Analysis"
+author: "yuki"
+date: "2023-03-15"
+output: html_document
+---
+```{r pacakge, message=FALSE}
+library(here)
+
+library(bruceR)
+#library(dplyr)
+#library(tidyr)
+#library(ggplot2)
+#library(gridExtra)
+
+library(lavaan)
+library(lavaanPlot)
+```
+
+```{r WD & df.pg.raw}
+WD <-  here::here()
+```
+
+```{r read df.raw}
+df.raw <-  read.csv('../../4_Data_Extraction/4_1_Simulated_Data/simulated_data.csv',
+                    header = T, sep=",", stringsAsFactors = FALSE)
+```
+
+```{r df.mean, message = FALSE}
+df.mean <- df.raw %>%
+  dplyr::mutate(ASC_mean = rowMeans(select(., starts_with("ASC"))),
+                OSC_mean = rowMeans(select(., starts_with("OSC"))),
+                RD_mean = rowMeans(select(., starts_with("RD"))),
+                RS_mean = rowMeans(select(., starts_with("RS"))),
+                LS_mean = rowMeans(select(., starts_with("LS"))),
+                DSC_I_mean = rowMeans(select(., starts_with("DSC_I"))),
+                DSC_C_mean = rowMeans(select(., starts_with("DSC_C"))),
+                USC_I_mean = rowMeans(select(., starts_with("USC_I"))),
+                USC_C_mean = rowMeans(select(., starts_with("USC_C"))),
+                ) %>%
+  dplyr::select(Subject, Gender, Age, Group, 
+                ASC = ASC_mean, OSC = OSC_mean, RD = RD_mean, RS = RS_mean, LS = LS_mean, 
+                DSC_I = DSC_I_mean, DSC_C = DSC_C_mean, USC_I = USC_I_mean, USC_C = USC_C_mean, 
+                UDSC, USC, DSC)
+```  
+
+```{r Descriptive Statistics Mean & SD, message = FALSE}
+result <- capture.output({
+  df.mean %>%
+    dplyr::select(.,-Subject) %>%
+  bruceR::Describe(data = .)
+  })
+
+writeLines(result, "./Table.1_Mean&SD.md")
+
+rm(result)
+```
+
+```{r Distribution Plot, message = FALSE}
+p <- grid.arrange(
+      ggplot(df.mean, aes(x = Gender)) +
+      geom_histogram(fill = "grey", binwidth = 5, alpha = 0.5) +
+      labs(title = "Gender Distribution", x = "Gender", y = "Frequency"),
+      
+      ggplot(df.mean, aes(x = Age)) +
+        geom_histogram(fill = "grey", binwidth = 5, alpha = 0.5) +
+        labs(title = "Age Distribution", x = "Age", y = "Frequency"),
+      
+      ggplot(df.mean, aes(x = ASC)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "ASC Distribution", x = "ASC", y = "Frequency"),
+      
+      ggplot(df.mean, aes(x = OSC)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "OSC Distribution", x = "OSC", y = "Frequency"),
+      
+      ggplot(df.mean, aes(x = RD)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "RD Distribution", x = "RD", y = "Frequency"),
+      
+      ggplot(df.mean, aes(x = RS)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "RS Distribution", x = "RS", y = "Frequency"),
+      
+        ggplot(df.mean, aes(x = LS)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "LS Distribution", x = "LS", y = "Frequency"),
+      
+      ggplot(df.mean, aes(x = DSC_I)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "DSC_I Distribution", x = "DSC_I", y = "Frequency"),
+      
+      ggplot(df.mean, aes(x = DSC_C)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "DSC_C Distribution", x = "DSC_C", y = "Frequency"),
+      
+      ggplot(df.mean, aes(x = USC_I)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "USC_I Distribution", x = "USC_I", y = "Frequency"),
+      
+      ggplot(df.mean, aes(x = USC_C)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "USC_C Distribution", x = "USC_C", y = "Frequency"),
+      
+      ggplot(df.mean, aes(x = UDSC)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "UDSC Distribution", x = "UDSC", y = "Frequency"),
+      
+      ggplot(df.mean, aes(x = USC)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "USC Distribution", x = "USC", y = "Frequency"),
+      
+      ggplot(df.mean, aes(x = DSC)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "DSC Distribution", x = "DSC", y = "Frequency"),
+    
+      nrow = 4, ncol = 4
+      )
+
+ggsave(filename = "./Figure.1_Distribution.png",plot = p, width = 8, height = 6, dpi = 300)
+rm(p)
+```
+
+```{r Correlation}
+bruceR::Corr(data = df.mean, plot = TRUE)
+```
+

@@ -1,0 +1,79 @@
+Group 1: H_SCO:	H_RD; L_RS
+较高SCO，较高RD，较低RS，较低LS，
+较低DSC_I，较低DSC_C，较低USC_I，较高USC_C，
+较高UDSC，较高USC，较低DSC
+ASC & OSC:	6, 0.3
+RD:		6, 0.3
+RS:		2, 0.3
+LS:		2, 0.3
+DSC_I:		2, 0.3
+DSC_C:		2, 0.3
+USC_I:		2, 0.3
+USC_C:		6, 0.3
+UDSC:		6, 0.3
+USC: 		6, 0.3
+DSC:		2, 0.3
+
+Group2: L_SCO:	L_RD; L_RS
+较低SCO，较低RD，较低RS，中等LS，
+较低DSC_I，较低DSC_C，较低USC_I，较低USC_C，
+中等UDSC，较低USC，较低DSC
+ASC & OSC:	2, 0.3
+RD:		2, 0.3
+RS:		2, 0.3
+LS:		4, 0.3
+DSC_I:		2, 0.3
+DSC_C:		2, 0.3
+USC_I:		2, 0.3
+USC_C:		2, 0.3
+UDSC:		4, 0.3
+USC: 		2, 0.3
+DSC:		2, 0.3
+
+Group3: H_SCO:	H_RD; H_RS
+较高SCO，较高RD，较高RS，中等LS，
+较低DSC_I，较高DSC_C，较低USC_I，较高USC_C，
+中等UDSC，较高USC，较高DSC
+ASC & OSC:	6, 0.3
+RD:		6, 0.3
+RS:		6, 0.3
+LS:		4, 0.3
+DSC_I:		2, 0.3
+DSC_C:		6, 0.3
+USC_I:		2, 0.3
+USC_C:		6, 0.3
+UDSC:		4, 0.3
+USC: 		6, 0.3
+DSC:		6, 0.3
+
+Group4: H_SCO:	L_RD; H_RS
+较高SCO，较低RD，较高RS，较高LS，
+较低DSC_I，较高DSC_C，较低USC_I，较低USC_C，
+较低UDSC，较低USC，较高DSC
+ASC & OSC:	6, 0.3
+RD:		2, 0.3
+RS:		6, 0.3
+LS:		6, 0.3
+DSC_I:		2, 0.3
+DSC_C:		6, 0.3
+USC_I:		2, 0.3
+USC_C:		2, 0.3
+UDSC:		2, 0.3
+USC: 		2, 0.3
+DSC:		6, 0.3
+
+Group4: M_SCO:	M_RD; M_RS
+中等SCO，中等RD，中等RS，中等LS，
+中等DSC_I，中等DSC_C，中等USC_I，中等USC_C，
+中等UDSC，中等USC，中等DSC
+ASC & OSC:	4, 1
+RD:		4, 1
+RS:		4, 1
+LS:		4, 1
+DSC_I:		4, 1
+DSC_C:		4, 1
+USC_I:		4, 1
+USC_C:		4, 1
+UDSC:		4, 1
+USC: 		4, 1
+DSC:		4, 1
