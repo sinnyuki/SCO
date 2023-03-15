@@ -1,0 +1,33 @@
+|-root_dir
+|---1_Protocol
+|-----1_1_Thought
+|-----1_2_Paper
+|----------Old_version
+|----------Revise_opinion
+|----------paper_endnote.docx
+|----------paper_raw.docx
+|---2_Literature_Search
+|-----SCO
+|-----ASC & OSC-RD
+|-----SC-RD
+|-----SC-RS
+|-----Contrast & Identify
+|-----Mani_up&down_comp
+|-----RD
+|-----RD-LS
+|-----SC-LS
+|---3_Article_Screen
+|-----3_1_Endnote
+|-----3_2_Scale
+|---4_Data_Extraction
+|-----4_1_Simulated_Data
+|-----4_2_Formal_Data
+|---5_Analysis
+|-----5_1_Pre-Analysis
+|-----5_2_Formal-Analysis
+|---6_Reports
+|---6_1_Document
+|---6_2_Opening_report
+|---6_3_Concluding_report
+|---.gitignore
+|---README.txt
