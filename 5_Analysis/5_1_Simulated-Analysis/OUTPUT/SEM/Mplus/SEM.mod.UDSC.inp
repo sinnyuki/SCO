@@ -1,0 +1,86 @@
+TITLE:
+
+    Moderator is UDSC;
+   
+DATA:
+FILE = "./OUTPUT/Mplus/SEM.mod.UDSC_b14e157822e1defc6e93f238bbe13ef1.dat";
+ 
+VARIABLE:
+NAMES = ASC1 ASC2 ASC3 ASC4 ASC5 OSC1 OSC2 OSC3 OSC4 OSC5 OSC6 RD1 RD2 RD3 RD4 RD5
+     POS1 POS2 POS3 POS4 POS5 LS1 LS2 LS3 LS4 LS5 DSC UDSC; 
+ MISSING=.;
+ 
+ANALYSIS:
+
+    TYPE =general RANDOM;  
+    estimator=MLR; 
+    ALGORITHM=INTEGRATION;
+    convergence=0.01;
+   
+MODEL:
+  
+    ASC by ASC1-ASC5;
+    OSC by OSC1-OSC6;
+    SCO by ASC@0.8 OSC@0.8;
+    
+    UDSC@1;
+    OUD | SCO XWITH UDSC;
+    
+    RD by RD1-RD5;
+    POS by POS1-POS5;
+    
+    LS by LS1-LS5;
+    
+    RD on SCO(a1)
+          UDSC
+          OUD(w1);
+    POS on SCO(a2)
+           UDSC
+           OUD(w2);
+    LS on SCO(c)
+          RD(b1)
+          POS(b2);
+   
+MODEL CONSTRAINT:
+
+   NEW(LULD HULD LUHD HUHD
+      IE_LL_RD IE_HL_RD IE_LH_RD IE_HH_RD
+      IE_LL_POS IE_HL_POS IE_LH_POS IE_HH_POS
+      );
+   
+    LULD = 1;
+    HULD = 2;
+    LUHD = 3;
+    HUHD = 4;
+   
+    IE_LL_RD = (a1+w1*LULD)*b1;
+    IE_HL_RD = (a1+w1*HULD)*b1;
+    IE_LH_RD = (a1+w1*LUHD)*b1;
+    IE_HH_RD = (a1+w1*HUHD)*b1;
+   
+    IE_LL_POS = (a2+w2*LULD)*b2;
+    IE_HL_POS = (a2+w2*HULD)*b2;
+    IE_LH_POS = (a2+w2*LUHD)*b2;
+    IE_HH_POS = (a2+w2*HUHD)*b2;
+   
+    PLOT(P_LL_RD P_HL_RD P_LH_RD P_HH_RD
+         P_LL_POS P_HL_POS P_LH_POS P_HH_POS);
+    LOOP(XVAL,1,7,0.1);
+    P_LL_RD = IE_LL_RD*XVAL;
+    P_HL_RD = IE_HL_RD*XVAL;
+    P_LH_RD = IE_LH_RD*XVAL;
+    P_HH_RD = IE_HH_RD*XVAL;
+
+    P_LL_POS = IE_LL_POS*XVAL;
+    P_HL_POS = IE_HL_POS*XVAL;
+    P_LH_POS = IE_LH_POS*XVAL;
+    P_HH_POS = IE_HH_POS*XVAL;
+   
+OUTPUT:
+
+    cint;
+    STDYX
+PLOT:
+
+    TYPE = plot2;
+   
