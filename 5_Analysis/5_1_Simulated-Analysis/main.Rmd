@@ -420,6 +420,48 @@ writeLines(result.SEM.med, "./OUTPUT/SEM/SEM.med.md")
 rm(result.SEM.med)
 ```
 
+```{r Mediation SEM Mplus}
+SEM.med <- mplusObject(
+   TITLE = "
+    Mediation;
+   ",
+   ANALYSIS = "
+    TYPE =general;
+    bootstrap = 5000;
+    process=16;
+   ",
+   MODEL = "  
+    ASC by ASC1-ASC5;
+    OSC by OSC1-OSC6;
+    SCO by ASC@0.8 OSC@0.8;
+    
+    RD by RD1-RD5;
+    POS by POS1-POS5;
+    
+    LS by LS1-LS5;
+    
+    RD on SCO(a1);
+    POS on SCO(a2);
+    LS on SCO(c)
+          RD(b1)
+          POS(b2);
+   ",
+   MODELCONSTRAINT = "
+   NEW(IE_RD 
+       IE_POS);
+   
+    IE_RD = a1*b1;
+    IE_POS = a2*b2;
+   ",
+   OUTPUT = "
+    CINT(bcbootstrap);
+    STDYX",
+   rdata = df.raw)
+
+mplusModeler(SEM.med, modelout = "./OUTPUT/SEM/Mplus/SEM.med.inp", run = 1L)
+rm(SEM.med)
+```
+
 ## Moderation
 ### SCD as moderation
 ```{r Moderator is SCD, include=FALSE}

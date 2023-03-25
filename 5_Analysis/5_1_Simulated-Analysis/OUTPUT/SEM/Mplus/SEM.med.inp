@@ -1,0 +1,46 @@
+TITLE:
+
+    Mediation;
+   
+DATA:
+FILE = "./OUTPUT/SEM/Mplus/SEM.med_b232802b58a48cd161ac384154448815.dat";
+ 
+VARIABLE:
+NAMES = ASC1 ASC2 ASC3 ASC4 ASC5 OSC1 OSC2 OSC3 OSC4 OSC5 OSC6 RD1 RD2 RD3 RD4 RD5
+     POS1 POS2 POS3 POS4 POS5 LS1 LS2 LS3 LS4 LS5; 
+ MISSING=.;
+ 
+ANALYSIS:
+
+    TYPE =general;
+    bootstrap = 5000;
+   
+MODEL:
+  
+    ASC by ASC1-ASC5;
+    OSC by OSC1-OSC6;
+    SCO by ASC@0.8 OSC@0.8;
+    
+    RD by RD1-RD5;
+    POS by POS1-POS5;
+    
+    LS by LS1-LS5;
+    
+    RD on SCO(a1);
+    POS on SCO(a2);
+    LS on SCO(c)
+          RD(b1)
+          POS(b2);
+   
+MODEL CONSTRAINT:
+
+   NEW(IE_RD 
+       IE_POS);
+   
+    IE_RD = a1*b1;
+    IE_POS = a2*b2;
+   
+OUTPUT:
+
+    CINT(bcbootstrap);
+    STDYX
