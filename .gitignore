@@ -1,4 +1,13 @@
+comp.png
 *.ico
-*..Rhistory
-2_Literature_Search/
+
+# R
 .Rproj.user
+.Rhistory
+.RData
+
+# Sensitive Files
+2_Literature_Search/
+
+# Office temp Files
+~$*
