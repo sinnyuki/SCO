@@ -1,0 +1,826 @@
+---
+title: "Simulated_Analysis"
+author: "yuki"
+date: "2023-03-15"
+output: html_document
+---
+# Packages & WD & Read Data
+```{r pacakge, message=FALSE,warning=FALSE,error=FALSE}
+# clean data
+library(bruceR)
+#library(dplyr)
+#library(tidyr)
+library(psych)
+#library(ggplot2)
+library(gridExtra)
+
+# SEM mediation
+library(lavaan)
+library(lavaanPlot)
+
+# SED moderation
+library(MplusAutomation)
+```
+
+```{r read df.raw}
+df.raw <-  read.csv('../../4_Data_Extraction/4_2_Formal_Data/4_2_1_Demo/Demo.csv',
+                    header = T, sep=",", stringsAsFactors = FALSE) %>%
+  dplyr::mutate(Subject =index) %>%
+  dplyr::select(Subject, Gender, Age, Edu, Marrige, everything()) %>%
+  dplyr::select(-totalseconds, -index, -totalvalue, -T1, -T2, -T3)
+```
+
+```{r Reverse Scoring}
+# 创建反向计分函数
+reverse_score <- function(x) {
+  return(8 - x)
+}
+
+# 使用mutate函数进行反向计分
+df.raw <- df.raw %>% 
+  dplyr::mutate_at(vars(ASC5, OSC6, RD2, RD4), reverse_score)
+
+rm(reverse_score)
+#write.csv(df.raw, file = '../../4_Data_Extraction/4_1_Simulated_Data/simulated_data.csv', row.names = FALSE)
+```
+
+```{r df.mean, message = FALSE}
+df.mean <- df.raw %>%
+  dplyr::mutate(ASC_mean = rowMeans(select(., starts_with("ASC"))),
+                OSC_mean = rowMeans(select(., starts_with("OSC"))),
+                RD_mean = rowMeans(select(., starts_with("RD"))),
+                POS_mean = rowMeans(select(., starts_with("POS"))),
+                LS_mean = rowMeans(select(., starts_with("LS"))),
+                UI_mean = rowMeans(select(., starts_with("UI"))),
+                UC_mean = rowMeans(select(., starts_with("UC"))),
+                DI_mean = rowMeans(select(., starts_with("DI"))),
+                DC_mean = rowMeans(select(., starts_with("DC"))),
+
+                ) %>%
+  dplyr::select(Subject, Gender, Age, 
+                ASC = ASC_mean, OSC = OSC_mean, RD = RD_mean, POS = POS_mean, LS = LS_mean, 
+                SCD,USC,DSC,
+                UI = UI_mean, UC = UC_mean, DI = DI_mean, DC = DC_mean)
+```  
+
+# Decriptive Statistics
+```{r Descriptive Statistics Mean & SD, message = FALSE}
+result <- capture.output({
+  bruceR::Describe(data = df.mean[,-1])
+  })
+
+writeLines(result, "./OUTPUT/Desc/Table.1_Mean & SD.md")
+
+rm(result)
+```
+
+```{r Distribution Plot, message = FALSE}
+p <- grid.arrange(
+      ggplot(df.mean, aes(x = Gender)) +
+        geom_bar(fill = "grey", alpha = 0.5) +
+        labs(title = "Gender Count", x = "Gender", y = "Count") +
+        theme(plot.title = element_text(size = 10, hjust = 0.5),
+              axis.title.x = element_text(size = 7),
+              axis.title.y = element_text(size = 7))+
+        scale_x_continuous(breaks = c(0, 1)),
+      
+      ggplot(df.mean, aes(x = Age)) +
+        geom_histogram(fill = "grey", binwidth = 5, alpha = 0.5) +
+        labs(title = "Age Distribution", x = "Age", y = "Frequency") +
+        theme(plot.title = element_text(size = 10, hjust = 0.5),
+              axis.title.x = element_text(size = 7),
+              axis.title.y = element_text(size = 7)),
+      
+      ggplot(df.mean, aes(x = ASC)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "ASC Distribution", x = "ASC", y = "Frequency") +
+        theme(plot.title = element_text(size = 10, hjust = 0.5),
+             axis.title.x = element_text(size = 7),
+             axis.title.y = element_text(size = 7)),
+      
+      ggplot(df.mean, aes(x = OSC)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "OSC Distribution", x = "OSC", y = "Frequency") +
+        theme(plot.title = element_text(size = 10, hjust = 0.5),
+              axis.title.x = element_text(size = 7),
+              axis.title.y = element_text(size = 7)),
+      
+      ggplot(df.mean, aes(x = RD)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "RD Distribution", x = "RD", y = "Frequency") +
+        theme(plot.title = element_text(size = 10, hjust = 0.5),
+              axis.title.x = element_text(size = 7),
+              axis.title.y = element_text(size = 7)),
+      
+      ggplot(df.mean, aes(x = POS)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "POS Distribution", x = "POS", y = "Frequency") +
+        theme(plot.title = element_text(size = 10, hjust = 0.5),
+              axis.title.x = element_text(size = 7),
+              axis.title.y = element_text(size = 7)),
+      
+        ggplot(df.mean, aes(x = LS)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "LS Distribution", x = "LS", y = "Frequency") +
+        theme(plot.title = element_text(size = 10, hjust = 0.5),
+              axis.title.x = element_text(size = 7),
+              axis.title.y = element_text(size = 7)),
+
+      ggplot(df.mean, aes(x = SCD)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "SCD Distribution", x = "SCD", y = "Frequency") +
+        theme(plot.title = element_text(size = 10, hjust = 0.5),
+              axis.title.x = element_text(size = 7),
+              axis.title.y = element_text(size = 7)),
+      
+      ggplot(df.mean, aes(x = USC)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "USC Distribution", x = "USC", y = "Frequency") +
+        theme(plot.title = element_text(size = 10, hjust = 0.5),
+              axis.title.x = element_text(size = 7),
+              axis.title.y = element_text(size = 7)),
+      
+      ggplot(df.mean, aes(x = DSC)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "DSC Distribution", x = "DSC", y = "Frequency") +
+        theme(plot.title = element_text(size = 10, hjust = 0.5),
+              axis.title.x = element_text(size = 7),
+              axis.title.y = element_text(size = 7)),
+      
+      ggplot(df.mean, aes(x = UI)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "UI Distribution", x = "UI", y = "Frequency") +
+        theme(plot.title = element_text(size = 10, hjust = 0.5),
+              axis.title.x = element_text(size = 7),
+              axis.title.y = element_text(size = 7)),
+      
+      ggplot(df.mean, aes(x = UC)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "UC Distribution", x = "UC", y = "Frequency") +
+        theme(plot.title = element_text(size = 10, hjust = 0.5),
+              axis.title.x = element_text(size = 7),
+              axis.title.y = element_text(size = 7)),            
+            
+      ggplot(df.mean, aes(x = DI)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "DI Distribution", x = "DI", y = "Frequency") +
+        theme(plot.title = element_text(size = 10, hjust = 0.5),
+              axis.title.x = element_text(size = 7),
+              axis.title.y = element_text(size = 7)),
+      
+      ggplot(df.mean, aes(x = DC)) +
+        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
+        labs(title = "DC Distribution", x = "DC", y = "Frequency") +
+        theme(plot.title = element_text(size = 10, hjust = 0.5),
+              axis.title.x = element_text(size = 7),
+              axis.title.y = element_text(size = 7)),
+    
+      nrow = 4, ncol = 4
+      )
+
+ggsave(filename = "./OUTPUT/Figure.1_Distribution.png",plot = p, width = 8, height = 6, dpi = 300)
+rm(p)
+```
+
+```{r Correlation}
+bruceR::Corr(data = df.mean[,-1], plot = TRUE)
+cor_matrix <- cor(df.mean[,-1])
+write.csv(cor_matrix, file = "./OUTPUT/Table.2_Correlation.csv")
+
+rm(cor_matrix)
+```
+
+# Confirmatory Factor Analysis
+```{r CFA: ASC}
+result.CFA_ASC <- capture.output({
+  CFA_ASC <- 'ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA_ASC, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA_ASC, "./OUTPUT/CFA/ASC.md")
+
+rm(result.CFA_ASC, CFA_ASC)
+```
+
+```{r CFA: OSC}
+result.CFA_OSC <- capture.output({
+  CFA_OSC <- 'OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA_OSC, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA_OSC, "./OUTPUT/CFA/OSC.md")
+
+rm(result.CFA_OSC, CFA_OSC)
+```
+
+```{r CFA: RD}
+result.CFA_RD <- capture.output({
+  CFA_RD <- 'RD =~ RD1 + RD2 + RD3 + RD4 + RD5' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA_RD, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA_RD, "./OUTPUT/CFA/RD.md")
+
+rm(result.CFA_RD, CFA_RD)
+```
+
+```{r CFA: POS}
+result.CFA_POS <- capture.output({
+  CFA_POS <- 'POS =~ POS1 + POS2 + POS3 + POS4 + POS5' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA_POS, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA_POS, "./OUTPUT/CFA/POS.md")
+
+rm(result.CFA_POS, CFA_POS)
+```
+
+```{r CFA: LS}
+result.CFA_LS <- capture.output({
+  CFA_LS <- 'LS =~ LS1 + LS2 + LS3 + LS4 + LS5' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA_LS, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA_LS, "./OUTPUT/CFA/LS.md")
+
+rm(result.CFA_LS, CFA_LS)
+```
+
+```{r CFA: SCS}
+result.CFA_SCS <- capture.output({
+  CFA_SCS <- 'UI =~ UI1 + UI2 + UI3
+              UC =~ UC1 + UC2 + UC3
+              DI =~ DI1 + DI2 + DI3
+              DC =~ DC1 + DC2 + DC3' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA_SCS, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA_SCS, "./OUTPUT/CFA/SCS.md")
+
+rm(result.CFA_SCS, CFA_SCS)
+```
+
+```{r CFA}
+result.CFA <- capture.output({
+  CFA <- 'ASC =~ ASC1 + ASC2 + ASC3 + ASC4
+          OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5
+          SCO =~ ASC + OSC
+          RD =~ RD1 + RD2 + RD3 + RD4 + RD5
+          POS =~ POS1 + POS2 + POS3 + POS4 + POS5
+          LS =~ LS1 + LS2 + LS3 + LS4 + LS5
+          UI =~ UI1 + UI2 + UI3
+          UC =~ UC1 + UC2 + UC3
+          DI =~ DI1 + DI2 + DI3
+          DC =~ DC1 + DC2 + DC3' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA, "./OUTPUT/CFA/CFA.md")
+
+rm(result.CFA)
+```
+
+```{r matrix.CFA}
+matrix.CFA <- lavaan::lavInspect(CFA,"standardized") 
+CFA.loading <- as.data.frame(matrix.CFA$lambda) %>%
+  dplyr::select(ASC, OSC, SCO, RD, POS, LS, UI, UC, DI, DC) %>%
+  dplyr::mutate_at(vars(ASC, OSC, SCO, RD, POS, LS, UI, UC, DI, DC), round, 3)
+CFA.loading[CFA.loading == 0] <- NA
+
+CFA.correlation <- as.data.frame(matrix.CFA$psi) %>%
+  dplyr::mutate_at(vars(SCO, RD, POS, LS, UI, UC, DI, DC), round, 3) %>%
+  .[c("SCO", "RD", "POS", "LS", "UI", "UC", "DI", "DC"), c("SCO", "RD", "POS", "LS", "UI", "UC", "DI", "DC")]
+
+write.csv(CFA.loading, "./OUTPUT/CFA/loading.csv")
+write.csv(CFA.correlation, "./OUTPUT/CFA/latent_correlation.csv")
+
+rm(matrix.CFA)
+```
+
+# Common Method Bias
+## Harmon One-Factor Test
+```{r CMB: Harmon One-Factor Test CFA}
+result.HOFT.CFA <- capture.output({
+  HOFT.CFA <- 'HOFT =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5 + 
+                      OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6 + 
+                      RD1 + RD2 + RD3 + RD4 + RD5 + 
+                      POS1 + POS2 + POS3 + POS4 + POS5 + 
+                      LS1 + LS2 + LS3 + LS4 + LS5 + 
+                      UI1 + UI2 + UI3 + 
+                      UC1 + UC2 + UC3 + 
+                      DI1 + DI2 + DI3 + 
+                      DC1 + DC2 + DC3 +
+                      SCD + USC + DSC' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(HOFT.CFA, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.HOFT.CFA, "./OUTPUT/CMB/HOFT.CFA.md")
+
+rm(result.HOFT.CFA)
+```
+
+```{r CMB: Harmon One-Factor Test EFA}
+HOFT.EFA <- psych::fa(df.raw[,-c(1:5)], nfactors = 1)
+HOFT.EFA$Vaccounted
+```
+
+## Unmeasured Latent Method Construct
+### Equal Impact
+```{r CMB: Unmeasured Latent Method Construct (Equal Impact)}
+result.ULMC.e <- capture.output({
+  ULMC.e <- 'ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5
+             OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6
+             RD =~ RD1 + RD2 + RD3 + RD4 + RD5
+             POS =~ POS1 + POS2 + POS3 + POS4 + POS5
+             LS =~ LS1 + LS2 + LS3 + LS4 + LS5
+             UI =~ UI1 + UI2 + UI3
+             UC =~ UC1 + UC2 + UC3
+             DI =~ DI1 + DI2 + DI3
+             DC =~ DC1 + DC2 + DC3
+          
+           ULMC =~ w*ASC1 + w*ASC2 + w*ASC3 + w*ASC4 + w*ASC5 + 
+                   w*OSC1 + w*OSC2 + w*OSC3 + w*OSC4 + w*OSC5 + w*OSC6 + 
+                   w*RD1 + w*RD2 + w*RD3 + w*RD4 + w*RD5 + 
+                   w*POS1 + w*POS2 + w*POS3 + w*POS4 + w*POS5 + 
+                   w*LS1 + w*LS2 + w*LS3 + w*LS4 + w*LS5 + 
+                   w*UI1 + w*UI2 + w*UI3 + 
+                   w*UC1 + w*UC2 + w*UC3 + 
+                   w*DI1 + w*DI2 + w*DI3 + 
+                   w*DC1 + w*DC2 + w*DC3 +
+                   w*SCD + w*USC + w*DSC' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(ULMC.e, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.ULMC.e, "./OUTPUT/CMB/ULMC.e.md")
+
+rm(result.ULMC.e)
+```
+### Unequal Impact
+```{r CMB: Unmeasured Latent Method Construct (Unequal Impact)}
+result.ULMC.ue <- capture.output({
+  ULMC.ue <- 'ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5
+              OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6
+              RD =~ RD1 + RD2 + RD3 + RD4 + RD5
+              POS =~ POS1 + POS2 + POS3 + POS4 + POS5
+              LS =~ LS1 + LS2 + LS3 + LS4 + LS5
+              UI =~ UI1 + UI2 + UI3
+              UC =~ UC1 + UC2 + UC3
+              DI =~ DI1 + DI2 + DI3
+              DC =~ DC1 + DC2 + DC3
+          
+              ULMC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5 + OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6 + 
+                      RD1 + RD2 + RD3 + RD4 + RD5 + 
+                      POS1 + POS2 + POS3 + POS4 + POS5 + 
+                      LS1 + LS2 + LS3 + LS4 + LS5 + 
+                      UI1 + UI2 + UI3 + 
+                      UC1 + UC2 + UC3 + 
+                      DI1 + DI2 + DI3 + 
+                      DC1 + DC2 + DC3 +
+                      SCD + USC + DSC' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(ULMC.ue, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.ULMC.ue, "./OUTPUT/CMB/ULMC.ue.md")
+
+rm(result.ULMC.ue)
+```
+
+# Structural Equation Modeling
+## Mediation
+```{r Mediation SEM}
+result.SEM.med <- capture.output({
+  SEM.med <- 'ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5
+              OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6
+              SCO =~ ASC + OSC
+              RD =~ RD1 + RD2 + RD3 + RD4 + RD5
+              POS =~ POS1 + POS2 + POS3 + POS4 + POS5
+              LS =~ LS1 + LS2 + LS3 + LS4 + LS5
+              RD =~ SCO
+              POS =~ SCO
+              LS =~ RD + POS + SCO' %>%
+  lavaan::sem(.,data=df.raw, estimator="ML") 
+  lavaan::summary(SEM.med, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.SEM.med, "./OUTPUT/SEM/SEM.med.md")
+
+rm(result.SEM.med)
+```
+
+```{r Mediation SEM Mplus}
+SEM.med <- mplusObject(
+   TITLE = "
+    Mediation;
+   ",
+   ANALYSIS = "
+    TYPE =general;
+    bootstrap = 5000;
+    process=16;
+   ",
+   MODEL = "  
+    ASC by ASC1-ASC5;
+    OSC by OSC1-OSC6;
+    SCO by ASC@0.8 OSC@0.8;
+    
+    RD by RD1-RD5;
+    POS by POS1-POS5;
+    
+    LS by LS1-LS5;
+    
+    RD on SCO(a1);
+    POS on SCO(a2);
+    LS on SCO(c)
+          RD(b1)
+          POS(b2);
+   ",
+   MODELCONSTRAINT = "
+   NEW(IE_RD 
+       IE_POS);
+   
+    IE_RD = a1*b1;
+    IE_POS = a2*b2;
+   ",
+   OUTPUT = "
+    CINT(bcbootstrap);
+    STDYX",
+   rdata = df.raw)
+
+mplusModeler(SEM.med, modelout = "./OUTPUT/SEM/Mplus/SEM.med.inp", run = 1L)
+rm(SEM.med)
+```
+
+## Moderation
+### SCD as moderation
+```{r Moderator is SCD, include=FALSE}
+SEM.mod.SCD <- mplusObject(
+   TITLE = "
+    Moderator is SCD;
+   ",
+   ANALYSIS = "
+    TYPE =general RANDOM;  
+    estimator=MLR; 
+    ALGORITHM=INTEGRATION;
+    convergence=0.01;
+   ",
+   MODEL = "  
+    ASC by ASC1-ASC5;
+    OSC by OSC1-OSC6;
+    SCO by ASC@0.8 OSC@0.8;
+    
+    SCD@1;
+    OD | SCO XWITH SCD;
+    
+    RD by RD1-RD5;
+    POS by POS1-POS5;
+    
+    LS by LS1-LS5;
+    
+    RD on SCO(a1)
+          SCD
+          OD(w1);
+    POS on SCO(a2)
+           SCD
+           OD(w2);
+    LS on SCO(c)
+          RD(b1)
+          POS(b2);
+   ",
+   MODELCONSTRAINT = "
+   NEW(L_SCD M_SCD H_SCD
+      IE_L_RD IE_M_RD IE_H_RD
+      IE_L_POS IE_M_POS IE_H_POS
+      
+      DIF_LM_RD DIF_LH_RD DIF_MH_RD
+      DIF_LM_POS DIF_LH_POS DIF_MH_POS
+      );
+   
+    L_SCD = -1;
+    M_SCD = 0;
+    H_SCD = 1;
+   
+    IE_L_RD = (a1+w1*L_SCD)*b1;
+    IE_M_RD = (a1+w1*M_SCD)*b1;
+    IE_H_RD = (a1+w1*H_SCD)*b1;
+   
+    IE_L_POS = (a2+w2*L_SCD)*b2;
+    IE_M_POS = (a2+w2*M_SCD)*b2;
+    IE_H_POS = (a2+w2*H_SCD)*b2;
+   
+    DIF_LM_RD = IE_L_RD - IE_M_RD;
+    DIF_LH_RD = IE_L_RD - IE_H_RD;
+    DIF_MH_RD = IE_M_RD - IE_H_RD;
+    
+    DIF_LM_POS = IE_L_POS - IE_M_POS;
+    DIF_LH_POS = IE_L_POS - IE_H_POS;
+    DIF_MH_POS = IE_M_POS - IE_H_POS;
+   
+    PLOT(P_L_RD P_M_RD P_H_RD
+         P_L_POS P_M_POS P_H_POS);
+    LOOP(XVAL,1,7,0.1);
+    P_L_RD = IE_L_RD*XVAL;
+    P_M_RD = IE_M_RD*XVAL;
+    P_H_RD = IE_H_RD*XVAL;
+    
+    P_L_POS = IE_L_POS*XVAL;
+    P_M_POS = IE_M_POS*XVAL;
+    P_H_POS = IE_H_POS*XVAL;
+   ",
+   
+   PLOT = "
+    TYPE = plot2;
+   ",
+   OUTPUT = "
+    cint;
+    STDYX",
+   rdata = df.raw)
+
+mplusModeler(SEM.mod.SCD, modelout = "./OUTPUT/SEM/Mplus/SEM.mod.SCD.inp", run = 1L)
+rm(SEM.mod.SCD)
+```
+
+```{r mutate UDSC}
+df.clean <- df.raw %>%
+  dplyr::mutate(UDSC = case_when(
+    USC <= 4 & DSC <= 4 ~ 1,
+    USC > 4 & DSC <= 4 ~ 2,
+    USC <= 4 & DSC > 4 ~ 3,
+    USC > 4 & DSC > 4 ~ 4
+  ))
+```
+### USC & DSC as moderation
+```{r Moderator is UDSC, include=FALSE}
+SEM.mod.UDSC <- mplusObject(
+   TITLE = "
+    Moderator is UDSC;
+   ",
+   ANALYSIS = "
+    TYPE =general RANDOM;  
+    estimator=MLR; 
+    ALGORITHM=INTEGRATION;
+    convergence=0.01;
+   ",
+   MODEL = "  
+    ASC by ASC1-ASC5;
+    OSC by OSC1-OSC6;
+    SCO by ASC@0.8 OSC@0.8;
+    
+    UDSC@1;
+    OUD | SCO XWITH UDSC;
+    
+    RD by RD1-RD5;
+    POS by POS1-POS5;
+    
+    LS by LS1-LS5;
+    
+    RD on SCO(a1)
+          UDSC
+          OUD(w1);
+    POS on SCO(a2)
+           UDSC
+           OUD(w2);
+    LS on SCO(c)
+          RD(b1)
+          POS(b2);
+   ",
+   MODELCONSTRAINT = "
+   NEW(LULD HULD LUHD HUHD
+      IE_LL_RD IE_HL_RD IE_LH_RD IE_HH_RD
+      IE_LL_POS IE_HL_POS IE_LH_POS IE_HH_POS
+      );
+   
+    LULD = 1;
+    HULD = 2;
+    LUHD = 3;
+    HUHD = 4;
+   
+    IE_LL_RD = (a1+w1*LULD)*b1;
+    IE_HL_RD = (a1+w1*HULD)*b1;
+    IE_LH_RD = (a1+w1*LUHD)*b1;
+    IE_HH_RD = (a1+w1*HUHD)*b1;
+   
+    IE_LL_POS = (a2+w2*LULD)*b2;
+    IE_HL_POS = (a2+w2*HULD)*b2;
+    IE_LH_POS = (a2+w2*LUHD)*b2;
+    IE_HH_POS = (a2+w2*HUHD)*b2;
+   
+    PLOT(P_LL_RD P_HL_RD P_LH_RD P_HH_RD
+         P_LL_POS P_HL_POS P_LH_POS P_HH_POS);
+    LOOP(XVAL,1,7,0.1);
+    P_LL_RD = IE_LL_RD*XVAL;
+    P_HL_RD = IE_HL_RD*XVAL;
+    P_LH_RD = IE_LH_RD*XVAL;
+    P_HH_RD = IE_HH_RD*XVAL;
+
+    P_LL_POS = IE_LL_POS*XVAL;
+    P_HL_POS = IE_HL_POS*XVAL;
+    P_LH_POS = IE_LH_POS*XVAL;
+    P_HH_POS = IE_HH_POS*XVAL;
+   ",
+   
+   PLOT = "
+    TYPE = plot2;
+   ",
+   OUTPUT = "
+    cint;
+    STDYX",
+   rdata = df.clean)
+
+mplusModeler(SEM.mod.UDSC, modelout = "./OUTPUT/SEM/Mplus/SEM.mod.UDSC.inp", run = 1L)
+rm(SEM.mod.UDSC)
+```
+
+```{r Moderator is USC_DSC, include=FALSE}
+SEM.mod.USC_DSC <- mplusObject(
+   TITLE = "
+    Moderator is USC DSC;
+   ",
+   ANALYSIS = "
+    TYPE =general RANDOM;  
+    estimator=MLR; 
+    ALGORITHM=INTEGRATION;
+    convergence=0.01;
+   ",
+   MODEL = "  
+    ASC by ASC1-ASC5;
+    OSC by OSC1-OSC6;
+    SCO by ASC@0.8 OSC@0.8;
+    
+    USC@1;
+    DSC@1;
+    SCOU | SCO XWITH USC;
+    SCOD | SCO XWITH DSC;
+    
+    RD by RD1-RD5;
+    POS by POS1-POS5;
+    
+    LS by LS1-LS5;
+    
+    RD on SCO(a1)
+          USC
+          SCOU(w1);
+    POS on SCO(a2)
+           DSC
+           SCOD(w2);
+    LS on SCO(c)
+          RD(b1)
+          POS(b2);
+   ",
+   MODELCONSTRAINT = "
+   NEW(L_UDSC M_UDSC H_UDSC
+      IE_L_RD IE_M_RD IE_H_RD
+      IE_L_POS IE_M_POS IE_H_POS
+      
+      DIF_LM_RD DIF_LH_RD DIF_MH_RD
+      DIF_LM_POS DIF_LH_POS DIF_MH_POS
+      );
+   
+    L_UDSC = -1;
+    M_UDSC = 0;
+    H_UDSC = 1;
+   
+    IE_L_RD = (a1+w1*L_UDSC)*b1;
+    IE_M_RD = (a1+w1*M_UDSC)*b1;
+    IE_H_RD = (a1+w1*H_UDSC)*b1;
+   
+    IE_L_POS = (a2+w2*L_UDSC)*b2;
+    IE_M_POS = (a2+w2*M_UDSC)*b2;
+    IE_H_POS = (a2+w2*H_UDSC)*b2;
+   
+    DIF_LM_RD = IE_L_RD - IE_M_RD;
+    DIF_LH_RD = IE_L_RD - IE_H_RD;
+    DIF_MH_RD = IE_M_RD - IE_H_RD;
+    
+    DIF_LM_POS = IE_L_POS - IE_M_POS;
+    DIF_LH_POS = IE_L_POS - IE_H_POS;
+    DIF_MH_POS = IE_M_POS - IE_H_POS;
+   
+    PLOT(P_L_RD P_M_RD P_H_RD
+         P_L_POS P_M_POS P_H_POS);
+    LOOP(XVAL,1,7,0.1);
+    P_L_RD = IE_L_RD*XVAL;
+    P_M_RD = IE_M_RD*XVAL;
+    P_H_RD = IE_H_RD*XVAL;
+    
+    P_L_POS = IE_L_POS*XVAL;
+    P_M_POS = IE_M_POS*XVAL;
+    P_H_POS = IE_H_POS*XVAL;
+   ",
+   
+   PLOT = "
+    TYPE = plot2;
+   ",
+   OUTPUT = "
+    cint;
+    STDYX",
+   rdata = df.raw)
+
+mplusModeler(SEM.mod.USC_DSC, modelout = "./OUTPUT/SEM/Mplus/SEM.mod.USC_DSC.inp", run = 1L)
+rm(SEM.mod.USC_DSC)
+```
+### SCS as moderation
+```{r Moderator is SCS, include=FALSE}
+SEM.mod.SCS <- mplusObject(
+   TITLE = "
+    Moderator is SCS(UC DC);
+   ",
+   ANALYSIS = "
+    TYPE =general RANDOM;  
+    estimator=MLR; 
+    ALGORITHM=INTEGRATION;
+    convergence=0.01;
+    process=16;
+   ",
+   MODEL = "  
+    ASC by ASC1-ASC5;
+    OSC by OSC1-OSC6;
+    SCO by ASC@0.8 OSC@0.8;
+    
+    UC by UC1-UC3;
+    UC@1;
+    DC by DC1-DC3;
+    DC@1;
+    
+    SCOUC | SCO XWITH UC;
+    SCODC | SCO XWITH DC;
+    
+    RD by RD1-RD5;
+    POS by POS1-POS5;
+    
+    LS by LS1-LS5;
+    
+    RD on SCO(a1)
+          UC
+          SCOUC(w1);
+    POS on SCO(a2)
+           DC
+           SCODC(w2);
+    LS on SCO(c)
+          RD(b1)
+          POS(b2);
+   ",
+   MODELCONSTRAINT = "
+   NEW(L_SCS M_SCS H_SCS
+       IE_L_RD IE_M_RD IE_H_RD
+       IE_L_POS IE_M_POS IE_H_POS
+      
+       DIF_LM_RD DIF_LH_RD DIF_MH_RD
+       DIF_LM_POS DIF_LH_POS DIF_MH_POS
+      );
+   
+    L_SCS = -1;
+    M_SCS = 0;
+    H_SCS = 1;
+   
+    IE_L_RD = (a1+w1*L_SCS)*b1;
+    IE_M_RD = (a1+w1*M_SCS)*b1;
+    IE_H_RD = (a1+w1*H_SCS)*b1;
+   
+    IE_L_POS = (a2+w2*L_SCS)*b2;
+    IE_M_POS = (a2+w2*M_SCS)*b2;
+    IE_H_POS = (a2+w2*H_SCS)*b2;
+   
+    DIF_LM_RD = IE_L_RD - IE_M_RD;
+    DIF_LH_RD = IE_L_RD - IE_H_RD;
+    DIF_MH_RD = IE_M_RD - IE_H_RD;
+    
+    DIF_LM_POS = IE_L_POS - IE_M_POS;
+    DIF_LH_POS = IE_L_POS - IE_H_POS;
+    DIF_MH_POS = IE_M_POS - IE_H_POS;
+   
+    PLOT(P_L_RD P_M_RD P_H_RD
+         P_L_POS P_M_POS P_H_POS);
+    LOOP(XVAL,1,7,0.1);
+    P_L_RD = IE_L_RD*XVAL;
+    P_M_RD = IE_M_RD*XVAL;
+    P_H_RD = IE_H_RD*XVAL;
+    
+    P_L_POS = IE_L_POS*XVAL;
+    P_M_POS = IE_M_POS*XVAL;
+    P_H_POS = IE_H_POS*XVAL;
+   ",
+   
+   PLOT = "
+    TYPE = plot2;
+   ",
+   OUTPUT = "
+    cint;
+    STDYX",
+   rdata = df.raw)
+
+mplusModeler(SEM.mod.SCS, modelout = "./OUTPUT/SEM/Mplus/SEM.mod.SCS.inp", run = 1L)
+rm(SEM.mod.SCS)
+```
+
+
+
+
