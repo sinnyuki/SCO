@@ -6,8 +6,6 @@ output: html_document
 ---
 # Packages & WD & Read Data
 ```{r pacakge, message=FALSE,warning=FALSE,error=FALSE}
-library(here)
-
 # clean data
 library(bruceR)
 #library(dplyr)
@@ -15,6 +13,8 @@ library(bruceR)
 library(psych)
 #library(ggplot2)
 library(gridExtra)
+library(papaja)
+library(patchwork)
 
 # SEM mediation
 library(lavaan)
@@ -60,7 +60,7 @@ df.mean <- df.raw %>%
                 DC_mean = rowMeans(select(., starts_with("DC"))),
 
                 ) %>%
-  dplyr::select(Subject, Gender, Age, Group, 
+  dplyr::select(Subject, Gender, Age, Edu, Marriage,
                 ASC = ASC_mean, OSC = OSC_mean, RD = RD_mean, POS = POS_mean, LS = LS_mean, 
                 SCD,USC,DSC,
                 UI = UI_mean, UC = UC_mean, DI = DI_mean, DC = DC_mean)
@@ -78,115 +78,133 @@ rm(result)
 ```
 
 ```{r Distribution Plot, message = FALSE}
-p <- grid.arrange(
-      ggplot(df.mean, aes(x = Gender)) +
-        geom_bar(fill = "grey", alpha = 0.5) +
-        labs(title = "Gender Count", x = "Gender", y = "Count") +
-        theme(plot.title = element_text(size = 10, hjust = 0.5),
-              axis.title.x = element_text(size = 7),
-              axis.title.y = element_text(size = 7))+
-        scale_x_continuous(breaks = c(0, 1)),
-      
-      ggplot(df.mean, aes(x = Age)) +
-        geom_histogram(fill = "grey", binwidth = 5, alpha = 0.5) +
-        labs(title = "Age Distribution", x = "Age", y = "Frequency") +
-        theme(plot.title = element_text(size = 10, hjust = 0.5),
-              axis.title.x = element_text(size = 7),
-              axis.title.y = element_text(size = 7)),
-      
-      ggplot(df.mean, aes(x = ASC)) +
-        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
-        labs(title = "ASC Distribution", x = "ASC", y = "Frequency") +
-        theme(plot.title = element_text(size = 10, hjust = 0.5),
-             axis.title.x = element_text(size = 7),
-             axis.title.y = element_text(size = 7)),
-      
-      ggplot(df.mean, aes(x = OSC)) +
-        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
-        labs(title = "OSC Distribution", x = "OSC", y = "Frequency") +
-        theme(plot.title = element_text(size = 10, hjust = 0.5),
-              axis.title.x = element_text(size = 7),
-              axis.title.y = element_text(size = 7)),
-      
-      ggplot(df.mean, aes(x = RD)) +
-        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
-        labs(title = "RD Distribution", x = "RD", y = "Frequency") +
-        theme(plot.title = element_text(size = 10, hjust = 0.5),
-              axis.title.x = element_text(size = 7),
-              axis.title.y = element_text(size = 7)),
-      
-      ggplot(df.mean, aes(x = POS)) +
-        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
-        labs(title = "POS Distribution", x = "POS", y = "Frequency") +
-        theme(plot.title = element_text(size = 10, hjust = 0.5),
-              axis.title.x = element_text(size = 7),
-              axis.title.y = element_text(size = 7)),
-      
-        ggplot(df.mean, aes(x = LS)) +
-        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
-        labs(title = "LS Distribution", x = "LS", y = "Frequency") +
-        theme(plot.title = element_text(size = 10, hjust = 0.5),
-              axis.title.x = element_text(size = 7),
-              axis.title.y = element_text(size = 7)),
+p1 <- ggplot2::ggplot(df.mean, aes(x = Gender)) +
+  ggplot2::geom_bar(fill = "#F3533A", alpha = 0.5) +
+  ggplot2::labs(x = "Gender", y = "Count") +
+  ggplot2::scale_x_continuous(breaks = c(0, 1)) +
+  papaja::theme_apa() 
 
-      ggplot(df.mean, aes(x = SCD)) +
-        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
-        labs(title = "SCD Distribution", x = "SCD", y = "Frequency") +
-        theme(plot.title = element_text(size = 10, hjust = 0.5),
-              axis.title.x = element_text(size = 7),
-              axis.title.y = element_text(size = 7)),
-      
-      ggplot(df.mean, aes(x = USC)) +
-        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
-        labs(title = "USC Distribution", x = "USC", y = "Frequency") +
-        theme(plot.title = element_text(size = 10, hjust = 0.5),
-              axis.title.x = element_text(size = 7),
-              axis.title.y = element_text(size = 7)),
-      
-      ggplot(df.mean, aes(x = DSC)) +
-        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
-        labs(title = "DSC Distribution", x = "DSC", y = "Frequency") +
-        theme(plot.title = element_text(size = 10, hjust = 0.5),
-              axis.title.x = element_text(size = 7),
-              axis.title.y = element_text(size = 7)),
-      
-      ggplot(df.mean, aes(x = UI)) +
-        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
-        labs(title = "UI Distribution", x = "UI", y = "Frequency") +
-        theme(plot.title = element_text(size = 10, hjust = 0.5),
-              axis.title.x = element_text(size = 7),
-              axis.title.y = element_text(size = 7)),
-      
-      ggplot(df.mean, aes(x = UC)) +
-        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
-        labs(title = "UC Distribution", x = "UC", y = "Frequency") +
-        theme(plot.title = element_text(size = 10, hjust = 0.5),
-              axis.title.x = element_text(size = 7),
-              axis.title.y = element_text(size = 7)),            
-            
-      ggplot(df.mean, aes(x = DI)) +
-        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
-        labs(title = "DI Distribution", x = "DI", y = "Frequency") +
-        theme(plot.title = element_text(size = 10, hjust = 0.5),
-              axis.title.x = element_text(size = 7),
-              axis.title.y = element_text(size = 7)),
-      
-      ggplot(df.mean, aes(x = DC)) +
-        geom_histogram(fill = "grey", binwidth = 0.5, alpha = 0.5) +
-        labs(title = "DC Distribution", x = "DC", y = "Frequency") +
-        theme(plot.title = element_text(size = 10, hjust = 0.5),
-              axis.title.x = element_text(size = 7),
-              axis.title.y = element_text(size = 7)),
-    
-      nrow = 4, ncol = 4
-      )
+p2 <- ggplot2::ggplot(df.mean, aes(x = Age)) +
+  ggplot2::geom_bar(fill = "#F3533A", alpha = 0.5) +
+  ggplot2::labs(x = "Age", y = "Count") +
+  papaja::theme_apa() 
 
-ggsave(filename = "./OUTPUT/Figure.1_Distribution.png",plot = p, width = 8, height = 6, dpi = 300)
-rm(p)
+
+p3 <- ggplot2::ggplot(df.mean, aes(x = Edu)) +
+  ggplot2::geom_bar(fill = "#F3533A", alpha = 0.5) +
+  ggplot2::labs(x = "Education", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(0.5,5.5),
+                              breaks = c(1, 2, 3, 4, 5),
+                              labels = c("J", "HS", "JC", "C", "G")) +
+  papaja::theme_apa() 
+
+p4 <- ggplot2::ggplot(df.mean, aes(x = Marriage)) +
+  ggplot2::geom_bar(fill = "#F3533A", alpha = 0.5) +
+  ggplot2::labs(x = "Marriage", y = "Count") +
+  ggplot2::scale_x_continuous(breaks = c(1, 2, 3),
+                              labels = c("Married", "Unmarried", "Divorced")) +
+  papaja::theme_apa() 
+  
+
+p5 <- ggplot2::ggplot(df.mean, aes(x = ASC)) +
+  ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
+  ggplot2::labs(x = "Ability-Based Social Comparison Orientation", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+p6 <- ggplot2::ggplot(df.mean, aes(x = OSC)) +
+  ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
+  ggplot2::labs(x = "Opinion-Based Social Comparison Orientation", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+p7 <- ggplot2::ggplot(df.mean, aes(x = RD)) +
+  ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
+  ggplot2::labs(x = "Relative Deprivation", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+p8 <- ggplot2::ggplot(df.mean, aes(x = POS)) +
+  ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
+  ggplot2::labs(x = "Perceptions of Superiority", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+  
+p9 <- ggplot2::ggplot(df.mean, aes(x = LS)) +
+  ggplot2::geom_bar(fill = "#8AD879", alpha = 0.5) +
+  ggplot2::labs(x = "Life Satisfaction", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+p10 <- ggplot2::ggplot(df.mean, aes(x = SCD)) +
+  ggplot2::geom_bar(fill = "#8AD879", alpha = 0.5) +
+  ggplot2::labs(x = "Social Comparison Direction", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+p11 <- ggplot2::ggplot(df.mean, aes(x = USC)) +
+  ggplot2::geom_bar(fill = "#8AD879", alpha = 0.5) +
+  ggplot2::labs(x = "Upward Social Comparison", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+p12 <- ggplot2::ggplot(df.mean, aes(x = DSC)) +
+  ggplot2::geom_bar(fill = "#8AD879", alpha = 0.5) +
+  ggplot2::labs(x = "Downward Social Comparison", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+p13 <- ggplot2::ggplot(df.mean, aes(x = UI)) +
+  ggplot2::geom_bar(fill = "#5ACFC9", alpha = 0.5) +
+  ggplot2::labs(x = "Upward Identify", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+p14 <- ggplot2::ggplot(df.mean, aes(x = UC)) +
+  ggplot2::geom_bar(fill = "#5ACFC9", alpha = 0.5) +
+  ggplot2::labs(x = "Upward Contrast", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+      
+p15 <- ggplot2::ggplot(df.mean, aes(x = DI)) +
+  ggplot2::geom_bar(fill = "#5ACFC9", alpha = 0.5) +
+  ggplot2::labs(x = "Downward Identify", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+p16 <- ggplot2::ggplot(df.mean, aes(x = DC)) +
+  ggplot2::geom_histogram(fill = "#5ACFC9", alpha = 0.5) +
+  ggplot2::labs(x = "Downward Contrast", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+p <- p1 + p2 + p3 + p4 + 
+  p5 + p6 + p7 + p8 + 
+  p9 + p10 + p11 + p12 + 
+  p13 + p14 + p15 + p16 +
+  plot_layout(nrow = 4)
+
+ggsave(plot = p, filename = "./OUTPUT/Figure.1_Distribution.png", width = 16, height = 12)
+rm(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p)
 ```
 
 ```{r Correlation}
+tiff("./OUTPUT/Figure.2_Correlation_Matrix.png", width = 3000, height = 2000, res = 300)
 bruceR::Corr(data = df.mean[,-1], plot = TRUE)
+dev.off()
+
 cor_matrix <- cor(df.mean[,-1])
 write.csv(cor_matrix, file = "./OUTPUT/Table.2_Correlation.csv")
 

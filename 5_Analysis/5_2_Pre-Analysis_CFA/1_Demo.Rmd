@@ -14,6 +14,7 @@ library(psych)
 #library(ggplot2)
 library(gridExtra)
 library(papaja)
+library(patchwork)
 
 # SEM mediation
 library(lavaan)
@@ -195,7 +196,7 @@ p <- p1 + p2 + p3 + p4 +
   plot_layout(nrow = 4)
 
 ggsave(plot = p, filename = "./OUTPUT/Figure.1_Distribution.png", width = 16, height = 12)
-rm(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p)
+rm(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p)
 ```
 
 ```{r Correlation}
@@ -287,8 +288,8 @@ rm(result.CFA_SCS, CFA_SCS)
 
 ```{r CFA}
 result.CFA <- capture.output({
-  CFA <- 'ASC =~ ASC1 + ASC2 + ASC3 + ASC4
-          OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5
+  CFA <- 'ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5
+          OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6
           SCO =~ ASC + OSC
           RD =~ RD1 + RD2 + RD3 + RD4 + RD5
           POS =~ POS1 + POS2 + POS3 + POS4 + POS5
