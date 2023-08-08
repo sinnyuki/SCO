@@ -1,0 +1,153 @@
+---
+title: "Simulated_Analysis"
+author: "yuki"
+date: "2023-03-15"
+output: html_document
+---
+# Packages & WD & Read Data
+```{r pacakge, message=FALSE,warning=FALSE,error=FALSE}
+# clean data
+library(bruceR)
+#library(dplyr)
+#library(tidyr)
+library(psych)
+#library(ggplot2)
+library(gridExtra)
+library(papaja)
+library(patchwork)
+
+```
+
+```{r read df.raw}
+df.raw <-  read.csv('../../4_Data_Extraction/4_2_Pre-Analysis_Data/4_2_3_Material/Material.csv',
+                    header = T, sep=",", stringsAsFactors = FALSE) %>%
+  dplyr::mutate(Subject =index) %>%
+  dplyr::select(Subject, Gender, Age, Edu, Marriage, everything()) %>%
+  dplyr::select(-totalseconds, -index, -totalvalue)
+```
+
+# Decriptive Statistics
+```{r Descriptive Statistics Mean & SD, message = FALSE}
+result <- capture.output({
+  bruceR::Describe(data = df.raw[,-1])
+  })
+
+writeLines(result, "./OUTPUT/Table.1_Mean & SD.md")
+
+rm(result)
+```
+
+```{r Distribution Plot, message = FALSE}
+p1 <- ggplot2::ggplot(df.raw, aes(x = Gender)) +
+  ggplot2::geom_bar(fill = "#F3533A", alpha = 0.5) +
+  ggplot2::labs(x = "Gender", y = "Count") +
+  ggplot2::scale_x_continuous(breaks = c(1, 2),
+                              labels = c("Male", "Female")) +
+  papaja::theme_apa() 
+
+p2 <- ggplot2::ggplot(df.raw, aes(x = Age)) +
+  ggplot2::geom_bar(fill = "#F3533A", alpha = 0.5) +
+  ggplot2::labs(x = "Age", y = "Count") +
+  papaja::theme_apa() 
+
+
+p3 <- ggplot2::ggplot(df.raw, aes(x = Edu)) +
+  ggplot2::geom_bar(fill = "#F3533A", alpha = 0.5) +
+  ggplot2::labs(x = "Education", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(0.5,5.5),
+                              breaks = c(1, 2, 3, 4, 5),
+                              labels = c("J", "HS", "JC", "C", "G")) +
+  papaja::theme_apa() 
+
+p4 <- ggplot2::ggplot(df.raw, aes(x = Marriage)) +
+  ggplot2::geom_bar(fill = "#F3533A", alpha = 0.5) +
+  ggplot2::labs(x = "Marriage", y = "Count") +
+  ggplot2::scale_x_continuous(breaks = c(1, 2, 3),
+                              labels = c("Married", "Unmarried", "Divorced")) +
+  papaja::theme_apa() 
+  
+p5 <- ggplot2::ggplot(df.raw, aes(x = NULL, y = NULL)) +
+  ggplot2::theme_void()
+
+up1 <- ggplot2::ggplot(df.raw, aes(x = UP1)) +
+  ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
+  ggplot2::labs(x = "Upward Material 1", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+up2 <- ggplot2::ggplot(df.raw, aes(x = UP2)) +
+  ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
+  ggplot2::labs(x = "Upward Material 2", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+up3 <- ggplot2::ggplot(df.raw, aes(x = UP3)) +
+  ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
+  ggplot2::labs(x = "Upward Material 3", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+up4 <- ggplot2::ggplot(df.raw, aes(x = UP4)) +
+  ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
+  ggplot2::labs(x = "Upward Material 4", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+up5 <- ggplot2::ggplot(df.raw, aes(x = UP5)) +
+  ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
+  ggplot2::labs(x = "Upward Material 5", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+  
+
+dw1 <- ggplot2::ggplot(df.raw, aes(x = DW1)) +
+  ggplot2::geom_bar(fill = "#5ACFC9", alpha = 0.5) +
+  ggplot2::labs(x = "Downward Material 1", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+dw2 <- ggplot2::ggplot(df.raw, aes(x = DW2)) +
+  ggplot2::geom_bar(fill = "#5ACFC9", alpha = 0.5) +
+  ggplot2::labs(x = "Downward Material 2", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+dw3 <- ggplot2::ggplot(df.raw, aes(x = DW3)) +
+  ggplot2::geom_bar(fill = "#5ACFC9", alpha = 0.5) +
+  ggplot2::labs(x = "Downward Material 3", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+dw4 <- ggplot2::ggplot(df.raw, aes(x = DW4)) +
+  ggplot2::geom_bar(fill = "#5ACFC9", alpha = 0.5) +
+  ggplot2::labs(x = "Downward Material 4", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+dw5 <- ggplot2::ggplot(df.raw, aes(x = DW5)) +
+  ggplot2::geom_bar(fill = "#5ACFC9", alpha = 0.5) +
+  ggplot2::labs(x = "Downward Material 5", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+
+p <- p1 + p2 + p3 + p4 + p5 +
+  up1 + up2 + up3 + up4 + up5 +
+  dw1 + dw2 + dw3 + dw4 + dw5 +
+  plot_layout(ncol = 5, nrow = 3)
+
+ggsave(plot = p, filename = "./OUTPUT/Figure.1_Distribution.png", width = 16, height = 9)
+rm(p1, p2, p3, p4, p5, up1, up2, up3, up4, up5, dw1, dw2, dw3, dw4, dw5, p)
+```
+
