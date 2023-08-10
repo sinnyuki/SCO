@@ -1,0 +1,88 @@
+---
+title: "CFA"
+author: "yuki"
+date: "2023-08-10"
+output: html_document
+---
+# Confirmatory Factor Analysis
+```{r CFA: ASC}
+result.CFA_ASC <- capture.output({
+  CFA_ASC <- 'ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA_ASC, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA_ASC, "./OUTPUT/CFA/ASC.md")
+
+rm(result.CFA_ASC, CFA_ASC)
+```
+
+```{r CFA: OSC}
+result.CFA_OSC <- capture.output({
+  CFA_OSC <- 'OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA_OSC, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA_OSC, "./OUTPUT/CFA/OSC.md")
+
+rm(result.CFA_OSC, CFA_OSC)
+```
+
+```{r CFA: RD}
+result.CFA_RD <- capture.output({
+  CFA_RD <- 'RD =~ RD1 + RD2 + RD3 + RD4 + RD5' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA_RD, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA_RD, "./OUTPUT/CFA/RD.md")
+
+rm(result.CFA_RD, CFA_RD)
+```
+
+```{r CFA: POS}
+result.CFA_POS <- capture.output({
+  CFA_POS <- 'POS =~ POS1 + POS2 + POS3 + POS5 + POS6' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA_POS, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA_POS, "./OUTPUT/CFA/POS.md")
+
+rm(result.CFA_POS, CFA_POS)
+```
+
+```{r CFA}
+result.CFA <- capture.output({
+  CFA <- 'ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5
+          OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC6
+          SCO =~ ASC + OSC
+          RD =~ RD1 + RD2 + RD3 + RD4 + RD5
+          POS =~ POS1 + POS2 + POS3 + POS4 + POS5
+         ' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA, "./OUTPUT/CFA/CFA.md")
+
+rm(result.CFA)
+```
+
+```{r matrix.CFA}
+matrix.CFA <- lavaan::lavInspect(CFA,"standardized") 
+CFA.loading <- as.data.frame(matrix.CFA$lambda) %>%
+  dplyr::select(ASC, OSC, SCO, RD, POS) %>%
+  dplyr::mutate_at(vars(ASC, OSC, SCO, RD, POS), round, 3)
+CFA.loading[CFA.loading == 0] <- NA
+
+CFA.correlation <- as.data.frame(matrix.CFA$psi) %>%
+  dplyr::mutate_at(vars(SCO, RD, POS), round, 3) %>%
+  .[c("SCO", "RD", "POS"), c("SCO", "RD", "POS")]
+
+write.csv(CFA.loading, "./OUTPUT/CFA/loading.csv")
+write.csv(CFA.correlation, "./OUTPUT/CFA/latent_correlation.csv")
+
+rm(matrix.CFA)
+```

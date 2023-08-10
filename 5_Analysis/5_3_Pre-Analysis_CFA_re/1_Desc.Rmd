@@ -1,0 +1,141 @@
+---
+title: "Simulated_Analysis"
+author: "yuki"
+date: "2023-03-15"
+output: html_document
+---
+# Packages & WD & Read Data
+```{r pacakge, message=FALSE,warning=FALSE,error=FALSE}
+# clean data
+library(bruceR)
+#library(dplyr)
+#library(tidyr)
+library(psych)
+#library(ggplot2)
+library(gridExtra)
+library(papaja)
+library(patchwork)
+
+# SEM mediation
+library(lavaan)
+library(lavaanPlot)
+
+# SED moderation
+library(MplusAutomation)
+```
+
+```{r read df.raw}
+df.raw <-  read.csv('../../4_Data_Extraction/4_2_Pre-Analysis_Data/4_2_2_CFA_re/CFA_re.csv',
+                    header = T, sep=",", stringsAsFactors = FALSE) %>%
+  dplyr::mutate(Subject =index, 
+                Age = as.numeric(Age)) %>%
+  dplyr::filter(Age >= 5) %>%
+  dplyr::select(Subject, Gender, Age, Edu, Marriage, everything()) %>%
+  dplyr::select(-totalseconds, -index, -totalvalue)
+```
+
+```{r df.mean, message = FALSE}
+df.mean <- df.raw %>%
+  dplyr::mutate(ASC_mean = rowMeans(select(., starts_with("ASC"))),
+                OSC_mean = rowMeans(select(., starts_with("OSC"))),
+                RD_mean = rowMeans(select(., starts_with("RD"))),
+                POS_mean = rowMeans(select(., starts_with("POS"))),
+                ) %>%
+  dplyr::select(Subject, Gender, Age, Edu, Marriage,
+                ASC = ASC_mean, OSC = OSC_mean, RD = RD_mean, POS = POS_mean)
+```  
+
+# Decriptive Statistics
+```{r}
+sum(df.raw$Gender == 1)
+sum(df.raw$Gender == 2)
+```
+
+
+```{r Descriptive Statistics Mean & SD, message = FALSE}
+result <- capture.output({
+  bruceR::Describe(data = df.mean[,-1])
+  })
+
+writeLines(result, "./OUTPUT/Table.1_Mean & SD.md")
+
+rm(result)
+```
+
+```{r Distribution Plot, message = FALSE}
+p1 <- ggplot2::ggplot(df.mean, aes(x = Gender)) +
+  ggplot2::geom_bar(fill = "#F3533A", alpha = 0.5) +
+  ggplot2::labs(x = "Gender", y = "Count") +
+  ggplot2::scale_x_continuous(breaks = c(1, 2),
+                              label = c("Male", "Female")) +
+  papaja::theme_apa() 
+
+p2 <- ggplot2::ggplot(df.mean, aes(x = Age)) +
+  ggplot2::geom_bar(fill = "#F3533A", alpha = 0.5) +
+  ggplot2::labs(x = "Age", y = "") +
+  papaja::theme_apa() 
+
+
+p3 <- ggplot2::ggplot(df.mean, aes(x = Edu)) +
+  ggplot2::geom_bar(fill = "#F3533A", alpha = 0.5) +
+  ggplot2::labs(x = "Education", y = "") +
+  ggplot2::scale_x_continuous(limits = c(0.5,5.5),
+                              breaks = c(1, 2, 3, 4, 5),
+                              labels = c("J", "HS", "JC", "C", "G")) +
+  papaja::theme_apa() 
+
+p4 <- ggplot2::ggplot(df.mean, aes(x = Marriage)) +
+  ggplot2::geom_bar(fill = "#F3533A", alpha = 0.5) +
+  ggplot2::labs(x = "Marriage", y = "") +
+  ggplot2::scale_x_continuous(breaks = c(1, 2, 3),
+                              labels = c("Married", "Unmarried", "Divorced")) +
+  papaja::theme_apa() 
+  
+
+p5 <- ggplot2::ggplot(df.mean, aes(x = ASC)) +
+  ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
+  ggplot2::labs(x = "Ability-Based Social Comparison Orientation", y = "Count") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+p6 <- ggplot2::ggplot(df.mean, aes(x = OSC)) +
+  ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
+  ggplot2::labs(x = "Opinion-Based Social Comparison Orientation", y = "") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+p7 <- ggplot2::ggplot(df.mean, aes(x = RD)) +
+  ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
+  ggplot2::labs(x = "Relative Deprivation", y = "") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+
+p8 <- ggplot2::ggplot(df.mean, aes(x = POS)) +
+  ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
+  ggplot2::labs(x = "Perceptions of Superiority", y = "") +
+  ggplot2::scale_x_continuous(limits = c(1,7),
+                              breaks = seq(1, 7, 1)) +
+  papaja::theme_apa() 
+  
+p <- p1 + p2 + p3 + p4 + 
+  p5 + p6 + p7 + p8 + 
+  plot_layout(nrow = 2)
+
+ggsave(plot = p, filename = "./OUTPUT/Figure.1_Distribution.png", width = 16, height = 6)
+rm(p1, p2, p3, p4, p5, p6, p7, p8, p)
+```
+
+```{r Correlation}
+tiff("./OUTPUT/Figure.2_Correlation_Matrix.png", width = 3000, height = 2000, res = 300)
+bruceR::Corr(data = df.mean[,-1], plot = TRUE)
+dev.off()
+
+cor_matrix <- cor(df.mean[,-1])
+write.csv(cor_matrix, file = "./OUTPUT/Table.2_Correlation.csv")
+
+rm(cor_matrix)
+```
+
