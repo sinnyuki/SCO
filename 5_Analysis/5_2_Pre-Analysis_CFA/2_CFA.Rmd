@@ -1,0 +1,120 @@
+---
+title: "2_CFA"
+author: "yuki"
+date: "2023-08-12"
+output: html_document
+---
+# Confirmatory Factor Analysis
+```{r CFA: ASC}
+result.CFA_ASC <- capture.output({
+  CFA_ASC <- 'ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA_ASC, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA_ASC, "./OUTPUT/CFA/ASC.md")
+
+rm(result.CFA_ASC, CFA_ASC)
+```
+
+```{r CFA: OSC}
+result.CFA_OSC <- capture.output({
+  CFA_OSC <- 'OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA_OSC, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA_OSC, "./OUTPUT/CFA/OSC.md")
+
+rm(result.CFA_OSC, CFA_OSC)
+```
+
+```{r CFA: RD}
+result.CFA_RD <- capture.output({
+  CFA_RD <- 'RD =~ RD1 + RD2 + RD3 + RD4 + RD5' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA_RD, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA_RD, "./OUTPUT/CFA/RD.md")
+
+rm(result.CFA_RD, CFA_RD)
+```
+
+```{r CFA: POS}
+result.CFA_POS <- capture.output({
+  CFA_POS <- 'POS =~ POS1 + POS2 + POS3 + POS4 + POS5' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA_POS, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA_POS, "./OUTPUT/CFA/POS.md")
+
+rm(result.CFA_POS, CFA_POS)
+```
+
+```{r CFA: LS}
+result.CFA_LS <- capture.output({
+  CFA_LS <- 'LS =~ LS1 + LS2 + LS3 + LS4 + LS5' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA_LS, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA_LS, "./OUTPUT/CFA/LS.md")
+
+rm(result.CFA_LS, CFA_LS)
+```
+
+```{r CFA: SCS}
+result.CFA_SCS <- capture.output({
+  CFA_SCS <- 'UI =~ UI1 + UI2 + UI3
+              UC =~ UC1 + UC2 + UC3
+              DI =~ DI1 + DI2 + DI3
+              DC =~ DC1 + DC2 + DC3' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA_SCS, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA_SCS, "./OUTPUT/CFA/SCS.md")
+
+rm(result.CFA_SCS, CFA_SCS)
+```
+
+```{r CFA}
+result.CFA <- capture.output({
+  CFA <- 'ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5
+          OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6
+          SCO =~ ASC + OSC
+          RD =~ RD1 + RD2 + RD3 + RD4 + RD5
+          POS =~ POS1 + POS2 + POS3 + POS4 + POS5
+          LS =~ LS1 + LS2 + LS3 + LS4 + LS5
+          UI =~ UI1 + UI2 + UI3
+          UC =~ UC1 + UC2 + UC3
+          DI =~ DI1 + DI2 + DI3
+          DC =~ DC1 + DC2 + DC3' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(CFA, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.CFA, "./OUTPUT/CFA/CFA.md")
+
+rm(result.CFA)
+```
+
+```{r matrix.CFA}
+matrix.CFA <- lavaan::lavInspect(CFA,"standardized") 
+CFA.loading <- as.data.frame(matrix.CFA$lambda) %>%
+  dplyr::select(ASC, OSC, SCO, RD, POS, LS, UI, UC, DI, DC) %>%
+  dplyr::mutate_at(vars(ASC, OSC, SCO, RD, POS, LS, UI, UC, DI, DC), round, 3)
+CFA.loading[CFA.loading == 0] <- NA
+
+CFA.correlation <- as.data.frame(matrix.CFA$psi) %>%
+  dplyr::mutate_at(vars(SCO, RD, POS, LS, UI, UC, DI, DC), round, 3) %>%
+  .[c("SCO", "RD", "POS", "LS", "UI", "UC", "DI", "DC"), c("SCO", "RD", "POS", "LS", "UI", "UC", "DI", "DC")]
+
+write.csv(CFA.loading, "./OUTPUT/CFA/loading.csv")
+write.csv(CFA.correlation, "./OUTPUT/CFA/latent_correlation.csv")
+
+rm(matrix.CFA)
+```
+

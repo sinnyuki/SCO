@@ -95,28 +95,28 @@ p4 <- ggplot2::ggplot(df.mean, aes(x = Marriage)) +
 p5 <- ggplot2::ggplot(df.mean, aes(x = ASC)) +
   ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
   ggplot2::labs(x = "Ability-Based Social Comparison Orientation", y = "Count") +
-  ggplot2::scale_x_continuous(limits = c(1,7),
+  ggplot2::scale_x_continuous(limits = c(0.5,7.5),
                               breaks = seq(1, 7, 1)) +
   papaja::theme_apa() 
 
 p6 <- ggplot2::ggplot(df.mean, aes(x = OSC)) +
   ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
   ggplot2::labs(x = "Opinion-Based Social Comparison Orientation", y = "") +
-  ggplot2::scale_x_continuous(limits = c(1,7),
+  ggplot2::scale_x_continuous(limits = c(0.5,7.5),
                               breaks = seq(1, 7, 1)) +
   papaja::theme_apa() 
 
 p7 <- ggplot2::ggplot(df.mean, aes(x = RD)) +
   ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
   ggplot2::labs(x = "Relative Deprivation", y = "") +
-  ggplot2::scale_x_continuous(limits = c(1,7),
+  ggplot2::scale_x_continuous(limits = c(0.5,7.5),
                               breaks = seq(1, 7, 1)) +
   papaja::theme_apa() 
 
 p8 <- ggplot2::ggplot(df.mean, aes(x = POS)) +
   ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
   ggplot2::labs(x = "Perceptions of Superiority", y = "") +
-  ggplot2::scale_x_continuous(limits = c(1,7),
+  ggplot2::scale_x_continuous(limits = c(0.5,7.5),
                               breaks = seq(1, 7, 1)) +
   papaja::theme_apa() 
   
