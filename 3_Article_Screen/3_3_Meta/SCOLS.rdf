@@ -1,0 +1,2626 @@
+<rdf:RDF
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:z="http://www.zotero.org/namespaces/export#"
+ xmlns:dcterms="http://purl.org/dc/terms/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:bib="http://purl.org/net/biblio#"
+ xmlns:foaf="http://xmlns.com/foaf/0.1/"
+ xmlns:link="http://purl.org/rss/1.0/modules/link/"
+ xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/">
+    <bib:Article rdf:about="#item_946">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dcterms:isPartOf>
+                    <bib:Series>
+                        <dcterms:alternative>001</dcterms:alternative>
+                        <dc:title>SCOLS</dc:title>
+                    </bib:Series>
+                </dcterms:isPartOf>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Schneider</foaf:surname>
+                        <foaf:givenName>Simone M</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_945"/>
+        <dc:title>Individual Differences in Social Comparison and its Consequences for Life Satisfaction: Introducing a Short Scale of the Iowa–Netherlands Comparison Orientation Measure</dc:title>
+        <z:language>en</z:language>
+        <z:libraryCatalog>Zotero</z:libraryCatalog>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_945">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Schneider - Individual Differences in Social Comparison and it.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://linkinghub.elsevier.com/retrieve/pii/S1877042815050806">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:18770428"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Civitci</foaf:surname>
+                        <foaf:givenName>Nazmiye</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Civitci</foaf:surname>
+                        <foaf:givenName>Asım</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_947"/>
+        <dc:title>Social Comparison Orientation, Hardiness and Life Satisfaction in Undergraduate Students</dc:title>
+        <dc:date>10/2015</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://linkinghub.elsevier.com/retrieve/pii/S1877042815050806</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:23:10</dcterms:dateSubmitted>
+        <bib:pages>516-523</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:18770428">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>002</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>205</prism:volume>
+        <dc:title>Procedia - Social and Behavioral Sciences</dc:title>
+        <dc:identifier>DOI 10.1016/j.sbspro.2015.09.062</dc:identifier>
+        <dcterms:alternative>Procedia - Social and Behavioral Sciences</dcterms:alternative>
+        <dc:identifier>ISSN 18770428</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_947">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Civitci and Civitci - 2015 - Social Comparison Orientation, Hardiness and Life .pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://link.springer.com/10.1007/s11205-014-0849-6">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:0303-8300,%201573-0921"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Huang</foaf:surname>
+                        <foaf:givenName>Yunhui</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_949"/>
+        <dc:title>Downward Social Comparison Increases Life-Satisfaction in the Giving and Volunteering Context</dc:title>
+        <dc:date>1/2016</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://link.springer.com/10.1007/s11205-014-0849-6</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:23:29</dcterms:dateSubmitted>
+        <bib:pages>665-676</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:0303-8300,%201573-0921">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>003</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>125</prism:volume>
+        <dc:title>Social Indicators Research</dc:title>
+        <dc:identifier>DOI 10.1007/s11205-014-0849-6</dc:identifier>
+        <prism:number>2</prism:number>
+        <dcterms:alternative>Soc Indic Res</dcterms:alternative>
+        <dc:identifier>ISSN 0303-8300, 1573-0921</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_949">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Huang - 2016 - Downward Social Comparison Increases Life-Satisfac.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://ijphs.iaescore.com/index.php/IJPHS/article/view/20509">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:2620-4126,%202252-8806"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>P. T. Sim</foaf:surname>
+                        <foaf:givenName>Patrick</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Prihadi</foaf:surname>
+                        <foaf:givenName>Kususanto Ditto</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_951"/>
+        <dc:title>Social comparison and life satisfaction in social media: The role of mattering and state self-esteem</dc:title>
+        <dc:date>2020-09-01</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Social comparison and life satisfaction in social media</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://ijphs.iaescore.com/index.php/IJPHS/article/view/20509</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:23:43</dcterms:dateSubmitted>
+        <bib:pages>245</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:2620-4126,%202252-8806">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>004</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>9</prism:volume>
+        <dc:title>International Journal of Public Health Science (IJPHS)</dc:title>
+        <dc:identifier>DOI 10.11591/ijphs.v9i3.20509</dc:identifier>
+        <prism:number>3</prism:number>
+        <dcterms:alternative>IJPHS</dcterms:alternative>
+        <dc:identifier>ISSN 2620-4126, 2252-8806</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_951">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>P. T. Sim and Prihadi - 2020 - Social comparison and life satisfaction in social .pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://linkinghub.elsevier.com/retrieve/pii/S0747563217306015">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:07475632"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Park</foaf:surname>
+                        <foaf:givenName>Sun Young</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Baek</foaf:surname>
+                        <foaf:givenName>Young Min</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_953"/>
+        <dc:title>Two faces of social comparison on Facebook: The interplay between social comparison orientation, emotions, and psychological well-being</dc:title>
+        <dc:date>02/2018</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Two faces of social comparison on Facebook</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://linkinghub.elsevier.com/retrieve/pii/S0747563217306015</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:23:57</dcterms:dateSubmitted>
+        <bib:pages>83-93</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:07475632">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>005</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>79</prism:volume>
+        <dc:title>Computers in Human Behavior</dc:title>
+        <dc:identifier>DOI 10.1016/j.chb.2017.10.028</dc:identifier>
+        <dcterms:alternative>Computers in Human Behavior</dcterms:alternative>
+        <dc:identifier>ISSN 07475632</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_953">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Park and Baek - 2018 - Two faces of social comparison on Facebook The in.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://doi.apa.org/getdoi.cfm?doi=10.1037/0022-3514.76.1.129">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1939-1315,%200022-3514"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Gibbons</foaf:surname>
+                        <foaf:givenName>Frederick X.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Buunk</foaf:surname>
+                        <foaf:givenName>Bram P.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_955"/>
+        <dc:title>Individual differences in social comparison: Development of a scale of social comparison orientation.</dc:title>
+        <dc:date>1999</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Individual differences in social comparison</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://doi.apa.org/getdoi.cfm?doi=10.1037/0022-3514.76.1.129</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:24:10</dcterms:dateSubmitted>
+        <bib:pages>129-142</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1939-1315,%200022-3514">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>006</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>76</prism:volume>
+        <dc:title>Journal of Personality and Social Psychology</dc:title>
+        <dc:identifier>DOI 10.1037/0022-3514.76.1.129</dc:identifier>
+        <prism:number>1</prism:number>
+        <dcterms:alternative>Journal of Personality and Social Psychology</dcterms:alternative>
+        <dc:identifier>ISSN 1939-1315, 0022-3514</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_955">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Gibbons and Buunk - 1999 - Individual differences in social comparison Devel.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://onlinelibrary.wiley.com/doi/10.1111/j.1475-6811.2006.00126.x">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1350-4126,%201475-6811"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Buunk</foaf:surname>
+                        <foaf:givenName>Abraham P.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_957"/>
+        <dc:title>Responses to a happily married other: The role of relationship satisfaction and social comparison orientation</dc:title>
+        <dc:date>12/2006</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Responses to a happily married other</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://onlinelibrary.wiley.com/doi/10.1111/j.1475-6811.2006.00126.x</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:28:07</dcterms:dateSubmitted>
+        <bib:pages>397-409</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1350-4126,%201475-6811">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>007</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>13</prism:volume>
+        <dc:title>Personal Relationships</dc:title>
+        <dc:identifier>DOI 10.1111/j.1475-6811.2006.00126.x</dc:identifier>
+        <prism:number>4</prism:number>
+        <dcterms:alternative>Personal Relationships</dcterms:alternative>
+        <dc:identifier>ISSN 1350-4126, 1475-6811</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_957">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Buunk - 2006 - Responses to a happily married other The role of .pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://journal.frontiersin.org/article/10.3389/fpsyg.2017.00037/full">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1664-1078"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Tian</foaf:surname>
+                        <foaf:givenName>Lili</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Yu</foaf:surname>
+                        <foaf:givenName>Tingting</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Huebner</foaf:surname>
+                        <foaf:givenName>E. Scott</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_959"/>
+        <dc:title>Achievement Goal Orientations and Adolescents’ Subjective Well-Being in School: The Mediating Roles of Academic Social Comparison Directions</dc:title>
+        <dc:date>2017-01-31</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Achievement Goal Orientations and Adolescents’ Subjective Well-Being in School</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://journal.frontiersin.org/article/10.3389/fpsyg.2017.00037/full</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:28:21</dcterms:dateSubmitted>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1664-1078">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>008</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>8</prism:volume>
+        <dc:title>Frontiers in Psychology</dc:title>
+        <dc:identifier>DOI 10.3389/fpsyg.2017.00037</dc:identifier>
+        <dcterms:alternative>Front. Psychol.</dcterms:alternative>
+        <dc:identifier>ISSN 1664-1078</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_959">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Tian et al. - 2017 - Achievement Goal Orientations and Adolescents’ Sub.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://linkinghub.elsevier.com/retrieve/pii/S2352250X20300464">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:2352250X"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Verduyn</foaf:surname>
+                        <foaf:givenName>Philippe</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Gugushvili</foaf:surname>
+                        <foaf:givenName>Nino</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Massar</foaf:surname>
+                        <foaf:givenName>Karlijn</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Täht</foaf:surname>
+                        <foaf:givenName>Karin</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Kross</foaf:surname>
+                        <foaf:givenName>Ethan</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_961"/>
+        <dc:title>Social comparison on social networking sites</dc:title>
+        <dc:date>12/2020</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://linkinghub.elsevier.com/retrieve/pii/S2352250X20300464</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:28:36</dcterms:dateSubmitted>
+        <bib:pages>32-37</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:2352250X">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>009</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>36</prism:volume>
+        <dc:title>Current Opinion in Psychology</dc:title>
+        <dc:identifier>DOI 10.1016/j.copsyc.2020.04.002</dc:identifier>
+        <dcterms:alternative>Current Opinion in Psychology</dcterms:alternative>
+        <dc:identifier>ISSN 2352250X</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_961">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Verduyn et al. - 2020 - Social comparison on social networking sites.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://www.naturalspublishing.com/Article.asp?ArtcID=25414">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:20909551,%202090956X"/>
+        <link:link rdf:resource="#item_963"/>
+        <dc:title>The Impact of Social Media on Life Satisfaction: The Mediating Role of Social Comparison, Envy and Self- Esteem</dc:title>
+        <dc:date>2022-9-1</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>The Impact of Social Media on Life Satisfaction</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://www.naturalspublishing.com/Article.asp?ArtcID=25414</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:28:51</dcterms:dateSubmitted>
+        <bib:pages>1805-1813</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:20909551,%202090956X">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>010</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>5</prism:volume>
+        <dc:title>Information Sciences Letters</dc:title>
+        <dc:identifier>DOI 10.18576/isl/110536</dc:identifier>
+        <prism:number>11</prism:number>
+        <dcterms:alternative>Inf. Sci. Lett.</dcterms:alternative>
+        <dc:identifier>ISSN 20909551, 2090956X</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_963">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>2022 - The Impact of Social Media on Life Satisfaction T.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="#item_966">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dcterms:isPartOf>
+                    <bib:Series>
+                        <dcterms:alternative>011</dcterms:alternative>
+                        <dc:title>SCOLS</dc:title>
+                    </bib:Series>
+                </dcterms:isPartOf>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Schneider</foaf:surname>
+                        <foaf:givenName>Simone</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Schupp</foaf:surname>
+                        <foaf:givenName>Jürgen</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_965"/>
+        <dc:title>The Social Comparison Scale: Testing the Validity, Reliability, and Applicability of the IOWA-Netherlands Comparison Orientation Measure (INCOM) on the German Population</dc:title>
+        <z:language>en</z:language>
+        <z:libraryCatalog>Zotero</z:libraryCatalog>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_965">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Schneider and Schupp - The Social Comparison Scale Testing the Validity,.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://link.springer.com/10.1007/s10902-012-9402-y">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1389-4978,%201573-7780"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Eichhorn</foaf:surname>
+                        <foaf:givenName>Jan</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_967"/>
+        <dc:title>Unemployment Needs Context: How Societal Differences between Countries Moderate the Loss in Life-Satisfaction for the Unemployed</dc:title>
+        <dc:date>12/2013</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Unemployment Needs Context</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://link.springer.com/10.1007/s10902-012-9402-y</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:29:20</dcterms:dateSubmitted>
+        <bib:pages>1657-1680</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1389-4978,%201573-7780">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>012</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>14</prism:volume>
+        <dc:title>Journal of Happiness Studies</dc:title>
+        <dc:identifier>DOI 10.1007/s10902-012-9402-y</dc:identifier>
+        <prism:number>6</prism:number>
+        <dcterms:alternative>J Happiness Stud</dcterms:alternative>
+        <dc:identifier>ISSN 1389-4978, 1573-7780</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_967">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Eichhorn - 2013 - Unemployment Needs Context How Societal Differenc.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://link.springer.com/10.1007/s12144-020-01114-3">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1046-1310,%201936-4733"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Lee</foaf:surname>
+                        <foaf:givenName>Jin Kyun</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_969"/>
+        <dc:title>The effects of social comparison orientation on psychological well-being in social networking sites: Serial mediation of perceived social support and self-esteem</dc:title>
+        <dc:date>09/2022</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>The effects of social comparison orientation on psychological well-being in social networking sites</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://link.springer.com/10.1007/s12144-020-01114-3</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:29:37</dcterms:dateSubmitted>
+        <bib:pages>6247-6259</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1046-1310,%201936-4733">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>013</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>41</prism:volume>
+        <dc:title>Current Psychology</dc:title>
+        <dc:identifier>DOI 10.1007/s12144-020-01114-3</dc:identifier>
+        <prism:number>9</prism:number>
+        <dcterms:alternative>Curr Psychol</dcterms:alternative>
+        <dc:identifier>ISSN 1046-1310, 1936-4733</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_969">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Lee - 2022 - The effects of social comparison orientation on ps.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://journals.sagepub.com/doi/10.1177/0743915618813356">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:0748-6766,%201547-7207"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Huang</foaf:surname>
+                        <foaf:givenName>Yimin</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Chu</foaf:surname>
+                        <foaf:givenName>Rongwei</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Cheng</foaf:surname>
+                        <foaf:givenName>Junjun</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_971"/>
+        <dc:title>Exploring Life Satisfaction Among Subsistence Migrant Consumers: A Case in China</dc:title>
+        <dc:date>01/2019</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Exploring Life Satisfaction Among Subsistence Migrant Consumers</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://journals.sagepub.com/doi/10.1177/0743915618813356</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:29:51</dcterms:dateSubmitted>
+        <bib:pages>96-109</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:0748-6766,%201547-7207">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>014</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>38</prism:volume>
+        <dc:title>Journal of Public Policy &amp; Marketing</dc:title>
+        <dc:identifier>DOI 10.1177/0743915618813356</dc:identifier>
+        <prism:number>1</prism:number>
+        <dcterms:alternative>Journal of Public Policy &amp; Marketing</dcterms:alternative>
+        <dc:identifier>ISSN 0748-6766, 1547-7207</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_971">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Huang et al. - 2019 - Exploring Life Satisfaction Among Subsistence Migr.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://journals.sagepub.com/doi/10.1111/1467-8721.00191">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:0963-7214,%201467-8721"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Suls</foaf:surname>
+                        <foaf:givenName>Jerry</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Martin</foaf:surname>
+                        <foaf:givenName>René</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Wheeler</foaf:surname>
+                        <foaf:givenName>Ladd</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_973"/>
+        <dc:title>Social Comparison: Why, With Whom, and With What Effect?</dc:title>
+        <dc:date>10/2002</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Social Comparison</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://journals.sagepub.com/doi/10.1111/1467-8721.00191</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:30:06</dcterms:dateSubmitted>
+        <bib:pages>159-163</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:0963-7214,%201467-8721">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>015</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>11</prism:volume>
+        <dc:title>Current Directions in Psychological Science</dc:title>
+        <dc:identifier>DOI 10.1111/1467-8721.00191</dc:identifier>
+        <prism:number>5</prism:number>
+        <dcterms:alternative>Curr Dir Psychol Sci</dcterms:alternative>
+        <dc:identifier>ISSN 0963-7214, 1467-8721</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_973">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Suls et al. - 2002 - Social Comparison Why, With Whom, and With What E.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://redfame.com/journal/index.php/jets/article/view/2773">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:2324-8068,%202324-805X"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Taş</foaf:surname>
+                        <foaf:givenName>İbrahim</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>İskender</foaf:surname>
+                        <foaf:givenName>Murat</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_975"/>
+        <dc:title>An Examination of Meaning in Life, Satisfaction with Life, Self-Concept and Locus of Control among Teachers</dc:title>
+        <dc:date>2017-12-13</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://redfame.com/journal/index.php/jets/article/view/2773</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:30:19</dcterms:dateSubmitted>
+        <bib:pages>21</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:2324-8068,%202324-805X">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>016</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>6</prism:volume>
+        <dc:title>Journal of Education and Training Studies</dc:title>
+        <dc:identifier>DOI 10.11114/jets.v6i1.2773</dc:identifier>
+        <prism:number>1</prism:number>
+        <dcterms:alternative>JETS</dcterms:alternative>
+        <dc:identifier>ISSN 2324-8068, 2324-805X</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_975">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Taş and İskender - 2017 - An Examination of Meaning in Life, Satisfaction wi.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="#item_978">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dcterms:isPartOf>
+                    <bib:Series>
+                        <dcterms:alternative>017</dcterms:alternative>
+                        <dc:title>SCOLS</dc:title>
+                    </bib:Series>
+                </dcterms:isPartOf>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Dion</foaf:surname>
+                        <foaf:givenName>Nicole</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_977"/>
+        <dc:title>In the College of Arts and Sciences At Salem State University</dc:title>
+        <z:language>en</z:language>
+        <z:libraryCatalog>Zotero</z:libraryCatalog>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_977">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Dion - In the College of Arts and Sciences At Salem State.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="#item_980">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dcterms:isPartOf>
+                    <bib:Series>
+                        <dcterms:alternative>018</dcterms:alternative>
+                        <dc:title>SCOLS</dc:title>
+                    </bib:Series>
+                </dcterms:isPartOf>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Khan</foaf:surname>
+                        <foaf:givenName>Amna</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_979"/>
+        <dc:title>UDERSTANDING THE RELATIONSHIP OF SOCIAL MEDIA USE WITH SOCIAL COMPARISON, LIFE SATISFACTION AND EMOTIONAL INTELLIGENCE AMONG YOUNG ADULTS</dc:title>
+        <z:language>en</z:language>
+        <z:libraryCatalog>Zotero</z:libraryCatalog>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_979">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Khan - UDERSTANDING THE RELATIONSHIP OF SOCIAL MEDIA USE .pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://www.tandfonline.com/doi/abs/10.1080/17439760902933690">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1743-9760,%201743-9779"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Park</foaf:surname>
+                        <foaf:givenName>Nansook</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Peterson</foaf:surname>
+                        <foaf:givenName>Christopher</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Ruch</foaf:surname>
+                        <foaf:givenName>Willibald</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_981"/>
+        <dc:title>Orientations to happiness and life satisfaction in twenty-seven nations</dc:title>
+        <dc:date>07/2009</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://www.tandfonline.com/doi/abs/10.1080/17439760902933690</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:30:59</dcterms:dateSubmitted>
+        <bib:pages>273-279</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1743-9760,%201743-9779">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>019</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>4</prism:volume>
+        <dc:title>The Journal of Positive Psychology</dc:title>
+        <dc:identifier>DOI 10.1080/17439760902933690</dc:identifier>
+        <prism:number>4</prism:number>
+        <dcterms:alternative>The Journal of Positive Psychology</dcterms:alternative>
+        <dc:identifier>ISSN 1743-9760, 1743-9779</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_981">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Park et al. - 2009 - Orientations to happiness and life satisfaction in.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://academic.oup.com/eurpub/article/15/4/393/469047/A-culturebased-study-of-personal-and-social">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1464-360X,%201101-1262"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Piko</foaf:surname>
+                        <foaf:givenName>Bettina F.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Luszczynska</foaf:surname>
+                        <foaf:givenName>Aleksandra</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Gibbons</foaf:surname>
+                        <foaf:givenName>Frederick X.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Teközel</foaf:surname>
+                        <foaf:givenName>Mert</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_983"/>
+        <dc:title>A culture-based study of personal and social influences of adolescent smoking</dc:title>
+        <dc:date>2005-08-01</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://academic.oup.com/eurpub/article/15/4/393/469047/A-culturebased-study-of-personal-and-social</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:31:11</dcterms:dateSubmitted>
+        <bib:pages>393-398</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1464-360X,%201101-1262">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>020</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>15</prism:volume>
+        <dc:title>European Journal of Public Health</dc:title>
+        <dc:identifier>DOI 10.1093/eurpub/cki008</dc:identifier>
+        <prism:number>4</prism:number>
+        <dc:identifier>ISSN 1464-360X, 1101-1262</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_983">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Piko et al. - 2005 - A culture-based study of personal and social influ.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://econtent.hogrefe.com/doi/10.1027/1016-9040.13.3.188">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1016-9040,%201878-531X"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Carmona</foaf:surname>
+                        <foaf:givenName>Carmen</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Buunk</foaf:surname>
+                        <foaf:givenName>Abraham P.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Dijkstra</foaf:surname>
+                        <foaf:givenName>Arie</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Peiró</foaf:surname>
+                        <foaf:givenName>José M.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_985"/>
+        <dc:title>The Relationship Between Goal Orientation, Social Comparison Responses, Self-Efficacy, and Performance</dc:title>
+        <dc:date>01/2008</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://econtent.hogrefe.com/doi/10.1027/1016-9040.13.3.188</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:31:25</dcterms:dateSubmitted>
+        <bib:pages>188-196</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1016-9040,%201878-531X">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>021</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>13</prism:volume>
+        <dc:title>European Psychologist</dc:title>
+        <dc:identifier>DOI 10.1027/1016-9040.13.3.188</dc:identifier>
+        <prism:number>3</prism:number>
+        <dcterms:alternative>European Psychologist</dcterms:alternative>
+        <dc:identifier>ISSN 1016-9040, 1878-531X</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_985">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Carmona et al. - 2008 - The Relationship Between Goal Orientation, Social .pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://journals.sagepub.com/doi/10.1002/per.532">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:0890-2070,%201099-0984"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Buunk</foaf:surname>
+                        <foaf:givenName>Bram P.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Nauta</foaf:surname>
+                        <foaf:givenName>Aukje</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Molleman</foaf:surname>
+                        <foaf:givenName>Eric</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_987"/>
+        <dc:title>In search of the true group animal: the effects of affiliation orientation and social comparison orientation upon group satisfaction</dc:title>
+        <dc:date>01/2005</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>In search of the true group animal</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://journals.sagepub.com/doi/10.1002/per.532</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:31:37</dcterms:dateSubmitted>
+        <bib:pages>69-81</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:0890-2070,%201099-0984">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>022</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>19</prism:volume>
+        <dc:title>European Journal of Personality</dc:title>
+        <dc:identifier>DOI 10.1002/per.532</dc:identifier>
+        <prism:number>1</prism:number>
+        <dcterms:alternative>Eur J Pers</dcterms:alternative>
+        <dc:identifier>ISSN 0890-2070, 1099-0984</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_987">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Buunk et al. - 2005 - In search of the true group animal the effects of.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://www.tandfonline.com/doi/abs/10.1080/17439760701228938">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dcterms:isPartOf>
+                    <bib:Series>
+                        <dcterms:alternative>023</dcterms:alternative>
+                        <dc:title>SCOLS</dc:title>
+                    </bib:Series>
+                </dcterms:isPartOf>
+                <prism:volume>2</prism:volume>
+                <dc:title>The Journal of Positive Psychology</dc:title>
+                <dc:identifier>DOI 10.1080/17439760701228938</dc:identifier>
+                <prism:number>3</prism:number>
+                <dcterms:alternative>The Journal of Positive Psychology</dcterms:alternative>
+                <dc:identifier>ISSN 1743-9760, 1743-9779</dc:identifier>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Peterson</foaf:surname>
+                        <foaf:givenName>Christopher</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Ruch</foaf:surname>
+                        <foaf:givenName>Willibald</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Beermann</foaf:surname>
+                        <foaf:givenName>Ursula</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Park</foaf:surname>
+                        <foaf:givenName>Nansook</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Seligman</foaf:surname>
+                        <foaf:givenName>Martin E. P.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_989"/>
+        <dc:title>Strengths of character, orientations to happiness, and life satisfaction</dc:title>
+        <dc:date>07/2007</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://www.tandfonline.com/doi/abs/10.1080/17439760701228938</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:31:50</dcterms:dateSubmitted>
+        <bib:pages>149-156</bib:pages>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_989">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Peterson et al. - 2007 - Strengths of character, orientations to happiness,.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://www.jstor.org/stable/2136974?origin=crossref">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:00221465"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Palmore</foaf:surname>
+                        <foaf:givenName>Erdman</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Luikart</foaf:surname>
+                        <foaf:givenName>Clark</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_991"/>
+        <dc:title>Health and Social Factors Related to Life Satisfaction</dc:title>
+        <dc:date>03/1972</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://www.jstor.org/stable/2136974?origin=crossref</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:32:03</dcterms:dateSubmitted>
+        <bib:pages>68</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:00221465">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>024</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>13</prism:volume>
+        <dc:title>Journal of Health and Social Behavior</dc:title>
+        <dc:identifier>DOI 10.2307/2136974</dc:identifier>
+        <prism:number>1</prism:number>
+        <dcterms:alternative>Journal of Health and Social Behavior</dcterms:alternative>
+        <dc:identifier>ISSN 00221465</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_991">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Palmore and Luikart - 1972 - Health and Social Factors Related to Life Satisfac.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://www.graphyonline.com/archives/IJPBA/2018/IJPBA-149/">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:24553867"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Giagkou</foaf:surname>
+                        <foaf:givenName>Stella</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Hussain</foaf:surname>
+                        <foaf:givenName>Zaheer</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Pontes</foaf:surname>
+                        <foaf:givenName>Halley</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_993"/>
+        <dc:title>Exploring the Interplay Between Passive Following on Facebook, Fear of Missing out, Self-esteem, Social Comparison, Age, and Life Satisfaction in a Community-based Sample</dc:title>
+        <dc:date>2018-09-22</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://www.graphyonline.com/archives/IJPBA/2018/IJPBA-149/</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:32:15</dcterms:dateSubmitted>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:24553867">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>025</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>4</prism:volume>
+        <dc:title>International Journal of Psychology &amp; Behavior Analysis</dc:title>
+        <dc:identifier>DOI 10.15344/2455-3867/2018/149</dc:identifier>
+        <prism:number>2</prism:number>
+        <dcterms:alternative>Int J Psychol Behav Anal</dcterms:alternative>
+        <dc:identifier>ISSN 24553867</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_993">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Giagkou et al. - 2018 - Exploring the Interplay Between Passive Following .pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://www.liebertpub.com/doi/10.1089/cyber.2015.0296">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:2152-2715,%202152-2723"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Frison</foaf:surname>
+                        <foaf:givenName>Eline</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Eggermont</foaf:surname>
+                        <foaf:givenName>Steven</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_995"/>
+        <dc:title>“Harder, Better, Faster, Stronger”: Negative Comparison on Facebook and Adolescents' Life Satisfaction Are Reciprocally Related</dc:title>
+        <dc:date>03/2016</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>“Harder, Better, Faster, Stronger”</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://www.liebertpub.com/doi/10.1089/cyber.2015.0296</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:32:26</dcterms:dateSubmitted>
+        <bib:pages>158-164</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:2152-2715,%202152-2723">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>026</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>19</prism:volume>
+        <dc:title>Cyberpsychology, Behavior, and Social Networking</dc:title>
+        <dc:identifier>DOI 10.1089/cyber.2015.0296</dc:identifier>
+        <prism:number>3</prism:number>
+        <dcterms:alternative>Cyberpsychology, Behavior, and Social Networking</dcterms:alternative>
+        <dc:identifier>ISSN 2152-2715, 2152-2723</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_995">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Frison and Eggermont - 2016 - “Harder, Better, Faster, Stronger” Negative Compa.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://cyberpsychology.eu/article/view/13521">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1802-7962"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Choi</foaf:surname>
+                        <foaf:givenName>Jounghwa</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_997"/>
+        <dc:title>Do Facebook and Instagram differ in their influence on life satisfaction? A study of college men and women in South Korea</dc:title>
+        <dc:date>2022-02-02</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Do Facebook and Instagram differ in their influence on life satisfaction?</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://cyberpsychology.eu/article/view/13521</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:32:42</dcterms:dateSubmitted>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1802-7962">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>027</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>16</prism:volume>
+        <dc:title>Cyberpsychology: Journal of Psychosocial Research on Cyberspace</dc:title>
+        <dc:identifier>DOI 10.5817/CP2022-1-2</dc:identifier>
+        <prism:number>1</prism:number>
+        <dcterms:alternative>Cyberpsychology</dcterms:alternative>
+        <dc:identifier>ISSN 1802-7962</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_997">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Choi - 2022 - Do Facebook and Instagram differ in their influenc.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://journals.sagepub.com/doi/10.1177/1948550612444139">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1948-5506,%201948-5514"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Soto</foaf:surname>
+                        <foaf:givenName>Christopher J.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Luhmann</foaf:surname>
+                        <foaf:givenName>Maike</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_999"/>
+        <dc:title>Who Can Buy Happiness?: Personality Traits Moderate the Effects of Stable Income Differences and Income Fluctuations on Life Satisfaction</dc:title>
+        <dc:date>01/2013</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Who Can Buy Happiness?</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://journals.sagepub.com/doi/10.1177/1948550612444139</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:33:14</dcterms:dateSubmitted>
+        <bib:pages>46-53</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1948-5506,%201948-5514">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>028</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>4</prism:volume>
+        <dc:title>Social Psychological and Personality Science</dc:title>
+        <dc:identifier>DOI 10.1177/1948550612444139</dc:identifier>
+        <prism:number>1</prism:number>
+        <dcterms:alternative>Social Psychological and Personality Science</dcterms:alternative>
+        <dc:identifier>ISSN 1948-5506, 1948-5514</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_999">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Soto and Luhmann - 2013 - Who Can Buy Happiness Personality Traits Moderat.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://www.emerald.com/insight/content/doi/10.1108/PR-04-2020-0218/full/html">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:0048-3486"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Choi</foaf:surname>
+                        <foaf:givenName>Byoung Kwon</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Nae</foaf:surname>
+                        <foaf:givenName>Eun Young</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1001"/>
+        <dc:title>When career success enhances employees' life satisfaction: different effects of two types of goal orientations</dc:title>
+        <dcterms:abstract>Purpose – Drawing on goal orientation theory, the authors propose a moderated mediation model, wherein objective career success is positively related to employees’ life satisfaction through subjective career success moderated by learning and performance goal orientations.</dcterms:abstract>
+        <dc:date>2022-03-11</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>When career success enhances employees' life satisfaction</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://www.emerald.com/insight/content/doi/10.1108/PR-04-2020-0218/full/html</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:33:26</dcterms:dateSubmitted>
+        <bib:pages>335-352</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:0048-3486">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>029</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>51</prism:volume>
+        <dc:title>Personnel Review</dc:title>
+        <dc:identifier>DOI 10.1108/PR-04-2020-0218</dc:identifier>
+        <prism:number>1</prism:number>
+        <dcterms:alternative>PR</dcterms:alternative>
+        <dc:identifier>ISSN 0048-3486</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_1001">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Choi and Nae - 2022 - When career success enhances employees' life satis.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://link.springer.com/10.1007/s11482-017-9531-x">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1871-2584,%201871-2576"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Jhang</foaf:surname>
+                        <foaf:givenName>Fang-Hua</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1003"/>
+        <dc:title>The Five Dimensions of Money Attitudes and Their Link to Changes in Life Satisfaction Among Taiwanese Adolescents in Poverty</dc:title>
+        <dc:date>6/2018</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://link.springer.com/10.1007/s11482-017-9531-x</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:33:41</dcterms:dateSubmitted>
+        <bib:pages>399-418</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1871-2584,%201871-2576">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>030</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>13</prism:volume>
+        <dc:title>Applied Research in Quality of Life</dc:title>
+        <dc:identifier>DOI 10.1007/s11482-017-9531-x</dc:identifier>
+        <prism:number>2</prism:number>
+        <dcterms:alternative>Applied Research Quality Life</dcterms:alternative>
+        <dc:identifier>ISSN 1871-2584, 1871-2576</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_1003">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Jhang - 2018 - The Five Dimensions of Money Attitudes and Their L.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://linkinghub.elsevier.com/retrieve/pii/S0167945706000479">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:01679457"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Poulsen</foaf:surname>
+                        <foaf:givenName>Anne A.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Ziviani</foaf:surname>
+                        <foaf:givenName>Jenny M.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Cuskelly</foaf:surname>
+                        <foaf:givenName>Monica</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1005"/>
+        <dc:title>General self-concept and life satisfaction for boys with differing levels of physical coordination: The role of goal orientations and leisure participation</dc:title>
+        <dc:date>12/2006</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>General self-concept and life satisfaction for boys with differing levels of physical coordination</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://linkinghub.elsevier.com/retrieve/pii/S0167945706000479</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:33:53</dcterms:dateSubmitted>
+        <bib:pages>839-860</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:01679457">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>031</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>25</prism:volume>
+        <dc:title>Human Movement Science</dc:title>
+        <dc:identifier>DOI 10.1016/j.humov.2006.05.003</dc:identifier>
+        <prism:number>6</prism:number>
+        <dcterms:alternative>Human Movement Science</dcterms:alternative>
+        <dc:identifier>ISSN 01679457</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_1005">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Poulsen et al. - 2006 - General self-concept and life satisfaction for boy.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://www.mdpi.com/1660-4601/17/21/7887">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1660-4601"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Usán Supervía</foaf:surname>
+                        <foaf:givenName>Pablo</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Salavera Bordás</foaf:surname>
+                        <foaf:givenName>Carlos</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Murillo Lorente</foaf:surname>
+                        <foaf:givenName>Víctor</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1007"/>
+        <dc:title>Exploring the Psychological Effects of Optimism on Life Satisfaction in Students: The Mediating Role of Goal Orientations</dc:title>
+        <dc:date>2020-10-28</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Exploring the Psychological Effects of Optimism on Life Satisfaction in Students</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>https://www.mdpi.com/1660-4601/17/21/7887</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:34:08</dcterms:dateSubmitted>
+        <bib:pages>7887</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1660-4601">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>032</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>17</prism:volume>
+        <dc:title>International Journal of Environmental Research and Public Health</dc:title>
+        <dc:identifier>DOI 10.3390/ijerph17217887</dc:identifier>
+        <prism:number>21</prism:number>
+        <dcterms:alternative>IJERPH</dcterms:alternative>
+        <dc:identifier>ISSN 1660-4601</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_1007">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Usán Supervía et al. - 2020 - Exploring the Psychological Effects of Optimism on.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://link.springer.com/10.1007/s12187-016-9430-y">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1874-897X,%201874-8988"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Spruyt</foaf:surname>
+                        <foaf:givenName>Bram</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Vandenbossche</foaf:surname>
+                        <foaf:givenName>Lauren</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Keppens</foaf:surname>
+                        <foaf:givenName>Gil</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Siongers</foaf:surname>
+                        <foaf:givenName>Jessy</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Van Droogenbroeck</foaf:surname>
+                        <foaf:givenName>Filip</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1009"/>
+        <dc:title>Social Differences in Leisure Boredom and its Consequences for Life Satisfaction Among Young People</dc:title>
+        <dc:date>2/2018</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://link.springer.com/10.1007/s12187-016-9430-y</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:34:22</dcterms:dateSubmitted>
+        <bib:pages>225-243</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1874-897X,%201874-8988">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>033</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>11</prism:volume>
+        <dc:title>Child Indicators Research</dc:title>
+        <dc:identifier>DOI 10.1007/s12187-016-9430-y</dc:identifier>
+        <prism:number>1</prism:number>
+        <dcterms:alternative>Child Ind Res</dcterms:alternative>
+        <dc:identifier>ISSN 1874-897X, 1874-8988</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_1009">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Spruyt et al. - 2018 - Social Differences in Leisure Boredom and its Cons.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://linkinghub.elsevier.com/retrieve/pii/S0001879116300422">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:00018791"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Hirschi</foaf:surname>
+                        <foaf:givenName>Andreas</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Herrmann</foaf:surname>
+                        <foaf:givenName>Anne</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Nagy</foaf:surname>
+                        <foaf:givenName>Noemi</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Spurk</foaf:surname>
+                        <foaf:givenName>Daniel</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1011"/>
+        <dc:title>All in the name of work? Nonwork orientations as predictors of salary, career satisfaction, and life satisfaction</dc:title>
+        <dc:date>08/2016</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>All in the name of work?</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://linkinghub.elsevier.com/retrieve/pii/S0001879116300422</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:34:39</dcterms:dateSubmitted>
+        <bib:pages>45-57</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:00018791">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>034</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>95-96</prism:volume>
+        <dc:title>Journal of Vocational Behavior</dc:title>
+        <dc:identifier>DOI 10.1016/j.jvb.2016.07.006</dc:identifier>
+        <dcterms:alternative>Journal of Vocational Behavior</dcterms:alternative>
+        <dc:identifier>ISSN 00018791</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_1011">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Hirschi et al. - 2016 - All in the name of work Nonwork orientations as p.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://www.emerald.com/insight/content/doi/10.1016/S1474-7979(02)12029-1/full/html">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dcterms:isPartOf>
+                    <bib:Series>
+                        <dcterms:alternative>035</dcterms:alternative>
+                        <dc:title>SCOLS</dc:title>
+                    </bib:Series>
+                </dcterms:isPartOf>
+                <prism:volume>12</prism:volume>
+                <dc:title>Advances in International Marketing</dc:title>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Zhou</foaf:surname>
+                        <foaf:givenName>Shuhua</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Xue</foaf:surname>
+                        <foaf:givenName>Fei</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Zhou</foaf:surname>
+                        <foaf:givenName>Peiqin</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1016"/>
+        <dc:title>Self-esteem, life-satisfaction and materialism: Effects of advertising images on Chinese college students</dc:title>
+        <dc:date>2002</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Self-esteem, life-satisfaction and materialism</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://www.emerald.com/insight/content/doi/10.1016/S1474-7979(02)12029-1/full/html</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:37:20</dcterms:dateSubmitted>
+        <dc:description>DOI: 10.1016/S1474-7979(02)12029-1</dc:description>
+        <bib:pages>243-261</bib:pages>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_1016">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Zhou et al. - 2002 - Self-esteem, life-satisfaction and materialism Ef.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://journals.sagepub.com/doi/10.1177/1461444817750002">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1461-4448,%201461-7315"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Seo</foaf:surname>
+                        <foaf:givenName>Mihye</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Hyun</foaf:surname>
+                        <foaf:givenName>Ki Deuk</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1018"/>
+        <dc:title>The effects of following celebrities’ lives via SNSs on life satisfaction: The palliative function of system justification and the moderating role of materialism</dc:title>
+        <dc:date>09/2018</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>The effects of following celebrities’ lives via SNSs on life satisfaction</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://journals.sagepub.com/doi/10.1177/1461444817750002</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:40:01</dcterms:dateSubmitted>
+        <bib:pages>3479-3497</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1461-4448,%201461-7315">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>036</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>20</prism:volume>
+        <dc:title>New Media &amp; Society</dc:title>
+        <dc:identifier>DOI 10.1177/1461444817750002</dc:identifier>
+        <prism:number>9</prism:number>
+        <dcterms:alternative>New Media &amp; Society</dcterms:alternative>
+        <dc:identifier>ISSN 1461-4448, 1461-7315</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_1018">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Seo and Hyun - 2018 - The effects of following celebrities’ lives via SN.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://www.ssrn.com/abstract=1722528">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1556-5068"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Schneider</foaf:surname>
+                        <foaf:givenName>Simone</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1020"/>
+        <dc:title>The Selection of Pay Referents: Potential Patterns and Impacts on Life Satisfaction</dc:title>
+        <dc:date>2010</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>The Selection of Pay Referents</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>http://www.ssrn.com/abstract=1722528</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:40:18</dcterms:dateSubmitted>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1556-5068">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>037</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <dc:title>SSRN Electronic Journal</dc:title>
+        <dc:identifier>DOI 10.2139/ssrn.1722528</dc:identifier>
+        <dcterms:alternative>SSRN Journal</dcterms:alternative>
+        <dc:identifier>ISSN 1556-5068</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_1020">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Schneider - 2010 - The Selection of Pay Referents Potential Patterns.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://internationaljournalofwellbeing.org/index.php/ijow/article/view/710/683">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:11798602"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Fors Connolly</foaf:surname>
+                        <foaf:givenName>Filip</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Johansson Sevä</foaf:surname>
+                        <foaf:givenName>Ingemar</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1022"/>
+        <dc:title>Social status and life satisfaction in context: A comparison between Sweden and the USA</dc:title>
+        <dc:date>2018-12-08</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Social status and life satisfaction in context</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://internationaljournalofwellbeing.org/index.php/ijow/article/view/710/683</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:40:34</dcterms:dateSubmitted>
+        <bib:pages>110-134</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:11798602">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>038</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>8</prism:volume>
+        <dc:title>International Journal of Wellbeing</dc:title>
+        <dc:identifier>DOI 10.5502/ijw.v8i2.710</dc:identifier>
+        <prism:number>2</prism:number>
+        <dcterms:alternative>Intnl. J. Wellbeing</dcterms:alternative>
+        <dc:identifier>ISSN 11798602</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_1022">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Fors Connolly and Johansson Sevä - 2018 - Social status and life satisfaction in context A .pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://link.springer.com/10.1007/s11205-008-9344-2">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dcterms:isPartOf>
+                    <bib:Series>
+                        <dcterms:alternative>039</dcterms:alternative>
+                        <dc:title>SCOLS</dc:title>
+                    </bib:Series>
+                </dcterms:isPartOf>
+                <prism:volume>91</prism:volume>
+                <dc:title>Social Indicators Research</dc:title>
+                <dc:identifier>DOI 10.1007/s11205-008-9344-2</dc:identifier>
+                <prism:number>3</prism:number>
+                <dcterms:alternative>Soc Indic Res</dcterms:alternative>
+                <dc:identifier>ISSN 0303-8300, 1573-0921</dc:identifier>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Georgellis</foaf:surname>
+                        <foaf:givenName>Yannis</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Tsitsianis</foaf:surname>
+                        <foaf:givenName>Nicholas</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Yin</foaf:surname>
+                        <foaf:givenName>Ya Ping</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1024"/>
+        <dc:title>Personal Values as Mitigating Factors in the Link Between Income and Life Satisfaction: Evidence from the European Social Survey</dc:title>
+        <dc:date>5/2009</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Personal Values as Mitigating Factors in the Link Between Income and Life Satisfaction</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://link.springer.com/10.1007/s11205-008-9344-2</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:40:48</dcterms:dateSubmitted>
+        <bib:pages>329-344</bib:pages>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_1024">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Georgellis et al. - 2009 - Personal Values as Mitigating Factors in the Link .pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://www.liebertpub.com/doi/10.1089/cyber.2016.0201">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dcterms:isPartOf>
+                    <bib:Series>
+                        <dcterms:alternative>040</dcterms:alternative>
+                        <dc:title>SCOLS</dc:title>
+                    </bib:Series>
+                </dcterms:isPartOf>
+                <prism:volume>19</prism:volume>
+                <dc:title>Cyberpsychology, Behavior, and Social Networking</dc:title>
+                <dc:identifier>DOI 10.1089/cyber.2016.0201</dc:identifier>
+                <prism:number>12</prism:number>
+                <dcterms:alternative>Cyberpsychology, Behavior, and Social Networking</dcterms:alternative>
+                <dc:identifier>ISSN 2152-2715, 2152-2723</dc:identifier>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Yang</foaf:surname>
+                        <foaf:givenName>Chia-chen</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1026"/>
+        <dc:title>Instagram Use, Loneliness, and Social Comparison Orientation: Interact and Browse on Social Media, But Don't Compare</dc:title>
+        <dc:date>12/2016</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Instagram Use, Loneliness, and Social Comparison Orientation</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://www.liebertpub.com/doi/10.1089/cyber.2016.0201</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:40:59</dcterms:dateSubmitted>
+        <bib:pages>703-708</bib:pages>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_1026">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Yang - 2016 - Instagram Use, Loneliness, and Social Comparison O.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://www.ingentaconnect.com/content/10.2224/sbp.2002.30.7.697">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:0301-2212"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Cheung</foaf:surname>
+                        <foaf:givenName>Chau-Kiu</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Leung</foaf:surname>
+                        <foaf:givenName>Kwan-Kwok</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1028"/>
+        <dc:title>POSTMODERN AND MODERN VALUE ORIENTATIONS AND LIFE SATISFACTION AMONG HONG KONG CHINESE</dc:title>
+        <dc:date>2002-01-01</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://www.ingentaconnect.com/content/10.2224/sbp.2002.30.7.697</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:41:12</dcterms:dateSubmitted>
+        <bib:pages>697-707</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:0301-2212">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>041</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>30</prism:volume>
+        <dc:title>Social Behavior and Personality: an international journal</dc:title>
+        <dc:identifier>DOI 10.2224/sbp.2002.30.7.697</dc:identifier>
+        <prism:number>7</prism:number>
+        <dcterms:alternative>soc behav pers</dcterms:alternative>
+        <dc:identifier>ISSN 0301-2212</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_1028">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Cheung and Leung - 2002 - POSTMODERN AND MODERN VALUE ORIENTATIONS AND LIFE .pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://link.springer.com/10.1007/s10902-008-9110-9">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dcterms:isPartOf>
+                    <bib:Series>
+                        <dcterms:alternative>042</dcterms:alternative>
+                        <dc:title>SCOLS</dc:title>
+                    </bib:Series>
+                </dcterms:isPartOf>
+                <prism:volume>10</prism:volume>
+                <dc:title>Journal of Happiness Studies</dc:title>
+                <dc:identifier>DOI 10.1007/s10902-008-9110-9</dc:identifier>
+                <prism:number>5</prism:number>
+                <dcterms:alternative>J Happiness Stud</dcterms:alternative>
+                <dc:identifier>ISSN 1389-4978, 1573-7780</dc:identifier>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Proctor</foaf:surname>
+                        <foaf:givenName>Carmel L.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Linley</foaf:surname>
+                        <foaf:givenName>P. Alex</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Maltby</foaf:surname>
+                        <foaf:givenName>John</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1030"/>
+        <dc:title>Youth Life Satisfaction: A Review of the Literature</dc:title>
+        <dc:date>10/2009</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Youth Life Satisfaction</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://link.springer.com/10.1007/s10902-008-9110-9</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:41:27</dcterms:dateSubmitted>
+        <bib:pages>583-630</bib:pages>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_1030">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Proctor et al. - 2009 - Youth Life Satisfaction A Review of the Literatur.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://onlinelibrary.wiley.com/doi/10.1007/s10464-007-9146-8">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:0091-0562,%201573-2770"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Lavee</foaf:surname>
+                        <foaf:givenName>Yoav</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Ben-Ari</foaf:surname>
+                        <foaf:givenName>Adital</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1032"/>
+        <dc:title>The Association of Daily Hassles and Uplifts with Family and Life Satisfaction: Does Cultural Orientation make a Difference?</dc:title>
+        <dc:date>03/2008</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>The Association of Daily Hassles and Uplifts with Family and Life Satisfaction</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://onlinelibrary.wiley.com/doi/10.1007/s10464-007-9146-8</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:41:45</dcterms:dateSubmitted>
+        <bib:pages>89-98</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:0091-0562,%201573-2770">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>043</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>41</prism:volume>
+        <dc:title>American Journal of Community Psychology</dc:title>
+        <dc:identifier>DOI 10.1007/s10464-007-9146-8</dc:identifier>
+        <prism:number>1-2</prism:number>
+        <dcterms:alternative>American J of Comm Psychol</dcterms:alternative>
+        <dc:identifier>ISSN 0091-0562, 1573-2770</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_1032">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Lavee and Ben-Ari - 2008 - The Association of Daily Hassles and Uplifts with .pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://journals.sagepub.com/doi/10.1177/08862605211023486">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:0886-2605,%201552-6518"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Geng</foaf:surname>
+                        <foaf:givenName>Jingyu</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Wang</foaf:surname>
+                        <foaf:givenName>Yuhui</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Wang</foaf:surname>
+                        <foaf:givenName>Hongxia</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Wang</foaf:surname>
+                        <foaf:givenName>Pengcheng</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Lei</foaf:surname>
+                        <foaf:givenName>Li</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1034"/>
+        <dc:title>Social Comparison Orientation and Cyberbullying Perpetration and Victimization: Roles of Envy on Social Networking Sites and Body Satisfaction</dc:title>
+        <dc:date>09/2022</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Social Comparison Orientation and Cyberbullying Perpetration and Victimization</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://journals.sagepub.com/doi/10.1177/08862605211023486</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:41:59</dcterms:dateSubmitted>
+        <bib:pages>NP16060-NP16083</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:0886-2605,%201552-6518">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>044</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>37</prism:volume>
+        <dc:title>Journal of Interpersonal Violence</dc:title>
+        <dc:identifier>DOI 10.1177/08862605211023486</dc:identifier>
+        <prism:number>17-18</prism:number>
+        <dcterms:alternative>J Interpers Violence</dcterms:alternative>
+        <dc:identifier>ISSN 0886-2605, 1552-6518</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_1034">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Geng et al. - 2022 - Social Comparison Orientation and Cyberbullying Pe.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="#item_1037">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dcterms:isPartOf>
+                    <bib:Series>
+                        <dcterms:alternative>045</dcterms:alternative>
+                        <dc:title>SCOLS</dc:title>
+                    </bib:Series>
+                </dcterms:isPartOf>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Veenhoven</foaf:surname>
+                        <foaf:givenName>Ruut</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1036"/>
+        <dc:title>THE STUDY OF LIFE SATISFACTION</dc:title>
+        <z:language>en</z:language>
+        <z:libraryCatalog>Zotero</z:libraryCatalog>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_1036">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Veenhoven - THE STUDY OF LIFE SATISFACTION.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://journals.sagepub.com/doi/10.1177/0022022111412343">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:0022-0221,%201552-5422"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Sabatier</foaf:surname>
+                        <foaf:givenName>Colette</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Mayer</foaf:surname>
+                        <foaf:givenName>Boris</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Friedlmeier</foaf:surname>
+                        <foaf:givenName>Mihaela</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Lubiewska</foaf:surname>
+                        <foaf:givenName>Katarzyna</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Trommsdorff</foaf:surname>
+                        <foaf:givenName>Gisela</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1038"/>
+        <dc:title>Religiosity, Family Orientation, and Life Satisfaction of Adolescents in Four Countries</dc:title>
+        <dc:date>11/2011</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://journals.sagepub.com/doi/10.1177/0022022111412343</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:43:00</dcterms:dateSubmitted>
+        <bib:pages>1375-1393</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:0022-0221,%201552-5422">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>046</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>42</prism:volume>
+        <dc:title>Journal of Cross-Cultural Psychology</dc:title>
+        <dc:identifier>DOI 10.1177/0022022111412343</dc:identifier>
+        <prism:number>8</prism:number>
+        <dcterms:alternative>Journal of Cross-Cultural Psychology</dcterms:alternative>
+        <dc:identifier>ISSN 0022-0221, 1552-5422</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_1038">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Sabatier et al. - 2011 - Religiosity, Family Orientation, and Life Satisfac.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="#item_1041">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dcterms:isPartOf>
+                    <bib:Series>
+                        <dcterms:alternative>047</dcterms:alternative>
+                        <dc:title>SCOLS</dc:title>
+                    </bib:Series>
+                </dcterms:isPartOf>
+                <dc:title>Frontiers in Psychology</dc:title>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Boyatzis</foaf:surname>
+                        <foaf:givenName>Richard E</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1040"/>
+        <dc:title>Long term impact of emotional, social and cognitive intelligence competencies and GMAT on career and life satisfaction and career success</dc:title>
+        <z:language>en</z:language>
+        <z:libraryCatalog>Zotero</z:libraryCatalog>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_1040">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Boyatzis - Long term impact of emotional, social and cognitiv.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://journals.sagepub.com/doi/10.1002/per.590">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dcterms:isPartOf>
+                    <bib:Series>
+                        <dcterms:alternative>048</dcterms:alternative>
+                        <dc:title>SCOLS</dc:title>
+                    </bib:Series>
+                </dcterms:isPartOf>
+                <prism:volume>20</prism:volume>
+                <dc:title>European Journal of Personality</dc:title>
+                <dc:identifier>DOI 10.1002/per.590</dc:identifier>
+                <prism:number>4</prism:number>
+                <dcterms:alternative>Eur J Pers</dcterms:alternative>
+                <dc:identifier>ISSN 0890-2070, 1099-0984</dc:identifier>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Hofer</foaf:surname>
+                        <foaf:givenName>Jan</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Chasiotis</foaf:surname>
+                        <foaf:givenName>Athanasios</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Campos</foaf:surname>
+                        <foaf:givenName>Domingo</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1042"/>
+        <dc:title>Congruence between social values and implicit motives: effects on life satisfaction across three cultures</dc:title>
+        <dc:date>06/2006</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Congruence between social values and implicit motives</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://journals.sagepub.com/doi/10.1002/per.590</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:44:10</dcterms:dateSubmitted>
+        <bib:pages>305-324</bib:pages>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_1042">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Hofer et al. - 2006 - Congruence between social values and implicit moti.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://link.springer.com/10.1007/s10833-020-09381-4">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1389-2843,%201573-1812"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Heng</foaf:surname>
+                        <foaf:givenName>Mary Anne</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Fulmer</foaf:surname>
+                        <foaf:givenName>Gavin W.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Blau</foaf:surname>
+                        <foaf:givenName>Ina</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Pereira</foaf:surname>
+                        <foaf:givenName>Andrew</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1044"/>
+        <dc:title>Youth purpose, meaning in life, social support and life satisfaction among adolescents in Singapore and Israel</dc:title>
+        <dc:date>05/2020</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://link.springer.com/10.1007/s10833-020-09381-4</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:44:24</dcterms:dateSubmitted>
+        <bib:pages>299-322</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1389-2843,%201573-1812">
+        <dcterms:isPartOf>
+            <bib:Series>
+                <dcterms:alternative>049</dcterms:alternative>
+                <dc:title>SCOLS</dc:title>
+            </bib:Series>
+        </dcterms:isPartOf>
+        <prism:volume>21</prism:volume>
+        <dc:title>Journal of Educational Change</dc:title>
+        <dc:identifier>DOI 10.1007/s10833-020-09381-4</dc:identifier>
+        <prism:number>2</prism:number>
+        <dcterms:alternative>J Educ Change</dcterms:alternative>
+        <dc:identifier>ISSN 1389-2843, 1573-1812</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_1044">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Heng et al. - 2020 - Youth purpose, meaning in life, social support and.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://link.springer.com/10.1007/s11482-020-09830-5">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <dcterms:isPartOf>
+                    <bib:Series>
+                        <dcterms:alternative>050</dcterms:alternative>
+                        <dc:title>SCOLS</dc:title>
+                    </bib:Series>
+                </dcterms:isPartOf>
+                <prism:volume>16</prism:volume>
+                <dc:title>Applied Research in Quality of Life</dc:title>
+                <dc:identifier>DOI 10.1007/s11482-020-09830-5</dc:identifier>
+                <prism:number>4</prism:number>
+                <dcterms:alternative>Applied Research Quality Life</dcterms:alternative>
+                <dc:identifier>ISSN 1871-2584, 1871-2576</dc:identifier>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Park</foaf:surname>
+                        <foaf:givenName>Narang</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Lee</foaf:surname>
+                        <foaf:givenName>Jae Min</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Heo</foaf:surname>
+                        <foaf:givenName>Wookjae</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_1046"/>
+        <dc:title>Life Satisfaction in Time Orientation</dc:title>
+        <dc:date>08/2021</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://link.springer.com/10.1007/s11482-020-09830-5</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-12-21 06:44:39</dcterms:dateSubmitted>
+        <bib:pages>1717-1731</bib:pages>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_1046">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Park et al. - 2021 - Life Satisfaction in Time Orientation.pdf</dc:title>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+</rdf:RDF>
