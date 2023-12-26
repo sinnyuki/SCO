@@ -29,6 +29,29 @@ writeLines(result.CFA_OSC, "./OUTPUT/CFA/OSC.md")
 rm(result.CFA_OSC, CFA_OSC)
 ```
 
+```{r}
+temp <- df.raw %>%
+  dplyr::mutate(
+    ASC = (ASC1 + ASC2 + ASC3 + ASC4 + ASC5) / 5,
+    OSC = (OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6) / 6
+  )
+
+var_ASC <- stats::var(temp$ASC)
+var_OSC <- stats::var(temp$OSC)
+
+alpha <- psych::alpha(df.raw[, c("ASC1", "ASC2", "ASC3", "ASC4", "ASC5")])
+alpha_ASC <- alpha$total$raw_alpha
+alpha <- psych::alpha(df.raw[, c("OSC1", "OSC2", "OSC3", "OSC4", "OSC5", "OSC6")])
+alpha_OSC <- alpha$total$raw_alpha
+
+sqrt(var_ASC) * alpha_ASC
+sqrt(var_OSC) * alpha_OSC
+var_ASC * (1 - alpha_ASC)
+var_OSC * (1 - alpha_OSC)
+
+rm(alpha, temp, alpha_ASC, alpha_OSC, var_ASC, var_OSC)
+```
+
 ```{r CFA: RD}
 result.CFA_RD <- capture.output({
   CFA_RD <- 'RD =~ RD1 + RD2 + RD3 + RD4 + RD5' %>%
