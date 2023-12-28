@@ -1,0 +1,23 @@
+---
+title: "2_Metafor"
+author: "yuki"
+date: "2023-12-22"
+output: html_document
+---
+```{r}
+res <- list()
+```
+
+```{r}
+res[[1]] <- metafor::rma(
+  yi = yi,
+  vi = vi,
+  data = df[[6]],
+  test = "t",
+)
+
+summary(res[[1]])
+
+names(res)[1] <- "rma"
+```
+

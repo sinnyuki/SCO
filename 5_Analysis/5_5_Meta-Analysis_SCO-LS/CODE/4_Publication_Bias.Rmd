@@ -1,0 +1,159 @@
+---
+title: "3_Publication Bias"
+author: "yuki"
+date: "2023-12-05"
+output: html_document
+---
+```{r}
+##############################Publication Bias##################################
+
+df[[7]] <- metafor::trimfill(res[[1]]) %>%
+  metafor::funnel(.) 
+
+names(df)[7] <- "Funnel(Trim Fill)"
+
+# Fail-Safe N
+fsn <- capture.output({
+  metafor::fsn(res[[1]]$yi, res[[1]]$vi,res[[1]]$data)
+  })
+
+# Begg-Mazumdar Rank Correlation
+ranktest <- capture.output({
+  metafor::ranktest(res[[1]]$yi, res[[1]]$vi,res[[1]]$data)
+  })
+
+# Egger's Regression
+regtest <- capture.output({
+  metafor::regtest(res[[1]]$yi, res[[1]]$vi,res[[1]]$data)
+  })
+
+
+res[[2]] <- c(fsn, ranktest, regtest)
+
+names(res)[2] <- "Publication Bias"
+
+writeLines(res[[2]], "../OUTPUT/Publication_Bias.md")
+
+rm(fsn, ranktest, regtest)
+
+####################################rma#########################################
+```
+
+```{r ggplot2 Trim & Fill Funnel Plot}
+# out[[1]][[1]][[3]] Funnel Plot = out[[1]][[1]][[5]] Trim & Fill Plot
+
+#Store the meta-analytic estimate and its standard error from whatever model you run (substitute your own values)
+estimate = mean(df[[6]]$yi)
+se = mean(df[[6]]$vi)
+
+# Generate a sequence of standard error values
+se.seq <- seq(0, max(df[[7]]$y), 0.001)
+
+# Get df.funnel for Plotting a Funnel
+df.funnel <- data.frame(
+  estimate,
+  se.seq,
+  llc90 = estimate - 1.645 * se.seq,
+  ulc90 = estimate + 1.645 * se.seq,
+  ll90 = 0 - 1.645 * se.seq,
+  ul90 = 0 + 1.645 * se.seq,
+  ll95 = 0 - 1.96 * se.seq,
+  ul95 = 0 + 1.96 * se.seq,
+  ll99 = 0 - 3.29 * se.seq,
+  ul99 = 0 + 3.29 * se.seq,
+  meanll95 = estimate - 1.96 * se,
+  meanul95 = estimate + 1.96 * se
+)
+ 
+
+
+plot[[2]]  <- ggplot(aes(x = y, y = x), data = df[[7]]) +
+  xlab("Standard Error") + ylab(expression("Hedges' " * italic(g))) +
+  # Fill Color Start
+  geom_ribbon(data = df.funnel, aes(x = se.seq, y = estimate, ymin = -Inf, ymax = ll99, fill = "#FFFFFF")) +
+  geom_ribbon(data = df.funnel, aes(x = se.seq, y = estimate, ymin = ll99, ymax = ll95, fill = "#63C2D2")) +
+  geom_ribbon(data = df.funnel, aes(x = se.seq, y = estimate, ymin = ll95, ymax = ll90, fill = "#B7EDFF")) +
+  geom_ribbon(data = df.funnel, aes(x = se.seq, y = estimate, ymin = ll90, ymax = ul90, fill = "#E5E5E5"), color = "#E5E5E5") +
+  geom_ribbon(data = df.funnel, aes(x = se.seq, y = estimate, ymin = ul90, ymax = ul95, fill = "#B7EDFF")) +
+  geom_ribbon(data = df.funnel, aes(x = se.seq, y = estimate, ymin = ul95, ymax = ul99, fill = "#63C2D2")) +
+  geom_ribbon(data = df.funnel, aes(x = se.seq, y = estimate, ymin =  Inf, ymax = ul99, fill = "#FFFFFF")) +
+  # Fill Color End / Funnel Start
+  #geom_line(data = df.funnel, aes(x = se.seq, y = ll90), linetype = 'dotted', color = "grey70") +
+  #geom_line(data = df.funnel, aes(x = se.seq, y = ul90), linetype = 'dotted', color = "grey70") +  
+  #geom_line(data = df.funnel, aes(x = se.seq, y = ll95), linetype = 'dotted', color = "#B7EDFF") +
+  #geom_line(data = df.funnel, aes(x = se.seq, y = ul95), linetype = 'dotted', color = "#B7EDFF") +
+  #geom_line(data = df.funnel, aes(x = se.seq, y = ll99), linetype = 'dotted', color = "#5ACFC9") +
+  #geom_line(data = df.funnel, aes(x = se.seq, y = ul99), linetype = 'dotted', color = "#5ACFC9") +
+  # Funnel End / Fixed Effect Start
+  geom_line(data = df.funnel, aes(x = se.seq, y = llc90, linetype = 'dotted'), color = "#000000") +
+  geom_line(data = df.funnel, aes(x = se.seq, y = ulc90, linetype = 'dotted'), color = "#000000") + 
+  geom_segment(
+    data = df.funnel, aes(x = min(se.seq), y = meanll95, xend = max(se.seq), yend = meanll95), 
+    linetype='dotted', color = "#000000"
+  ) +
+  geom_segment(
+    data = df.funnel, aes(x = min(se.seq), y = meanul95, xend = max(se.seq), yend = meanul95), 
+    linetype='dotted', color = "#000000"
+  ) +
+  # Fixed Effect End
+  geom_point(aes(x = y, y = x ,color = "#1C7D73"), shape = 1, size = 3) +
+  ggplot2::geom_smooth(
+    aes(x = y, y = x),
+    method = "lm", se = FALSE, fullrange = TRUE, color = "#1C7D73", alpha = 0.1, linetype = "dashed"
+  ) +  # 添加拟合曲线
+  ggplot2::annotate(
+    "text", x = 0, y = 0.1, color = "#1C7D73",
+    label = "Egger's Regression", size = 3, family='serif', color = "black", hjust = 0
+  ) +
+  ggplot2::annotate(
+    "text", x = 0.005, y = 0.1, color = "#1C7D73",
+    label = "b = -.08, 95%CI [-.20, .03], Z = .39, p = .697", 
+    size = 3, family='serif', color = "black", hjust = 0
+  ) +
+  scale_fill_manual(
+    values = c("#63C2D2", "#B7EDFF","#E5E5E5" , "#FFFFFF"),
+    name = NULL, 
+    labels = c( ".01 < p < .025", ".025 < p < .05", "     p > .05","     p < .01")
+  ) +
+  scale_linetype_manual(
+    values = c("dotted"),
+    name = NULL, 
+    labels = c("Random Effect")
+  ) +
+  scale_color_manual(
+    values = c("#1C7D73"),
+    name = NULL, 
+    labels = c("Effect Size from Every Single Study")
+  ) +
+  guides(color = guide_legend(order = 1),
+         linetype = guide_legend(order = 2),
+         fill = guide_legend(order = 3),) +
+  coord_flip() + # X Y轴翻转
+  scale_x_reverse() + # x轴翻转(由于轴已经翻转了，所以是纵轴翻转)
+  scale_y_continuous(
+    limits = c(-0.4, 0.4), 
+    breaks = c(-0.4, -0.3, -0.2, -0.1,-0.063, 0, 0.1, 0.2, 0.3, 0.4),
+    labels = function(x) {
+      ifelse(x == -0.063, "-0.063", as.character(x))
+    }
+  ) +
+  theme_bw()+
+  theme(
+    panel.grid.major=element_blank(),
+    panel.grid.minor=element_blank(),
+    panel.border=element_blank(),
+    #panel.background = element_rect(fill = "grey95"),
+    axis.line=element_line(),
+    text=element_text(family='serif'),
+    legend.position = c(0.17, 0.85), # 图例位置是相对位置，取值范围[0,1]
+    legend.spacing.y = unit(-0.15, "cm")
+  ) 
+
+plot[[2]]
+
+names(plot)[2] <- "Funnel Plot"
+
+ggsave(plot[[2]], filename = "../PLOT/Funnel_Plot.png", width = 8, height = 6, limitsize = FALSE)
+
+rm(estimate, se, se.seq, df.funnel)
+```

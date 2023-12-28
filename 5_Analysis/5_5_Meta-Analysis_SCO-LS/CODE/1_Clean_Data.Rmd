@@ -1,0 +1,114 @@
+---
+title: "1_Clean_Data"
+author: "yuki"
+date: "2023-12-22"
+output: html_document
+---
+```{r}
+library(magrittr)
+library(dplyr)
+library(tidyr)
+
+library(ggplot2)
+library(papaja)
+```
+
+```{r}
+df <- list()
+```
+
+```{r}
+df[[1]] <- readxl::read_excel(
+  "../../../3_Article_Screen/3_3_Meta/CodeBook_SCOLS_v0.0.3.xlsx"
+) %>%
+  dplyr::slice(-1)
+
+names(df)[1] <- "Step 1: Raw"
+```
+
+```{r}
+df[[2]] <- df[[1]] %>%
+  dplyr::filter(
+    Measure == "PCOR",
+    Overview == 0,
+    Codable == 1,
+    SCO == 1,
+    LS == 1
+  )
+
+names(df)[2] <- "Step 2: PCOR"
+```
+
+```{r}
+df[[3]] <- df[[1]] %>%
+  dplyr::filter(
+    Measure == "COR",
+    Overview == 0,
+    Codable == 1,
+    SCO == 1,
+    LS == 1
+  )
+
+names(df)[3] <- "Step 3: COR"
+```
+
+```{r}
+df[[4]] <- metafor::escalc(
+  data = df[[2]],
+  measure = "PCOR",
+  ti = ti,
+  ni = ni, 
+  mi = mi,
+  r2i = r2i
+) %>%
+  base::summary()
+
+names(df)[4] <- "Step 4: escalc(PCOR)"
+```
+
+```{r}
+df[[5]] <- metafor::escalc(
+  data = df[[3]],
+  measure = "COR",
+  ri = ri,
+  ni = ni
+) %>%
+  base::summary()
+
+names(df)[5] <- "Step 5: escalc(COR)"
+```
+
+```{r}
+df[[6]] <- base::rbind(df[[4]], df[[5]]) %>%
+  dplyr::mutate(unique_ID = paste0(First_Author, " (" ,Year, ") Study ", Study)) %>%
+  metafor::aggregate.escalc(., cluster = unique_ID, rho = 0.7) %>%
+  dplyr::mutate(
+    ############################################################################
+    pval = ifelse(
+      pval < 0.001, "<.001", 
+      ifelse(pval < 0.05, sprintf("%.3f", pval), sprintf("%.2f", pval))
+    ),
+    ############################################################################
+    yi_r = round(yi, 2),
+    yi = round(yi, 2),
+    zi = round(zi, 2),
+    ci.lb = round(ci.lb, 2),
+    ci.ub = round(ci.ub, 2),
+    ############################################################################
+    LLCI = case_when(
+      ci.lb < ci.ub ~ ci.lb,
+      ci.lb > ci.ub ~ ci.ub,
+    ),
+    ULCI = case_when(
+      ci.ub > ci.lb ~ ci.ub,
+      ci.ub < ci.lb ~ ci.lb,
+    ),
+    ci.lb = LLCI,
+    ci.ub = ULCI,
+    CI = paste(yi_r, "(", ci.lb, ", ", ci.ub, ")", sep = "")
+    ############################################################################
+  ) 
+
+names(df)[6] <- "Step 6: escalc(df)"
+```
+
