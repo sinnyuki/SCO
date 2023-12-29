@@ -1,0 +1,58 @@
+---
+title: "Untitled"
+author: "yuki"
+date: "2023-07-28"
+output: html_document
+---
+```{r}
+for_GOSH <- df[[6]] %>%
+  dplyr::mutate(unique_ID = row_number()) %>%
+  meta::metagen(TE = yi, seTE = sei,
+                data = ., studlab = unique_ID,
+                comb.fixed = FALSE, comb.random = TRUE,
+                method.tau = "SJ", hakn = TRUE,
+                prediction = TRUE, sm = "SMD")
+
+GOSH<- metafor::rma(yi = for_GOSH$TE, sei = for_GOSH$seTE,
+                    method = for_GOSH$method.tau, test = "knha")
+
+summary(GOSH)
+```
+
+
+```{r}
+df_gosh <- metafor::gosh(GOSH) 
+```
+
+```{r}
+tiff(filename = "../Plot/GOSH.png", res = 300, width = 4500, height = 3500)
+plot(df_gosh, alpha=0.1, col="grey50")
+dev.off()
+```
+
+```{r}
+#devtools::install_github("MathiasHarrer/dmetar")
+library(dmetar)
+```
+
+```{r}
+dmetar::gosh.diagnostics(df_gosh)
+```
+
+```{r}
+for_GOSH <- df[[6]] %>%
+  dplyr::mutate(unique_ID = row_number()) %>%
+  meta::metagen(TE = yi, seTE = sei,
+                data = ., studlab = unique_ID,
+                comb.fixed = FALSE, comb.random = TRUE,
+                method.tau = "SJ", hakn = TRUE,
+                prediction = TRUE, sm = "SMD",
+                exclude = c(14, 2, 5, 13, 19, 22, 20))
+
+summary(for_GOSH)
+```
+
+```{r}
+rm(GOSH, df_gosh, for_GOSH)
+```
+

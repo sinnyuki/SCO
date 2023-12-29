@@ -21,7 +21,14 @@ df <- list()
 df[[1]] <- readxl::read_excel(
   "../../../3_Article_Screen/3_3_Meta/CodeBook_SCOLS_v0.0.3.xlsx"
 ) %>%
-  dplyr::slice(-1)
+  dplyr::slice(-1) %>%
+  dplyr::mutate(
+    Overview = factor(Overview),
+    Codable = factor(Codable),
+    SCO = factor(SCO),
+    LS = factor(LS),
+    Measure = factor(Measure),
+  )
 
 names(df)[1] <- "Step 1: Raw"
 ```
@@ -110,5 +117,26 @@ df[[6]] <- base::rbind(df[[4]], df[[5]]) %>%
   ) 
 
 names(df)[6] <- "Step 6: escalc(df)"
+```
+
+```{r}
+summary(
+  df[[1]] %>%
+    dplyr::select(
+      ID,
+      Overview,
+      Codable,
+      SCO,
+      LS
+    ) %>%
+    dplyr::distinct() %>%
+    dplyr::filter(
+      Overview == 0,
+      Codable ==1,
+      SCO ==0,
+      LS ==1
+    ) 
+)
+
 ```
 
