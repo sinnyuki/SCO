@@ -6,27 +6,19 @@ output: html_document
 ---
 # Confirmatory Factor Analysis
 ```{r CFA: ASC}
-result.CFA_ASC <- capture.output({
-  CFA_ASC <- 'ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5' %>%
-  lavaan::cfa(.,data=df.raw, estimator="ML") 
-  lavaan::summary(CFA_ASC, fit.measures=TRUE, standardized=TRUE)
-})
-
-writeLines(result.CFA_ASC, "./OUTPUT/CFA/ASC.md")
-
-rm(result.CFA_ASC, CFA_ASC)
+yukiCFA(
+  data = df.raw,
+  model = "ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5",
+  path = "./OUTPUT/CFA/ASC.md"
+)
 ```
 
 ```{r CFA: OSC}
-result.CFA_OSC <- capture.output({
-  CFA_OSC <- 'OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6' %>%
-  lavaan::cfa(.,data=df.raw, estimator="ML") 
-  lavaan::summary(CFA_OSC, fit.measures=TRUE, standardized=TRUE)
-})
-
-writeLines(result.CFA_OSC, "./OUTPUT/CFA/OSC.md")
-
-rm(result.CFA_OSC, CFA_OSC)
+yukiCFA(
+  data = df.raw,
+  model = "OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6",
+  path = "./OUTPUT/CFA/OSC.md"
+)
 ```
 
 ```{r}
@@ -53,47 +45,46 @@ rm(alpha, temp, alpha_ASC, alpha_OSC, var_ASC, var_OSC)
 ```
 
 ```{r CFA: RD}
-result.CFA_RD <- capture.output({
-  CFA_RD <- 'RD =~ RD1 + RD2 + RD3 + RD4 + RD5' %>%
-  lavaan::cfa(.,data=df.raw, estimator="ML") 
-  lavaan::summary(CFA_RD, fit.measures=TRUE, standardized=TRUE)
-})
-
-writeLines(result.CFA_RD, "./OUTPUT/CFA/RD.md")
-
-rm(result.CFA_RD, CFA_RD)
+yukiCFA(
+  data = df.raw,
+  model = "RD =~ RD1 + RD2 + RD3 + RD4 + RD5",
+  path = "./OUTPUT/CFA/RD.md"
+)
 ```
 
 ```{r CFA: POS}
-result.CFA_POS <- capture.output({
-  CFA_POS <- 'POS =~ POS1 + POS2 + POS3 + POS5 + POS6' %>%
-  lavaan::cfa(.,data=df.raw, estimator="ML") 
-  lavaan::summary(CFA_POS, fit.measures=TRUE, standardized=TRUE)
-})
-
-writeLines(result.CFA_POS, "./OUTPUT/CFA/POS.md")
-
-rm(result.CFA_POS, CFA_POS)
+yukiCFA(
+  data = df.raw,
+  model = "POS =~ POS1 + POS2 + POS3 + POS5 + POS6",
+  path = "./OUTPUT/CFA/POS.md"
+)
 ```
 
 ```{r CFA}
-result.CFA <- capture.output({
-  CFA <- 'ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5
-          OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC6
-          SCO =~ ASC + OSC
-          RD =~ RD1 + RD2 + RD3 + RD4 + RD5
-          POS =~ POS1 + POS2 + POS3 + POS4 + POS5
-         ' %>%
-  lavaan::cfa(.,data=df.raw, estimator="ML") 
-  lavaan::summary(CFA, fit.measures=TRUE, standardized=TRUE)
-})
-
-writeLines(result.CFA, "./OUTPUT/CFA/CFA.md")
-
-rm(result.CFA)
+yukiCFA(
+  data = df.raw,
+  model = "
+    ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5
+    OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6
+    SCO =~ ASC + OSC
+    RD =~ RD1 + RD2 + RD3 + RD4 + RD5
+    POS =~ POS1 + POS2 + POS3 + POS5 + POS6
+  ",
+  path = "./OUTPUT/CFA/CFA.md"
+)
 ```
 
 ```{r matrix.CFA}
+CFA <- "
+    ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5
+    OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6
+    SCO =~ ASC + OSC
+    RD =~ RD1 + RD2 + RD3 + RD4 + RD5
+    POS =~ POS1 + POS2 + POS3 + POS5 + POS6
+  " %>%
+  lavaan::cfa(.,data = df.raw, estimator="ML") 
+  lavaan::summary(CFA, fit.measures=TRUE, standardized=TRUE)
+
 matrix.CFA <- lavaan::lavInspect(CFA,"standardized") 
 CFA.loading <- as.data.frame(matrix.CFA$lambda) %>%
   dplyr::select(ASC, OSC, SCO, RD, POS) %>%
@@ -107,5 +98,5 @@ CFA.correlation <- as.data.frame(matrix.CFA$psi) %>%
 write.csv(CFA.loading, "./OUTPUT/CFA/loading.csv")
 write.csv(CFA.correlation, "./OUTPUT/CFA/latent_correlation.csv")
 
-rm(matrix.CFA)
+rm(CFA, matrix.CFA)
 ```

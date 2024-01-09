@@ -1,0 +1,18 @@
+---
+title: "0_Function"
+author: "yuki"
+date: "2024-01-09"
+output: html_document
+---
+```{r}
+yukiCFA <- function(data, model, path) {
+  result.CFA <- capture.output({
+    CFA <- model %>%
+      lavaan::cfa(.,data = data, estimator="ML") 
+      lavaan::summary(CFA, fit.measures=TRUE, standardized=TRUE)
+  })
+
+  writeLines(result.CFA, path)
+}
+```
+

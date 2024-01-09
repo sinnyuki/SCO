@@ -1,0 +1,96 @@
+---
+title: "3_CMA"
+author: "yuki"
+date: "2023-08-12"
+output: html_document
+---
+# Common Method Bias
+## Harmon One-Factor Test
+```{r CMB: Harmon One-Factor Test CFA}
+result.HOFT.CFA <- capture.output({
+  HOFT.CFA <- 'HOFT =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5 + 
+                      OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6 + 
+                      RD1 + RD2 + RD3 + RD4 + RD5 + 
+                      POS1 + POS2 + POS3 + POS4 + POS5 + 
+                      LS1 + LS2 + LS3 + LS4 + LS5 + 
+                      UI1 + UI2 + UI3 + 
+                      UC1 + UC2 + UC3 + 
+                      DI1 + DI2 + DI3 + 
+                      DC1 + DC2 + DC3 +
+                      SCD + USC + DSC' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(HOFT.CFA, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.HOFT.CFA, "./OUTPUT/CMB/HOFT.CFA.md")
+
+rm(result.HOFT.CFA)
+```
+
+```{r CMB: Harmon One-Factor Test EFA}
+HOFT.EFA <- psych::fa(df.raw[,-c(1:5)], nfactors = 1)
+HOFT.EFA$Vaccounted
+```
+
+## Unmeasured Latent Method Construct
+### Equal Impact
+```{r CMB: Unmeasured Latent Method Construct (Equal Impact)}
+result.ULMC.e <- capture.output({
+  ULMC.e <- 'ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5
+             OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6
+             RD =~ RD1 + RD2 + RD3 + RD4 + RD5
+             POS =~ POS1 + POS2 + POS3 + POS4 + POS5
+             LS =~ LS1 + LS2 + LS3 + LS4 + LS5
+             UI =~ UI1 + UI2 + UI3
+             UC =~ UC1 + UC2 + UC3
+             DI =~ DI1 + DI2 + DI3
+             DC =~ DC1 + DC2 + DC3
+          
+           ULMC =~ w*ASC1 + w*ASC2 + w*ASC3 + w*ASC4 + w*ASC5 + 
+                   w*OSC1 + w*OSC2 + w*OSC3 + w*OSC4 + w*OSC5 + w*OSC6 + 
+                   w*RD1 + w*RD2 + w*RD3 + w*RD4 + w*RD5 + 
+                   w*POS1 + w*POS2 + w*POS3 + w*POS4 + w*POS5 + 
+                   w*LS1 + w*LS2 + w*LS3 + w*LS4 + w*LS5 + 
+                   w*UI1 + w*UI2 + w*UI3 + 
+                   w*UC1 + w*UC2 + w*UC3 + 
+                   w*DI1 + w*DI2 + w*DI3 + 
+                   w*DC1 + w*DC2 + w*DC3 +
+                   w*SCD + w*USC + w*DSC' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(ULMC.e, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.ULMC.e, "./OUTPUT/CMB/ULMC.e.md")
+
+rm(result.ULMC.e)
+```
+### Unequal Impact
+```{r CMB: Unmeasured Latent Method Construct (Unequal Impact)}
+result.ULMC.ue <- capture.output({
+  ULMC.ue <- 'ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5
+              OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6
+              RD =~ RD1 + RD2 + RD3 + RD4 + RD5
+              POS =~ POS1 + POS2 + POS3 + POS4 + POS5
+              LS =~ LS1 + LS2 + LS3 + LS4 + LS5
+              UI =~ UI1 + UI2 + UI3
+              UC =~ UC1 + UC2 + UC3
+              DI =~ DI1 + DI2 + DI3
+              DC =~ DC1 + DC2 + DC3
+          
+              ULMC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5 + OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6 + 
+                      RD1 + RD2 + RD3 + RD4 + RD5 + 
+                      POS1 + POS2 + POS3 + POS4 + POS5 + 
+                      LS1 + LS2 + LS3 + LS4 + LS5 + 
+                      UI1 + UI2 + UI3 + 
+                      UC1 + UC2 + UC3 + 
+                      DI1 + DI2 + DI3 + 
+                      DC1 + DC2 + DC3 +
+                      SCD + USC + DSC' %>%
+  lavaan::cfa(.,data=df.raw, estimator="ML") 
+  lavaan::summary(ULMC.ue, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.ULMC.ue, "./OUTPUT/CMB/ULMC.ue.md")
+
+rm(result.ULMC.ue)
+```

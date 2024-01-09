@@ -1,0 +1,69 @@
+---
+title: "3_CMA"
+author: "yuki"
+date: "2023-08-12"
+output: html_document
+---
+# Common Method Bias
+## Harmon One-Factor Test
+```{r CMB: Harmon One-Factor Test CFA}
+yukiCFA(
+  data = df.raw,
+  model = "
+    HOFT =~ 
+      ASC1 + ASC2 + ASC3 + ASC4 + ASC5 + 
+      OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6 + 
+      RD1 + RD2 + RD3 + RD4 + RD5 + 
+      POS1 + POS2 + POS3 + POS4 + POS5
+  ",
+  path = "./OUTPUT/CMB/HOFT.md"
+)
+```
+
+```{r CMB: Harmon One-Factor Test EFA}
+HOFT.EFA <- psych::fa(df.raw[,-c(1:5)], nfactors = 1)
+HOFT.EFA$Vaccounted
+
+rm(HOFT.EFA)
+```
+
+## Unmeasured Latent Method Construct
+### Equal Impact
+```{r CMB: Unmeasured Latent Method Construct (Equal Impact)}
+yukiCFA(
+  data = df.raw,
+  model = "
+    ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5
+    OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC6
+    RD =~ RD1 + RD2 + RD3 + RD4 + RD5
+    POS =~ POS1 + POS2 + POS3 + POS5 + POS6
+    
+    ULMC =~ 
+      w*ASC1 + w*ASC2 + w*ASC3 + w*ASC4 + w*ASC5 + 
+      w*OSC1 + w*OSC2 + w*OSC3 + w*OSC4 + w*OSC6 + 
+      w*RD1 + w*RD2 + w*RD3 + w*RD4 + w*RD5 + 
+      w*POS1 + w*POS2 + w*POS3 + w*POS5 + w*POS6
+  ",
+  path = "./OUTPUT/CMB/ULMC.e.md"
+)
+```
+
+### Unequal Impact
+```{r CMB: Unmeasured Latent Method Construct (Unequal Impact)}
+yukiCFA(
+  data = df.raw,
+  model = "
+    ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5
+    OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6
+    RD =~ RD1 + RD2 + RD3 + RD4 + RD5
+    POS =~ POS1 + POS2 + POS3 + POS5 + POS6
+  
+    ULMC =~ 
+      ASC1 + ASC2 + ASC3 + ASC4 + ASC5 + 
+      OSC1 + OSC2 + OSC3 + OSC4 + OSC6 + 
+      RD1 + RD2 + RD3 + RD4 + RD5 + 
+      POS1 + POS2 + POS3 + POS5 + POS6
+  ",
+  path = "./OUTPUT/CMB/ULMC.ue.md"
+)
+```
