@@ -1,0 +1,57 @@
+TITLE:
+
+    Moderator is USC DSC;
+   
+DATA:
+FILE = "./OUTPUT/SEM/Mplus/SEM.mod.USC_DSC_b1d11211bb68dadca71d2ce38af35d0b.dat";
+ 
+VARIABLE:
+NAMES = ASC1 ASC2 ASC3 ASC4 ASC5 OSC1 OSC2 OSC3 OSC4 OSC6 OSC7 RD1 RD2 RD3 RD4 RD5
+     POS1 POS2 POS3 POS5 POS6 LS1 LS2 LS3 LS4 LS5 USC DSC; 
+ MISSING=.;
+ 
+ANALYSIS:
+
+    TYPE =general;
+    bootstrap = 5000;
+    process=16;
+   
+MODEL:
+  
+    ASC by ASC1-ASC5;
+    OSC by OSC1-OSC4 OSC6 OSC7;
+    SCO by ASC OSC;
+
+    RD by RD1-RD5;
+    POS by POS1-POS3 POS5 POS6;
+    
+    LS by LS1-LS5;
+    
+    RD on SCO
+          USC(a1)
+          DSC;
+    POS on SCO(a2)
+           USC
+           DSC;
+    LS on SCO(c)
+          RD(b1)
+          POS(b2);
+   
+MODEL CONSTRAINT:
+
+   NEW(IE_RD 
+       IE_POS
+       );
+   
+   
+    IE_RD = a1*b1;
+    IE_POS = a2*b2;
+   
+OUTPUT:
+
+    cint;
+    STDYX
+PLOT:
+
+    TYPE = plot2;
+   

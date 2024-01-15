@@ -1,0 +1,112 @@
+---
+title: "CFA"
+author: "yuki"
+date: "2023-08-10"
+output: html_document
+---
+# Confirmatory Factor Analysis
+```{r CFA: ASC}
+yukiCFA(
+  data = df.raw,
+  model = "ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5",
+  path = "./OUTPUT/CFA/ASC.md"
+)
+```
+
+```{r CFA: OSC}
+yukiCFA(
+  data = df.raw,
+  model = "OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC6 + OSC7",
+  path = "./OUTPUT/CFA/OSC.md"
+)
+```
+
+```{r}
+temp <- df.raw %>%
+  dplyr::mutate(
+    ASC = (ASC1 + ASC2 + ASC3 + ASC4 + ASC5) / 5,
+    OSC = (OSC1 + OSC2 + OSC3 + OSC4 + OSC6 + OSC7) / 6
+  )
+
+var_ASC <- stats::var(temp$ASC)
+var_OSC <- stats::var(temp$OSC)
+
+alpha <- psych::alpha(df.raw[, c("ASC1", "ASC2", "ASC3", "ASC4", "ASC5")])
+alpha_ASC <- alpha$total$raw_alpha
+alpha <- psych::alpha(df.raw[, c("OSC1", "OSC2", "OSC3", "OSC4", "OSC6", "OSC7")])
+alpha_OSC <- alpha$total$raw_alpha
+
+sqrt(var_ASC) * alpha_ASC
+sqrt(var_OSC) * alpha_OSC
+var_ASC * (1 - alpha_ASC)
+var_OSC * (1 - alpha_OSC)
+
+rm(alpha, temp, alpha_ASC, alpha_OSC, var_ASC, var_OSC)
+```
+
+```{r CFA: RD}
+yukiCFA(
+  data = df.raw,
+  model = "RD =~ RD1 + RD2 + RD3 + RD4 + RD5",
+  path = "./OUTPUT/CFA/RD.md"
+)
+```
+
+```{r CFA: POS}
+yukiCFA(
+  data = df.raw,
+  model = "POS =~ POS1 + POS2 + POS3 + POS5 + POS6",
+  path = "./OUTPUT/CFA/POS.md"
+)
+```
+
+```{r CFA: POS}
+yukiCFA(
+  data = df.raw,
+  model = "LS =~ LS1 + LS2 + LS3 + LS4 + LS5",
+  path = "./OUTPUT/CFA/LS.md"
+)
+```
+
+```{r CFA}
+yukiCFA(
+  data = df.raw,
+  model = "
+    ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5
+    OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC6 + OSC7
+    SCO =~ ASC + OSC
+    RD =~ RD1 + RD2 + RD3 + RD4 + RD5
+    POS =~ POS1 + POS2 + POS3 + POS5 + POS6
+    LS =~ LS1 + LS2 + LS3 + LS4 + LS5
+  ",
+  path = "./OUTPUT/CFA/CFA.md"
+)
+```
+
+```{r matrix.CFA}
+CFA <- "
+    ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5
+    OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC6 + OSC7
+    SCO =~ ASC + OSC
+    RD =~ RD1 + RD2 + RD3 + RD4 + RD5
+    POS =~ POS1 + POS2 + POS3 + POS5 + POS6
+    LS =~ LS1 + LS2 + LS3 + LS4 + LS5
+  " %>%
+  lavaan::cfa(.,data = df.raw, estimator="MLR") 
+  lavaan::summary(CFA, fit.measures=TRUE, standardized=TRUE)
+
+matrix.CFA <- lavaan::lavInspect(CFA,"standardized") 
+CFA.loading <- as.data.frame(matrix.CFA$lambda) %>%
+  dplyr::select(ASC, OSC, SCO, RD, POS, LS) %>%
+  dplyr::mutate_at(vars(ASC, OSC, SCO, RD, POS, LS), round, 3)
+CFA.loading[CFA.loading == 0] <- NA
+
+CFA.correlation <- as.data.frame(matrix.CFA$psi) %>%
+  dplyr::mutate_at(vars(SCO, RD, POS, LS), round, 3) %>%
+  .[c("SCO", "RD", "POS", "LS"), c("SCO", "RD", "POS", "LS")]
+
+write.csv(CFA.loading, "./OUTPUT/CFA/loading.csv")
+write.csv(CFA.correlation, "./OUTPUT/CFA/latent_correlation.csv")
+
+rm(CFA, matrix.CFA)
+```
