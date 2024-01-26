@@ -1,0 +1,27 @@
+# Structural Equation Modeling
+## Mediation
+```{r Mediation SEM}
+result.SEM.med <- capture.output({
+  SEM.med <- '
+    RD =~ RD1 + RD2 + RD3 + RD4 + RD5
+    POS =~ POS1 + POS2 + POS3 + POS5 + POS6
+    LS =~ LS1 + LS2 + LS3 + LS4 + LS5
+    
+    RD =~ a1 * SCD
+    POS =~ a2 * SCD
+    LS =~ b1 * RD + b2 * POS + c * SCD
+  
+    IE_RD := a1 * b1
+    IE_POS := a2 * b2
+  ' %>%
+  lavaan::sem(
+    .,data=df.raw, estimator="ML",
+    se = "bootstrap", bootstrap = 5000,
+    parallel = "snow", ncpus = 16, iseed = 123)
+  lavaan::summary(SEM.med, fit.measures=TRUE, standardized=TRUE)
+})
+
+writeLines(result.SEM.med, "./OUTPUT/SEM/SEM.med.md")
+
+rm(result.SEM.med)
+```
