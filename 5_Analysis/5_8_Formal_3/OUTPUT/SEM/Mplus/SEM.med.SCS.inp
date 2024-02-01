@@ -1,0 +1,69 @@
+TITLE:
+
+    Mediation;
+   
+DATA:
+FILE = "./OUTPUT/SEM/Mplus/SEM.med.SCS_738104b65425523c8e6e3157c421e731.dat";
+ 
+VARIABLE:
+NAMES = Blue1 Blue2 Blue3 Blue4 Blue5 Blue6 Blue7 DI1 DI2 DI3 DC1 DC2 DC3 UI1 UI2
+     UI3 UC1 UC2 UC3 POS1 POS2 POS3 POS5 POS6 RD1 RD2 RD3 RD4 RD5 LS1 LS2 LS3 LS4
+     LS5; 
+ MISSING=.;
+ 
+ANALYSIS:
+
+    TYPE =general;
+    bootstrap = 5000;
+    process=16;
+   
+MODEL:
+  
+    Blue by Blue1-Blue7;
+    
+    UI by UI1-UI3;
+    UC by UC1-UC3;
+    DI by DI1-DI3;
+    DC by DC1-DC3;
+   
+    RD by RD1-RD5;
+    POS by POS1-POS3 POS5 POS6;
+    
+    LS by LS1-LS5;
+    
+    RD on Blue
+          UI(a1i)
+          UC(a1c);
+    POS on Blue
+           DI(a2i)
+           DC(a2c);
+    LS on Blue
+          UI 
+          UC
+          DI 
+          DC
+          RD(b1)
+          POS(b2);
+   
+MODEL CONSTRAINT:
+
+   NEW(
+      RD_I RD_C POS_I POS_C
+      UI_UC DI_DC
+      RD_IC POS_IC
+   );
+    RD_I = a1i*b1;
+    RD_C = a1c*b1;
+    POS_I = a2i*b2;
+    POS_C = a2c*b2;
+   
+    UI_UC = a1i + a1c;
+    DI_DC = a2i + a2c;
+   
+    RD_IC = RD_I + RD_C;
+    POS_IC = POS_I + POS_C;
+   
+OUTPUT:
+
+    cint;
+    STDYX

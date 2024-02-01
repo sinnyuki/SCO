@@ -1,0 +1,102 @@
+---
+title: "3_CMA"
+author: "yuki"
+date: "2023-08-12"
+output: html_document
+---
+# Common Method Bias
+## Harmon One-Factor Test
+```{r CMB: Harmon One-Factor Test CFA}
+yukiCFA(
+  data = df.raw,
+  model = "
+    HOFT =~ 
+      ASC1 + ASC2 + ASC3 + ASC4 + ASC5 +
+      OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC7 +
+      RD1 + RD2 + RD3 + RD4 + RD5 +
+      POS1 + POS2 + POS3 + POS5 + POS6 +
+      LS1 + LS2 + LS3 + LS4 + LS5 +
+      UI1 + UI2 + UI3 +
+      UC1 + UC2 + UC3 +
+      DI1 + DI2 + DI3 +
+      DC1 + DC2 + DC3
+  ",
+  path = "./OUTPUT/CMB/HOFT.md"
+)
+```
+
+```{r CMB: Harmon One-Factor Test EFA}
+HOFT.EFA <- df.raw %>%
+  dplyr::select(
+    -c(1:5), 
+    -Blue1, -Blue2, -Blue3, -Blue4, -Blue5, -Blue6, -Blue7,
+    -SCD, -USC, -DSC,
+    -OSC6, -POS4
+  ) %>%
+  psych::fa(., nfactors = 1)
+
+HOFT.EFA$Vaccounted
+
+rm(HOFT.EFA)
+```
+
+## Unmeasured Latent Method Construct
+### Equal Impact
+```{r CMB: Unmeasured Latent Method Construct (Equal Impact)}
+yukiCFA(
+  data = df.raw,
+  model = "
+    ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5
+    OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC7
+    RD =~ RD1 + RD2 + RD3 + RD4 + RD5
+    POS =~ POS1 + POS2 + POS3 + POS5 + POS6
+    LS =~ LS1 + LS2 + LS3 + LS4 + LS5
+    UI =~ UI1 + UI2 + UI3
+    UC =~ UC1 + UC2 + UC3
+    DI =~ DI1 + DI2 + DI3
+    DC =~ DC1 + DC2 + DC3
+    
+    ULMC =~ 
+      w*ASC1 + w*ASC2 + w*ASC3 + w*ASC4 + w*ASC5 + 
+      w*OSC1 + w*OSC2 + w*OSC3 + w*OSC4 + w*OSC5 + w*OSC7 +
+      w*RD1 + w*RD2 + w*RD3 + w*RD4 + w*RD5 + 
+      w*POS1 + w*POS2 + w*POS3 + w*POS5 + w*POS6 +
+      w*LS1 + w*LS2 + w*LS3 + w*LS4 + w*LS5 +
+      w*UI1 + w*UI2 + w*UI3 +
+      w*UC1 + w*UC2 + w*UC3 +
+      w*DI1 + w*DI2 + w*DI3 +
+      w*DC1 + w*DC2 + w*DC3
+  ",
+  path = "./OUTPUT/CMB/ULMC.e.md"
+)
+```
+
+### Unequal Impact
+```{r CMB: Unmeasured Latent Method Construct (Unequal Impact)}
+yukiCFA(
+  data = df.raw,
+  model = "
+    ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5
+    OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC7
+    RD =~ RD1 + RD2 + RD3 + RD4 + RD5
+    POS =~ POS1 + POS2 + POS3 + POS5 + POS6
+    LS =~ LS1 + LS2 + LS3 + LS4 + LS5
+    UI =~ UI1 + UI2 + UI3
+    UC =~ UC1 + UC2 + UC3
+    DI =~ DI1 + DI2 + DI3
+    DC =~ DC1 + DC2 + DC3
+    
+    ULMC =~ 
+      ASC1 + ASC2 + ASC3 + ASC4 + ASC5 + 
+      OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC7 +
+      RD1 + RD2 + RD3 + RD4 + RD5 + 
+      POS1 + POS2 + POS3 + POS5 + POS6 +
+      LS1 + LS2 + LS3 + LS4 + LS5 +
+      UI1 + UI2 + UI3 +
+      UC1 + UC2 + UC3 +
+      DI1 + DI2 + DI3 +
+      DC1 + DC2 + DC3
+  ",
+  path = "./OUTPUT/CMB/ULMC.ue.md"
+)
+```

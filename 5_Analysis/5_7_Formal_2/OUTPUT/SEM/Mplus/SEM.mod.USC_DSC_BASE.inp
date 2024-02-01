@@ -27,13 +27,15 @@ MODEL:
     
     LS by LS1-LS5;
     
-    RD on SCO
-          USC(a1)
-          DSC;
-    POS on SCO(a2)
-           USC
-           DSC;
-    LS on SCO(c)
+    RD on USC(a1)
+          DSC
+          SCO;
+    POS on USC
+           DSC(a2)
+           SCO;
+    LS on USC
+          DSC
+          SCO
           RD(b1)
           POS(b2);
    

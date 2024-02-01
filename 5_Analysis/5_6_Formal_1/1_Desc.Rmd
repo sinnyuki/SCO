@@ -57,11 +57,18 @@ writeLines(result, "./OUTPUT/Table.1_Mean & SD.md")
 rm(result)
 ```
 
+```{r}
+bruceR::TTEST(data = df.raw, y = "SCD", x = "Group")
+```
+
 ```{r Distribution Plot, message = FALSE}
 p1 <- ggplot2::ggplot(df.mean, aes(x = Gender)) +
   ggplot2::geom_bar(fill = "#F3533A", alpha = 0.5) +
   ggplot2::labs(x = "Gender", y = "Count") +
-  ggplot2::scale_x_continuous(breaks = c(1, 2)) +
+  ggplot2::scale_x_continuous(
+    breaks = c(1, 2),
+    labels = c("Male", "Femal")
+  ) +
   papaja::theme_apa() 
 
 p2 <- ggplot2::ggplot(df.mean, aes(x = Age)) +
@@ -94,7 +101,7 @@ p5 <- ggplot2::ggplot(df.mean %>% filter(Group == -1), aes(x = SCD)) +
 
 p6 <- ggplot2::ggplot(df.mean %>% filter(Group == 1), aes(x = SCD)) +
   ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
-  ggplot2::labs(x = "Downward Social Comparison", y = "Count") +
+  ggplot2::labs(x = "Upward Social Comparison", y = "Count") +
   ggplot2::scale_x_continuous(limits = c(0.5,7.5),
                               breaks = seq(1, 7, 1)) +
   papaja::theme_apa() 

@@ -1,0 +1,67 @@
+TITLE:
+
+    Moderator is USC DSC;
+   
+DATA:
+FILE = "./OUTPUT/SEM/Mplus/SEM.mod.USC_DSC_BASE_b9bad1f39354471880f006ecee1f2520.dat";
+ 
+VARIABLE:
+NAMES = Blue1 Blue2 Blue3 Blue4 Blue5 Blue6 Blue7 USC DSC ASC1 ASC2 ASC3 ASC4 ASC5
+     OSC1 OSC2 OSC3 OSC4 OSC6 OSC7 POS1 POS2 POS3 POS5 POS6 RD1 RD2 RD3 RD4 RD5 LS1
+     LS2 LS3 LS4 LS5; 
+ MISSING=.;
+ 
+ANALYSIS:
+
+    TYPE =general;
+    estimator=BAYES; 
+   
+MODEL:
+  
+    Blue by Blue1-Blue7;
+   
+    ASC by ASC1-ASC5;
+    OSC by OSC1-OSC4 OSC6 OSC7;
+    SCO by ASC OSC;
+   
+    RD by RD1-RD5;
+    POS by POS1-POS3 POS5 POS6;
+    
+    LS by LS1-LS5;
+    
+    RD on Blue
+          USC(a1)
+          DSC
+          SCO;
+    POS on Blue
+           USC
+           DSC(a2)
+           SCO;
+    LS on Blue
+          USC
+          DSC
+          SCO(c)
+          RD(b1)
+          POS(b2);
+   
+MODEL CONSTRAINT:
+
+   NEW(IE_RD 
+       IE_POS
+       );
+   
+    IE_RD = a1*b1;
+    IE_POS = a2*b2;
+   
+MODEL PRIORS:
+
+    c ~ N(-0.063, 0.023);
+   
+OUTPUT:
+
+    cint;
+    STDYX
+PLOT:
+
+    TYPE = plot2;
+   

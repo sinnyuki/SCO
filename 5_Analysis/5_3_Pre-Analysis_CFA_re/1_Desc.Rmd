@@ -88,7 +88,7 @@ p4 <- ggplot2::ggplot(df.mean, aes(x = Marriage)) +
   ggplot2::geom_bar(fill = "#F3533A", alpha = 0.5) +
   ggplot2::labs(x = "Marriage", y = "") +
   ggplot2::scale_x_continuous(breaks = c(1, 2, 3),
-                              labels = c("Married", "Unmarried", "Divorced")) +
+                              labels = c("Unmarried", "Married", "Divorced")) +
   papaja::theme_apa() 
   
 

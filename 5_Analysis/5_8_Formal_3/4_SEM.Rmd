@@ -1,0 +1,484 @@
+# Structural Equation Modeling
+## Mediation
+```{r Mediation SEM Mplus}
+SEM.med <- mplusObject(
+   TITLE = "
+    Mediation;
+   ",
+   ANALYSIS = "
+    TYPE =general;
+    bootstrap = 5000;
+    process=16;
+   ",
+   MODEL = "  
+    Blue by Blue1-Blue7;
+    RD by RD1-RD5;
+    POS by POS1-POS3 POS5 POS6;
+    
+    LS by LS1-LS5;
+   
+    RD on Blue
+          USC(a1)
+          DSC;
+    POS on Blue
+           USC
+           DSC(a2);
+    LS on Blue
+          USC(c1)
+          DSC(c2)
+          RD(b1)
+          POS(b2);
+   ",
+   MODELCONSTRAINT = "
+   NEW(IE_RD 
+       IE_POS);
+   
+    IE_RD = a1*b1;
+    IE_POS = a2*b2;
+   ",
+   OUTPUT = "
+    CINT(bcbootstrap);
+    STDYX",
+   rdata = df.raw)
+
+mplusModeler(SEM.med, modelout = "./OUTPUT/SEM/Mplus/SEM.med.inp", run = 1L)
+rm(SEM.med)
+```
+
+## Moderation
+
+### USC & DSC as moderation
+```{r Moderator is USC_DSC, include=FALSE}
+SEM.mod.USC_DSC <- mplusObject(
+   TITLE = "
+    Moderator is USC DSC;
+   ",
+   ANALYSIS = "
+    TYPE =general;
+    estimator=BAYES; 
+   ",
+   MODEL = "  
+    Blue by Blue1-Blue7;
+   
+    ASC by ASC1-ASC5;
+    OSC by OSC1-OSC4 OSC6 OSC7;
+    SCO by ASC OSC;
+   
+    RD by RD1-RD5;
+    POS by POS1-POS3 POS5 POS6;
+    
+    LS by LS1-LS5;
+    
+    RD on Blue
+          USC(a1)
+          DSC
+          SCO;
+    POS on Blue
+           USC
+           DSC(a2)
+           SCO;
+    LS on Blue
+          USC
+          DSC
+          SCO(c)
+          RD(b1)
+          POS(b2);
+   ",
+   MODELPRIORS = "
+    c ~ N(-0.063, 0.023);
+   ",
+   MODELCONSTRAINT = "
+   NEW(IE_RD 
+       IE_POS
+       );
+   
+    IE_RD = a1*b1;
+    IE_POS = a2*b2;
+   ",
+   
+   PLOT = "
+    TYPE = plot2;
+   ",
+   OUTPUT = "
+    cint;
+    STDYX",
+   rdata = df.raw)
+
+mplusModeler(SEM.mod.USC_DSC, modelout = "./OUTPUT/SEM/Mplus/SEM.mod.USC_DSC_BASE.inp", run = 1L)
+rm(SEM.mod.USC_DSC)
+```
+
+```{r Moderator is USC_DSC, include=FALSE}
+SEM.mod.USC_DSC <- mplusObject(
+   TITLE = "
+    Moderator is USC DSC;
+   ",
+   ANALYSIS = "
+    TYPE =general RANDOM;  
+    estimator=BAYES; 
+    ALGORITHM=INTEGRATION;
+    convergence=0.01;
+   ",
+   MODEL = "  
+    Blue by Blue1-Blue7;
+    
+    ASC by ASC1-ASC5;
+    OSC by OSC1-OSC4 OSC6 OSC7;
+    SCO by ASC OSC;
+
+    SCO@1; 
+   
+    SCOU | SCO XWITH USC;
+    SCOD | SCO XWITH DSC;
+    
+    RD by RD1-RD5;
+    POS by POS1-POS3 POS5 POS6;
+    
+    LS by LS1-LS5;
+    
+    RD on Blue
+          SCO
+          USC(a1)
+          DSC
+          SCOU(w1)
+          SCOD;
+    POS on Blue
+           SCO
+           USC
+           DSC(a2)
+           SCOU
+           SCOD(w2);
+    LS on Blue
+          USC
+          DSC
+          SCO(c)
+          RD(b1)
+          POS(b2);
+   ",
+   MODELPRIORS = "
+    c ~ N(-0.063, 0.023);
+   ",
+   MODELCONSTRAINT = "
+   NEW(L_SCO M_SCO H_SCO
+   
+      IE_RD IE_POS
+   
+      IE_L_RD IE_M_RD IE_H_RD
+      IE_L_POS IE_M_POS IE_H_POS
+
+      DIF_LM_RD DIF_LH_RD DIF_MH_RD
+      DIF_LM_POS DIF_LH_POS DIF_MH_POS
+      );
+   
+    L_SCO = -1;
+    M_SCO = 0;
+    H_SCO = 1;
+   
+    IE_RD = a1*b1;
+    IE_POS = a2*b2;
+   
+    IE_L_RD = (a1+w1*L_SCO)*b1;
+    IE_M_RD = (a1+w1*M_SCO)*b1;
+    IE_H_RD = (a1+w1*H_SCO)*b1;
+   
+    IE_L_POS = (a2+w2*L_SCO)*b2;
+    IE_M_POS = (a2+w2*M_SCO)*b2;
+    IE_H_POS = (a2+w2*H_SCO)*b2;
+   
+    DIF_LM_RD = IE_L_RD - IE_M_RD;
+    DIF_LH_RD = IE_L_RD - IE_H_RD;
+    DIF_MH_RD = IE_M_RD - IE_H_RD;
+    
+    DIF_LM_POS = IE_L_POS - IE_M_POS;
+    DIF_LH_POS = IE_L_POS - IE_H_POS;
+    DIF_MH_POS = IE_M_POS - IE_H_POS;
+   
+    PLOT(P_L_RD P_M_RD P_H_RD
+         P_L_POS P_M_POS P_H_POS);
+    LOOP(XVAL,1,7,0.1);
+    P_L_RD = IE_L_RD*XVAL;
+    P_M_RD = IE_M_RD*XVAL;
+    P_H_RD = IE_H_RD*XVAL;
+    
+    P_L_POS = IE_L_POS*XVAL;
+    P_M_POS = IE_M_POS*XVAL;
+    P_H_POS = IE_H_POS*XVAL;
+   ",
+   
+   PLOT = "
+    TYPE = plot2;
+   ",
+   OUTPUT = "
+    cint;
+    STDYX",
+   rdata = df.raw)
+
+mplusModeler(SEM.mod.USC_DSC, modelout = "./OUTPUT/SEM/Mplus/SEM.mod.USC_DSC.inp", run = 1L)
+rm(SEM.mod.USC_DSC)
+```
+
+################################################################################
+--------------------------------------------------------------------------------
+################################################################################
+
+```{r Mediation, include=FALSE}
+SEM <- mplusObject(
+   TITLE = "
+    Mediation;
+   ",
+   ANALYSIS = "
+    TYPE =general;
+    bootstrap = 5000;
+    process=16;
+   ",
+   MODEL = "  
+    Blue by Blue1-Blue7;
+    
+    UI by UI1-UI3;
+    UC by UC1-UC3;
+    DI by DI1-DI3;
+    DC by DC1-DC3;
+   
+    RD by RD1-RD5;
+    POS by POS1-POS3 POS5 POS6;
+    
+    LS by LS1-LS5;
+    
+    RD on Blue
+          UI(a1i)
+          UC(a1c);
+    POS on Blue
+           DI(a2i)
+           DC(a2c);
+    LS on Blue
+          UI 
+          UC
+          DI 
+          DC
+          RD(b1)
+          POS(b2);
+   ",
+   MODELCONSTRAINT = "
+   NEW(
+      RD_I RD_C POS_I POS_C
+      UI_UC DI_DC
+      RD_IC POS_IC
+   );
+    RD_I = a1i*b1;
+    RD_C = a1c*b1;
+    POS_I = a2i*b2;
+    POS_C = a2c*b2;
+   
+    UI_UC = a1i + a1c;
+    DI_DC = a2i + a2c;
+   
+    RD_IC = RD_I + RD_C;
+    POS_IC = POS_I + POS_C;
+   ",
+   OUTPUT = "
+    cint;
+    STDYX",
+   rdata = df.raw)
+
+mplusModeler(SEM, modelout = "./OUTPUT/SEM/Mplus/SEM.med.SCS.inp", run = 1L)
+rm(SEM)
+```
+
+```{r Moderator is SCS, include=FALSE}
+SEM <- mplusObject(
+   TITLE = "
+    Moderator is SCS;
+   ",
+   ANALYSIS = "
+    TYPE =general RANDOM;  
+    estimator=BAYES; 
+    ALGORITHM=INTEGRATION;
+    convergence=0.01;
+   ",
+   MODEL = "  
+    Blue by Blue1-Blue7;
+    
+    ASC by ASC1-ASC5;
+    OSC by OSC1-OSC4 OSC6 OSC7;
+    SCO by ASC OSC;
+    
+    UI by UI1-UI3;
+    UC by UC1-UC3;
+    DI by DI1-DI3;
+    DC by DC1-DC3;
+   
+    RD by RD1-RD5;
+    POS by POS1-POS3 POS5 POS6;
+    
+    LS by LS1-LS5;
+    
+    RD on Blue
+          SCO(c1)
+          UI(a1i)
+          UC(a1c);
+    POS on Blue
+           SCO(c2)
+           DI(a2i)
+           DC(a2c);
+    LS on Blue
+          UI 
+          UC
+          DI 
+          DC
+          SCO(c)
+          RD(b1)
+          POS(b2);
+   ",
+   MODELPRIORS = "
+    c ~ N(-0.063, 0.023);
+   ",
+   MODELCONSTRAINT = "
+   NEW(
+      RD_I RD_C POS_I POS_C
+      UC_SCO DC_SCO
+   );
+    RD_I = a1i*b1;
+    RD_C = a1c*b1;
+    POS_I = a2i*b2;
+    POS_C = a2c*b2;
+   
+    UC_SCO = a1c - c1;
+    DC_SCO = a2c - c2;
+   ",
+   OUTPUT = "
+    cint;
+    STDYX",
+   rdata = df.raw)
+
+mplusModeler(SEM, modelout = "./OUTPUT/SEM/Mplus/SEM.mod.SCS_BASE.inp", run = 1L)
+rm(SEM)
+```
+
+
+```{r Moderator is SCS, include=FALSE}
+SEM <- mplusObject(
+   TITLE = "
+    Moderator is SCS;
+   ",
+   ANALYSIS = "
+    TYPE =general RANDOM;  
+    estimator=BAYES; 
+    ALGORITHM=INTEGRATION;
+    convergence=0.01;
+   ",
+   MODEL = "  
+    Blue by Blue1-Blue7;
+    
+    ASC by ASC1-ASC5;
+    OSC by OSC1-OSC4 OSC6 OSC7;
+    SCO by ASC OSC;
+
+    SCO@1;
+    
+    UI by UI1-UI3;
+    UC by UC1-UC3;
+    DI by DI1-DI3;
+    DC by DC1-DC3;
+   
+    SCOUI | SCO XWITH UI;
+    SCOUC | SCO XWITH UC;
+    SCODI | SCO XWITH DI;
+    SCODC | SCO XWITH DC;
+    
+    RD by RD1-RD5;
+    POS by POS1-POS3 POS5 POS6;
+    
+    LS by LS1-LS5;
+    
+    RD on Blue
+          SCO
+          UI(a1i)
+          UC(a1c)
+          SCOUI(w1i)
+          SCOUC(w1c);
+    POS on Blue
+           SCO
+           DI(a2i)
+           DC(a2c)
+           SCODI(w2i)
+           SCODC(w2c);
+    LS on Blue
+          UI 
+          UC
+          DI 
+          DC
+          SCO(c)
+          RD(b1)
+          POS(b2);
+   ",
+   MODELPRIORS = "
+    c ~ N(-0.063, 0.023);
+   ",
+   MODELCONSTRAINT = "
+   NEW(L_SCO M_SCO H_SCO
+   
+      RD_I RD_C POS_I POS_C
+   
+      L_RD_I M_RD_I H_RD_I
+      L_RD_C M_RD_C H_RD_C
+   
+      L_POS_I M_POS_I H_POS_I
+      L_POS_C M_POS_C H_POS_C
+
+      LM_RD_I LH_RD_I MH_RD_I
+      LM_RD_C LH_RD_C MH_RD_C
+   
+      LM_POS_I LH_POS_I MH_POS_I
+      LM_POS_C LH_POS_C MH_POS_C
+      );
+   
+    L_SCO = -1;
+    M_SCO = 0;
+    H_SCO = 1;
+   
+    RD_I = a1i*b1;
+    RD_C = a1c*b1;
+    POS_I = a2i*b2;
+    POS_C = a2c*b2;
+   
+    L_RD_I = (a1i+w1i*L_SCO)*b1;
+    M_RD_I = (a1i+w1i*M_SCO)*b1;
+    H_RD_I = (a1i+w1i*H_SCO)*b1;
+   
+    L_RD_C = (a1c+w1c*L_SCO)*b1;
+    M_RD_C = (a1c+w1c*M_SCO)*b1;
+    H_RD_C = (a1c+w1c*H_SCO)*b1;
+   
+    L_POS_I = (a2i+w2i*L_SCO)*b2;
+    M_POS_I = (a2i+w2i*M_SCO)*b2;
+    H_POS_I = (a2i+w2i*H_SCO)*b2;
+   
+    L_POS_C = (a2c+w2c*L_SCO)*b2;
+    M_POS_C = (a2c+w2c*M_SCO)*b2;
+    H_POS_C = (a2c+w2c*H_SCO)*b2;
+   
+    LM_RD_I = L_RD_I - M_RD_I;
+    LH_RD_I = L_RD_I - H_RD_I;
+    MH_RD_I = M_RD_I - H_RD_I;
+   
+    LM_RD_C = L_RD_C - M_RD_C;
+    LH_RD_C = L_RD_C - H_RD_C;
+    MH_RD_C = M_RD_C - H_RD_C;
+    
+    LM_POS_I = L_POS_I - M_POS_I;
+    LH_POS_I = L_POS_I - H_POS_I;
+    MH_POS_I = M_POS_I - H_POS_I;
+   
+    LM_POS_C = L_POS_C - M_POS_C;
+    LH_POS_C = L_POS_C - H_POS_C;
+    MH_POS_C = M_POS_C - H_POS_C;
+   
+   ",
+   OUTPUT = "
+    cint;
+    STDYX",
+   rdata = df.raw)
+
+mplusModeler(SEM, modelout = "./OUTPUT/SEM/Mplus/SEM.mod.SCS.inp", run = 1L)
+rm(SEM)
+```

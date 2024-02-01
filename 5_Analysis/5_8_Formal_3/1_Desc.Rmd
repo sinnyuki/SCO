@@ -1,0 +1,236 @@
+---
+title: "1_Desc"
+author: "yuki"
+date: "2023-08-12"
+output: html_document
+---
+# Packages & WD & Read Data
+```{r ,setup, message=FALSE,warning=FALSE,error=FALSE}
+# clean data
+library(bruceR)
+#library(dplyr)
+#library(tidyr)
+library(psych)
+#library(ggplot2)
+library(gridExtra)
+library(papaja)
+library(patchwork)
+
+# SEM mediation
+library(lavaan)
+library(lavaanPlot)
+
+# SED moderation
+library(MplusAutomation)
+```
+
+```{r read df.raw}
+df.raw <-  read.csv('../../4_Data_Extraction/4_3_Formal_Data/Formal_3.csv',
+                    header = T, sep=",", stringsAsFactors = FALSE) %>%
+  dplyr::mutate(Subject = index) %>%
+  dplyr::select(
+    Subject, Gender, Age, Edu, Marriage, 
+    Blue1, Blue2, Blue3, Blue4, Blue5, Blue6, Blue7,
+    everything()
+  ) %>%
+  dplyr::select(-totalseconds, -index, -totalvalue, -T1, -T2, -T3, -T4, -T5, -T6)
+```
+
+```{r df.mean, message = FALSE}
+df.mean <- df.raw %>%
+  dplyr::mutate(
+    Blue_mean = rowMeans(select(., starts_with("Blue"))),
+    ASC_mean = rowMeans(select(., starts_with("ASC"))),
+    OSC_mean = rowMeans(select(., starts_with("OSC"))),
+    RD_mean = rowMeans(select(., starts_with("RD"))),
+    POS_mean = rowMeans(select(., starts_with("POS"))),
+    LS_mean = rowMeans(select(., starts_with("LS"))),
+    UI_mean = rowMeans(select(., starts_with("UI"))),
+    UC_mean = rowMeans(select(., starts_with("UC"))),
+    DI_mean = rowMeans(select(., starts_with("DI"))),
+    DC_mean = rowMeans(select(., starts_with("DC"))),
+  ) %>%
+  dplyr::select(
+    Subject, Gender, Age, Edu, Marriage,
+    Blue = Blue_mean,
+    ASC = ASC_mean, OSC = OSC_mean, RD = RD_mean, POS = POS_mean, LS = LS_mean, 
+    UI = UI_mean, UC = UC_mean, DI = DI_mean, DC = DC_mean,
+    SCD,USC,DSC
+  )
+```  
+
+# Decriptive Statistics
+```{r Descriptive Statistics Mean & SD, message = FALSE}
+result <- capture.output({
+  bruceR::Describe(data = df.mean[,-1])
+  })
+
+writeLines(result, "./OUTPUT/Table.1_Mean & SD.md")
+
+rm(result)
+```
+
+```{r Distribution Plot, message = FALSE}
+p1 <- ggplot2::ggplot(df.mean, aes(x = Gender)) +
+  ggplot2::geom_bar(fill = "#F3533A", alpha = 0.5) +
+  ggplot2::labs(x = "Gender", y = "Count") +
+  ggplot2::scale_x_continuous(
+    breaks = c(1, 2),
+    labels = c("Male", "Female")
+  ) +
+  papaja::theme_apa() 
+
+p2 <- ggplot2::ggplot(df.mean, aes(x = Age)) +
+  ggplot2::geom_bar(fill = "#F3533A", alpha = 0.5) +
+  ggplot2::labs(x = "Age", y = "Count") +
+  papaja::theme_apa() 
+
+
+p3 <- ggplot2::ggplot(df.mean, aes(x = Edu)) +
+  ggplot2::geom_bar(fill = "#F3533A", alpha = 0.5) +
+  ggplot2::labs(x = "Education", y = "Count") +
+  ggplot2::scale_x_continuous(
+    limits = c(0.5,5.5),
+    breaks = c(1, 2, 3, 4, 5),
+    labels = c("J", "HS", "JC", "C", "G")
+  ) +
+  papaja::theme_apa() 
+
+p4 <- ggplot2::ggplot(df.mean, aes(x = Marriage)) +
+  ggplot2::geom_bar(fill = "#F3533A", alpha = 0.5) +
+  ggplot2::labs(x = "Marriage", y = "Count") +
+  ggplot2::scale_x_continuous(
+    breaks = c(1, 2, 3),
+    labels = c("Unmarried", "Married", "Divorced")
+  ) +
+  papaja::theme_apa() 
+  
+
+p5 <- ggplot2::ggplot(df.mean, aes(x = ASC)) +
+  ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
+  ggplot2::labs(x = "Ability-Based Social Comparison Orientation", y = "Count") +
+  ggplot2::scale_x_continuous(
+    limits = c(0.5,7.5),
+    breaks = seq(1, 7, 1)
+  ) +
+  papaja::theme_apa() 
+
+p6 <- ggplot2::ggplot(df.mean, aes(x = OSC)) +
+  ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
+  ggplot2::labs(x = "Opinion-Based Social Comparison Orientation", y = "Count") +
+  ggplot2::scale_x_continuous(
+    limits = c(0.5,7.5),
+    breaks = seq(1, 7, 1)
+  ) +
+  papaja::theme_apa() 
+
+p7 <- ggplot2::ggplot(df.mean, aes(x = RD)) +
+  ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
+  ggplot2::labs(x = "Relative Deprivation", y = "Count") +
+  ggplot2::scale_x_continuous(
+    limits = c(0.5,7.5),
+    breaks = seq(1, 7, 1)
+  ) +
+  papaja::theme_apa() 
+
+p8 <- ggplot2::ggplot(df.mean, aes(x = POS)) +
+  ggplot2::geom_bar(fill = "#FA9F42", alpha = 0.5) +
+  ggplot2::labs(x = "Perceptions of Superiority", y = "Count") +
+  ggplot2::scale_x_continuous(
+    limits = c(0.5,7.5),
+    breaks = seq(1, 7, 1)
+  ) +
+  papaja::theme_apa() 
+  
+p9 <- ggplot2::ggplot(df.mean, aes(x = LS)) +
+  ggplot2::geom_bar(fill = "#8AD879", alpha = 0.5) +
+  ggplot2::labs(x = "Life Satisfaction", y = "Count") +
+  ggplot2::scale_x_continuous(
+    limits = c(0.5,7.5),
+    breaks = seq(1, 7, 1)
+  ) +
+  papaja::theme_apa() 
+
+p10 <- ggplot2::ggplot(df.mean, aes(x = SCD)) +
+  ggplot2::geom_bar(fill = "#8AD879", alpha = 0.5) +
+  ggplot2::labs(x = "Social Comparison Direction", y = "Count") +
+  ggplot2::scale_x_continuous(
+    limits = c(0.5,7.5),
+    breaks = seq(1, 7, 1)
+  ) +
+  papaja::theme_apa() 
+
+p11 <- ggplot2::ggplot(df.mean, aes(x = USC)) +
+  ggplot2::geom_bar(fill = "#8AD879", alpha = 0.5) +
+  ggplot2::labs(x = "Upward Social Comparison", y = "Count") +
+  ggplot2::scale_x_continuous(
+    limits = c(0.5,7.5),
+    breaks = seq(1, 7, 1)
+  ) +
+  papaja::theme_apa() 
+
+p12 <- ggplot2::ggplot(df.mean, aes(x = DSC)) +
+  ggplot2::geom_bar(fill = "#8AD879", alpha = 0.5) +
+  ggplot2::labs(x = "Downward Social Comparison", y = "Count") +
+  ggplot2::scale_x_continuous(
+    limits = c(0.5,7.5),
+    breaks = seq(1, 7, 1)
+  ) +
+  papaja::theme_apa() 
+
+p13 <- ggplot2::ggplot(df.mean, aes(x = UI)) +
+  ggplot2::geom_bar(fill = "#5ACFC9", alpha = 0.5) +
+  ggplot2::labs(x = "Upward Identify", y = "Count") +
+  ggplot2::scale_x_continuous(
+    limits = c(0.5,7.5),
+    breaks = seq(1, 7, 1)
+  ) +
+  papaja::theme_apa() 
+
+p14 <- ggplot2::ggplot(df.mean, aes(x = UC)) +
+  ggplot2::geom_bar(fill = "#5ACFC9", alpha = 0.5) +
+  ggplot2::labs(x = "Upward Contrast", y = "Count") +
+  ggplot2::scale_x_continuous(
+    limits = c(0.5,7.5),
+    breaks = seq(1, 7, 1)
+  ) +
+  papaja::theme_apa() 
+      
+p15 <- ggplot2::ggplot(df.mean, aes(x = DI)) +
+  ggplot2::geom_bar(fill = "#5ACFC9", alpha = 0.5) +
+  ggplot2::labs(x = "Downward Identify", y = "Count") +
+  ggplot2::scale_x_continuous(
+    limits = c(0.5,7.5),
+    breaks = seq(1, 7, 1)
+  ) +
+  papaja::theme_apa() 
+
+p16 <- ggplot2::ggplot(df.mean, aes(x = DC)) +
+  ggplot2::geom_histogram(fill = "#5ACFC9", alpha = 0.5) +
+  ggplot2::labs(x = "Downward Contrast", y = "Count") +
+  ggplot2::scale_x_continuous(
+    limits = c(0.5,7.5),
+    breaks = seq(1, 7, 1)
+  ) +
+  papaja::theme_apa() 
+
+p <- p1 + p2 + p3 + p4 + 
+  p5 + p6 + p7 + p8 + 
+  p9 + p10 + p11 + p12 +
+  p13 + p14 + p15 + p16 +
+  plot_layout(nrow = 4)
+
+ggsave(plot = p, filename = "./OUTPUT/Figure.1_Distribution.png", width = 16, height = 12)
+rm(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p)
+```
+
+```{r Correlation}
+tiff("./OUTPUT/Figure.2_Correlation_Matrix.png", width = 3000, height = 2000, res = 300)
+bruceR::Corr(data = df.mean[,-1], plot = TRUE)
+dev.off()
+
+cor_matrix <- cor(df.mean[,-1])
+write.csv(cor_matrix, file = "./OUTPUT/Table.2_Correlation.csv")
+
+rm(cor_matrix)
+```

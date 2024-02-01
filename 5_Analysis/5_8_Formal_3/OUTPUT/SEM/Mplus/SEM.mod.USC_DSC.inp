@@ -1,0 +1,115 @@
+TITLE:
+
+    Moderator is USC DSC;
+   
+DATA:
+FILE = "./OUTPUT/SEM/Mplus/SEM.mod.USC_DSC_BASE_b9bad1f39354471880f006ecee1f2520.dat";
+ 
+VARIABLE:
+NAMES = Blue1 Blue2 Blue3 Blue4 Blue5 Blue6 Blue7 USC DSC ASC1 ASC2 ASC3 ASC4 ASC5
+     OSC1 OSC2 OSC3 OSC4 OSC6 OSC7 POS1 POS2 POS3 POS5 POS6 RD1 RD2 RD3 RD4 RD5 LS1
+     LS2 LS3 LS4 LS5; 
+ MISSING=.;
+ 
+ANALYSIS:
+
+    TYPE =general RANDOM;  
+    estimator=BAYES; 
+    ALGORITHM=INTEGRATION;
+    convergence=0.01;
+   
+MODEL:
+  
+    Blue by Blue1-Blue7;
+    
+    ASC by ASC1-ASC5;
+    OSC by OSC1-OSC4 OSC6 OSC7;
+    SCO by ASC OSC;
+
+    SCO@1; 
+   
+    SCOU | SCO XWITH USC;
+    SCOD | SCO XWITH DSC;
+    
+    RD by RD1-RD5;
+    POS by POS1-POS3 POS5 POS6;
+    
+    LS by LS1-LS5;
+    
+    RD on Blue
+          SCO
+          USC(a1)
+          DSC
+          SCOU(w1)
+          SCOD;
+    POS on Blue
+           SCO
+           USC
+           DSC(a2)
+           SCOU
+           SCOD(w2);
+    LS on Blue
+          USC
+          DSC
+          SCO(c)
+          RD(b1)
+          POS(b2);
+
+MODEL PRIORS:
+  c ~ N(-0.063,0.023);
+
+MODEL CONSTRAINT:
+
+   NEW(L_SCO M_SCO H_SCO
+   
+      IE_RD IE_POS
+   
+      IE_L_RD IE_M_RD IE_H_RD
+      IE_L_POS IE_M_POS IE_H_POS
+
+      DIF_LM_RD DIF_LH_RD DIF_MH_RD
+      DIF_LM_POS DIF_LH_POS DIF_MH_POS
+      );
+   
+    L_SCO = -1;
+    M_SCO = 0;
+    H_SCO = 1;
+   
+    IE_RD = a1*b1;
+    IE_POS = a2*b2;
+   
+    IE_L_RD = (a1+w1*L_SCO)*b1;
+    IE_M_RD = (a1+w1*M_SCO)*b1;
+    IE_H_RD = (a1+w1*H_SCO)*b1;
+   
+    IE_L_POS = (a2+w2*L_SCO)*b2;
+    IE_M_POS = (a2+w2*M_SCO)*b2;
+    IE_H_POS = (a2+w2*H_SCO)*b2;
+   
+    DIF_LM_RD = IE_L_RD - IE_M_RD;
+    DIF_LH_RD = IE_L_RD - IE_H_RD;
+    DIF_MH_RD = IE_M_RD - IE_H_RD;
+    
+    DIF_LM_POS = IE_L_POS - IE_M_POS;
+    DIF_LH_POS = IE_L_POS - IE_H_POS;
+    DIF_MH_POS = IE_M_POS - IE_H_POS;
+   
+    PLOT(P_L_RD P_M_RD P_H_RD
+         P_L_POS P_M_POS P_H_POS);
+    LOOP(XVAL,1,7,0.1);
+    P_L_RD = IE_L_RD*XVAL;
+    P_M_RD = IE_M_RD*XVAL;
+    P_H_RD = IE_H_RD*XVAL;
+    
+    P_L_POS = IE_L_POS*XVAL;
+    P_M_POS = IE_M_POS*XVAL;
+    P_H_POS = IE_H_POS*XVAL;
+   
+OUTPUT:
+
+    cint;
+    STDYX
+PLOT:
+
+    TYPE = plot2;
+   

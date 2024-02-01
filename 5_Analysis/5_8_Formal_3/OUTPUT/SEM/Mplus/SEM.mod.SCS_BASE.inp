@@ -1,0 +1,77 @@
+TITLE:
+
+    Moderator is SCS;
+   
+DATA:
+FILE = "./OUTPUT/SEM/Mplus/SEM.mod.SCS_ee0e1081432d0e4df98864fdafd0c696.dat";
+ 
+VARIABLE:
+NAMES = Blue1 Blue2 Blue3 Blue4 Blue5 Blue6 Blue7 DI1 DI2 DI3 DC1 DC2 DC3 UI1 UI2
+     UI3 UC1 UC2 UC3 ASC1 ASC2 ASC3 ASC4 ASC5 OSC1 OSC2 OSC3 OSC4 OSC6 OSC7 POS1
+     POS2 POS3 POS5 POS6 RD1 RD2 RD3 RD4 RD5 LS1 LS2 LS3 LS4 LS5; 
+ MISSING=.;
+ 
+ANALYSIS:
+
+    TYPE =general RANDOM;  
+    estimator=BAYES; 
+    ALGORITHM=INTEGRATION;
+    convergence=0.01;
+   
+MODEL:
+  
+    Blue by Blue1-Blue7;
+    
+    ASC by ASC1-ASC5;
+    OSC by OSC1-OSC4 OSC6 OSC7;
+    SCO by ASC OSC;
+    
+    UI by UI1-UI3;
+    UC by UC1-UC3;
+    DI by DI1-DI3;
+    DC by DC1-DC3;
+   
+    RD by RD1-RD5;
+    POS by POS1-POS3 POS5 POS6;
+    
+    LS by LS1-LS5;
+    
+    RD on Blue
+          SCO(c1)
+          UI(a1i)
+          UC(a1c);
+    POS on Blue
+           SCO(c2)
+           DI(a2i)
+           DC(a2c);
+    LS on Blue
+          UI 
+          UC
+          DI 
+          DC
+          SCO(c)
+          RD(b1)
+          POS(b2);
+   
+MODEL CONSTRAINT:
+
+   NEW(
+      RD_I RD_C POS_I POS_C
+      UC_SCO DC_SCO
+   );
+    RD_I = a1i*b1;
+    RD_C = a1c*b1;
+    POS_I = a2i*b2;
+    POS_C = a2c*b2;
+   
+    UC_SCO = a1c - c1;
+    DC_SCO = a2c - c2;
+   
+MODEL PRIORS:
+
+    c ~ N(-0.063, 0.023);
+   
+OUTPUT:
+
+    cint;
+    STDYX
