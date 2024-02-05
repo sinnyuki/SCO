@@ -25,10 +25,8 @@ MODEL:
     LS by LS1-LS5;
    
     RD on Blue
-          USC(a1)
-          DSC;
+          USC(a1);
     POS on Blue
-           USC
            DSC(a2);
     LS on Blue
           USC(c1)

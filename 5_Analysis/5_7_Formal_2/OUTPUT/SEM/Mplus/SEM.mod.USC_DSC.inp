@@ -35,17 +35,13 @@ MODEL:
     
     RD on SCO
           USC(a1)
-          DSC
-          SCOU(w1)
-          SCOD;
+          SCOU(w1);
     POS on SCO
-           USC
            DSC(a2)
-           SCOU
            SCOD(w2);
     LS on USC
           DSC
-          SCO
+          SCO(c)
           RD(b1)
           POS(b2);
    
@@ -85,16 +81,17 @@ MODEL CONSTRAINT:
     DIF_LH_POS = IE_L_POS - IE_H_POS;
     DIF_MH_POS = IE_M_POS - IE_H_POS;
    
-    PLOT(P_L_RD P_M_RD P_H_RD
-         P_L_POS P_M_POS P_H_POS);
-    LOOP(XVAL,1,7,0.1);
-    P_L_RD = IE_L_RD*XVAL;
-    P_M_RD = IE_M_RD*XVAL;
-    P_H_RD = IE_H_RD*XVAL;
-    
-    P_L_POS = IE_L_POS*XVAL;
-    P_M_POS = IE_M_POS*XVAL;
-    P_H_POS = IE_H_POS*XVAL;
+    PLOT(
+     JN_U
+     JN_D
+    );
+    LOOP(WVAL,1,7,0.1);
+     JN_U = a1+w1*WVAL;
+     JN_D = a2+w2*WVAL;
+   
+MODEL PRIORS:
+
+    c ~ N(-0.063, 0.023);
    
 OUTPUT:
 

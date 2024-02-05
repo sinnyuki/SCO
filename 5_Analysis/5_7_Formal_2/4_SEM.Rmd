@@ -42,10 +42,8 @@ SEM.med <- mplusObject(
     
     LS by LS1-LS5;
    
-    RD on USC(a1)
-          DSC;
-    POS on USC
-           DSC(a2);
+    RD on USC(a1);
+    POS on DSC(a2);
     LS on USC(c1)
           DSC(c2)
           RD(b1)
@@ -91,11 +89,9 @@ SEM.mod.USC_DSC <- mplusObject(
     LS by LS1-LS5;
     
     RD on USC(a1)
-          DSC
-          SCO;
-    POS on USC
-           DSC(a2)
-           SCO;
+          SCO(c1);
+    POS on DSC(a2)
+           SCO(c2);
     LS on USC
           DSC
           SCO
@@ -105,11 +101,15 @@ SEM.mod.USC_DSC <- mplusObject(
    MODELCONSTRAINT = "
    NEW(IE_RD 
        IE_POS
+       DIF_U
+       DIF_D
        );
-   
    
     IE_RD = a1*b1;
     IE_POS = a2*b2;
+   
+    DIF_U = a1-c1;
+    DIF_D = a2-c2;
    ",
    
    PLOT = "
@@ -152,19 +152,18 @@ SEM.mod.USC_DSC <- mplusObject(
     
     RD on SCO
           USC(a1)
-          DSC
-          SCOU(w1)
-          SCOD;
+          SCOU(w1);
     POS on SCO
-           USC
            DSC(a2)
-           SCOU
            SCOD(w2);
     LS on USC
           DSC
-          SCO
+          SCO(c)
           RD(b1)
           POS(b2);
+   ",
+   MODELPRIORS = "
+    c ~ N(-0.063, 0.023);
    ",
    MODELCONSTRAINT = "
    NEW(L_SCO M_SCO H_SCO
@@ -201,16 +200,13 @@ SEM.mod.USC_DSC <- mplusObject(
     DIF_LH_POS = IE_L_POS - IE_H_POS;
     DIF_MH_POS = IE_M_POS - IE_H_POS;
    
-    PLOT(P_L_RD P_M_RD P_H_RD
-         P_L_POS P_M_POS P_H_POS);
-    LOOP(XVAL,1,7,0.1);
-    P_L_RD = IE_L_RD*XVAL;
-    P_M_RD = IE_M_RD*XVAL;
-    P_H_RD = IE_H_RD*XVAL;
-    
-    P_L_POS = IE_L_POS*XVAL;
-    P_M_POS = IE_M_POS*XVAL;
-    P_H_POS = IE_H_POS*XVAL;
+    PLOT(
+     JN_U
+     JN_D
+    );
+    LOOP(WVAL,-3,3,0.1);
+     JN_U = (a1+w1*WVAL)*b1;
+     JN_D = (a2+w2*WVAL)*b2;
    ",
    
    PLOT = "

@@ -225,7 +225,7 @@ rm(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p)
 ```
 
 ```{r Correlation}
-tiff("./OUTPUT/Figure.2_Correlation_Matrix.png", width = 3000, height = 2000, res = 300)
+tiff("./OUTPUT/Figure.2_Correlation_Matrix.png", width = 3000, height = 3000, res = 300)
 bruceR::Corr(data = df.mean[,-1], plot = TRUE)
 dev.off()
 

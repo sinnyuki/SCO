@@ -28,11 +28,9 @@ MODEL:
     LS by LS1-LS5;
     
     RD on USC(a1)
-          DSC
-          SCO;
-    POS on USC
-           DSC(a2)
-           SCO;
+          SCO(c1);
+    POS on DSC(a2)
+           SCO(c2);
     LS on USC
           DSC
           SCO
@@ -43,11 +41,15 @@ MODEL CONSTRAINT:
 
    NEW(IE_RD 
        IE_POS
+       DIF_U
+       DIF_D
        );
-   
    
     IE_RD = a1*b1;
     IE_POS = a2*b2;
+   
+    DIF_U = a1-c1;
+    DIF_D = a2-c2;
    
 OUTPUT:
 

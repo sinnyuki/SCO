@@ -31,12 +31,10 @@ MODEL:
     
     RD on Blue
           USC(a1)
-          DSC
-          SCO;
+          SCO(c1);
     POS on Blue
-           USC
            DSC(a2)
-           SCO;
+           SCO(c2);
     LS on Blue
           USC
           DSC
@@ -48,10 +46,15 @@ MODEL CONSTRAINT:
 
    NEW(IE_RD 
        IE_POS
+       DIF_U
+       DIF_D
        );
    
     IE_RD = a1*b1;
     IE_POS = a2*b2;
+   
+    DIF_U = a1+c1;
+    DIF_D = a2+c2;
    
 MODEL PRIORS:
 
