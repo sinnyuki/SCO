@@ -3,18 +3,19 @@ TITLE:
     Moderator is USC DSC;
    
 DATA:
-FILE = "./OUTPUT/SEM/Mplus/SEM.mod.USC_DSC_b1d11211bb68dadca71d2ce38af35d0b.dat";
+FILE = "./OUTPUT/SEM/Mplus/SEM.mod.USC_DSC_BASE_9a2b45a65d4c8296c5cb8b72cacbca72.dat";
  
 VARIABLE:
-NAMES = ASC1 ASC2 ASC3 ASC4 ASC5 OSC1 OSC2 OSC3 OSC4 OSC6 OSC7 RD1 RD2 RD3 RD4 RD5
-     POS1 POS2 POS3 POS5 POS6 LS1 LS2 LS3 LS4 LS5 USC DSC; 
+NAMES = Gender Age Edu Marriage ASC1 ASC2 ASC3 ASC4 ASC5 OSC1 OSC2 OSC3 OSC4 OSC6
+     OSC7 RD1 RD2 RD3 RD4 RD5 POS1 POS2 POS3 POS5 POS6 LS1 LS2 LS3 LS4 LS5 USC DSC; 
  MISSING=.;
  
 ANALYSIS:
 
-    TYPE =general;
-    bootstrap = 5000;
-    process=16;
+    TYPE =general RANDOM;  
+    estimator=BAYES; 
+    ALGORITHM=INTEGRATION;
+    convergence=0.01;
    
 MODEL:
   
@@ -27,13 +28,16 @@ MODEL:
     
     LS by LS1-LS5;
     
-    RD on USC(a1)
+    RD on Gender Age Edu Marriage
+          USC(a1)
           SCO(c1);
-    POS on DSC(a2)
+    POS on Gender Age Edu Marriage
+           DSC(a2)
            SCO(c2);
-    LS on USC
+    LS on Gender Age Edu Marriage
+          USC
           DSC
-          SCO
+          SCO(c)
           RD(b1)
           POS(b2);
    
@@ -50,6 +54,10 @@ MODEL CONSTRAINT:
    
     DIF_U = a1-c1;
     DIF_D = a2-c2;
+   
+MODEL PRIORS:
+
+    c ~ N(-0.063, 0.023);
    
 OUTPUT:
 

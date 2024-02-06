@@ -1,7 +1,7 @@
 # Structural Equation Modeling
 ## Mediation
 ```{r Mediation SEM Mplus}
-SEM.med <- mplusObject(
+SEM <- MplusAutomation::mplusObject(
    TITLE = "
     Mediation;
    ",
@@ -17,11 +17,14 @@ SEM.med <- mplusObject(
     
     LS by LS1-LS5;
    
-    RD on Blue
+    RD on Gender Age Edu Marriage
+          Blue
           USC(a1);
-    POS on Blue
+    POS on Gender Age Edu Marriage
+           Blue
            DSC(a2);
-    LS on Blue
+    LS on Gender Age Edu Marriage
+          Blue
           USC(c1)
           DSC(c2)
           RD(b1)
@@ -39,15 +42,17 @@ SEM.med <- mplusObject(
     STDYX",
    rdata = df.raw)
 
-mplusModeler(SEM.med, modelout = "./OUTPUT/SEM/Mplus/SEM.med.inp", run = 1L)
-rm(SEM.med)
+MplusAutomation::mplusModeler(
+  SEM, modelout = "./OUTPUT/SEM/Mplus/SEM.med.usc_dsc.inp", run = 1L
+)
+rm(SEM)
 ```
 
 ## Moderation
 
 ### USC & DSC as moderation
 ```{r Moderator is USC_DSC, include=FALSE}
-SEM.mod.USC_DSC <- mplusObject(
+SEM <- MplusAutomation::mplusObject(
    TITLE = "
     Moderator is USC DSC;
    ",
@@ -67,13 +72,16 @@ SEM.mod.USC_DSC <- mplusObject(
     
     LS by LS1-LS5;
     
-    RD on Blue
+    RD on Gender Age Edu Marriage
+          Blue
           USC(a1)
           SCO(c1);
-    POS on Blue
+    POS on Gender Age Edu Marriage
+           Blue
            DSC(a2)
            SCO(c2);
-    LS on Blue
+    LS on Gender Age Edu Marriage
+          Blue
           USC
           DSC
           SCO(c)
@@ -105,12 +113,14 @@ SEM.mod.USC_DSC <- mplusObject(
     STDYX",
    rdata = df.raw)
 
-mplusModeler(SEM.mod.USC_DSC, modelout = "./OUTPUT/SEM/Mplus/SEM.mod.USC_DSC_BASE.inp", run = 1L)
-rm(SEM.mod.USC_DSC)
+MplusAutomation::mplusModeler(
+  SEM, modelout = "./OUTPUT/SEM/Mplus/SEM.mod.USC_DSC_BASE.inp", run = 1L
+)
+rm(SEM)
 ```
 
 ```{r Moderator is USC_DSC, include=FALSE}
-SEM.mod.USC_DSC <- mplusObject(
+SEM <- MplusAutomation::mplusObject(
    TITLE = "
     Moderator is USC DSC;
    ",
@@ -119,6 +129,7 @@ SEM.mod.USC_DSC <- mplusObject(
     estimator=BAYES; 
     ALGORITHM=INTEGRATION;
     convergence=0.01;
+    process=16;
    ",
    MODEL = "  
     Blue by Blue1-Blue7;
@@ -137,15 +148,18 @@ SEM.mod.USC_DSC <- mplusObject(
     
     LS by LS1-LS5;
     
-    RD on Blue
+    RD on Gender Age Edu Marriage
+          Blue
           USC(a1)
           SCO(c1)
           SCOU(w1);
-    POS on Blue
+    POS on Gender Age Edu Marriage
+           Blue
            DSC(a2)
            SCO(c2)
            SCOD(w2);
-    LS on Blue
+    LS on Gender Age Edu Marriage
+          Blue
           USC
           DSC
           SCO(c)
@@ -212,8 +226,10 @@ SEM.mod.USC_DSC <- mplusObject(
     STDYX",
    rdata = df.raw)
 
-mplusModeler(SEM.mod.USC_DSC, modelout = "./OUTPUT/SEM/Mplus/SEM.mod.USC_DSC.inp", run = 1L)
-rm(SEM.mod.USC_DSC)
+MplusAutomation::mplusModeler(
+  SEM, modelout = "./OUTPUT/SEM/Mplus/SEM.mod.USC_DSC.inp", run = 1L
+)
+rm(SEM)
 ```
 
 ################################################################################
@@ -243,13 +259,16 @@ SEM <- mplusObject(
     
     LS by LS1-LS5;
     
-    RD on Blue
+    RD on Gender Age Edu Marriage
+          Blue
           UI(a1i)
           UC(a1c);
-    POS on Blue
+    POS on Gender Age Edu Marriage
+           Blue
            DI(a2i)
            DC(a2c);
-    LS on Blue
+    LS on Gender Age Edu Marriage
+          Blue
           UI 
           UC
           DI 
@@ -293,6 +312,7 @@ SEM <- mplusObject(
     estimator=BAYES; 
     ALGORITHM=INTEGRATION;
     convergence=0.01;
+    process=16;
    ",
    MODEL = "  
     Blue by Blue1-Blue7;
@@ -311,15 +331,18 @@ SEM <- mplusObject(
     
     LS by LS1-LS5;
     
-    RD on Blue
-          SCO(c1)
+    RD on Gender Age Edu Marriage
+          Blue
           UI(a1i)
-          UC(a1c);
-    POS on Blue
-           SCO(c2)
+          UC(a1c)
+          SCO(c1);
+    POS on Gender Age Edu Marriage
+           Blue
            DI(a2i)
-           DC(a2c);
-    LS on Blue
+           DC(a2c)
+           SCO(c2);
+    LS on Gender Age Edu Marriage
+          Blue
           UI 
           UC
           DI 
@@ -364,6 +387,7 @@ SEM <- mplusObject(
     estimator=BAYES; 
     ALGORITHM=INTEGRATION;
     convergence=0.01;
+    process=16;
    ",
    MODEL = "  
     Blue by Blue1-Blue7;
@@ -389,19 +413,22 @@ SEM <- mplusObject(
     
     LS by LS1-LS5;
     
-    RD on Blue
-          SCO
+    RD on Gender Age Edu Marriage
+          Blue
           UI(a1i)
           UC(a1c)
+          SCO
           SCOUI(w1i)
           SCOUC(w1c);
-    POS on Blue
-           SCO
+    POS on Gender Age Edu Marriage
+           Blue
            DI(a2i)
            DC(a2c)
+           SCO
            SCODI(w2i)
            SCODC(w2c);
-    LS on Blue
+    LS on Gender Age Edu Marriage
+          Blue
           UI 
           UC
           DI 

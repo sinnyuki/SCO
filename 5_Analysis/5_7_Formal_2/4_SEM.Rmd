@@ -42,9 +42,12 @@ SEM.med <- mplusObject(
     
     LS by LS1-LS5;
    
-    RD on USC(a1);
-    POS on DSC(a2);
-    LS on USC(c1)
+    RD on  Gender Age Edu Marriage
+           USC(a1);
+    POS on Gender Age Edu Marriage
+           DSC(a2);
+    LS on Gender Age Edu Marriage
+          USC(c1)
           DSC(c2)
           RD(b1)
           POS(b2);
@@ -74,8 +77,10 @@ SEM.mod.USC_DSC <- mplusObject(
     Moderator is USC DSC;
    ",
    ANALYSIS = "
-    TYPE =general;
-    bootstrap = 5000;
+    TYPE =general RANDOM;  
+    estimator=BAYES; 
+    ALGORITHM=INTEGRATION;
+    convergence=0.01;
     process=16;
    ",
    MODEL = "  
@@ -88,15 +93,21 @@ SEM.mod.USC_DSC <- mplusObject(
     
     LS by LS1-LS5;
     
-    RD on USC(a1)
+    RD on Gender Age Edu Marriage
+          USC(a1)
           SCO(c1);
-    POS on DSC(a2)
+    POS on Gender Age Edu Marriage
+           DSC(a2)
            SCO(c2);
-    LS on USC
+    LS on Gender Age Edu Marriage
+          USC
           DSC
-          SCO
+          SCO(c)
           RD(b1)
           POS(b2);
+   ",
+   MODELPRIORS = "
+    c ~ N(-0.063, 0.023);
    ",
    MODELCONSTRAINT = "
    NEW(IE_RD 
@@ -134,6 +145,7 @@ SEM.mod.USC_DSC <- mplusObject(
     estimator=BAYES; 
     ALGORITHM=INTEGRATION;
     convergence=0.01;
+    process=16;
    ",
    MODEL = "  
     ASC by ASC1-ASC5;
@@ -150,13 +162,16 @@ SEM.mod.USC_DSC <- mplusObject(
     
     LS by LS1-LS5;
     
-    RD on SCO
+    RD on Gender Age Edu Marriage
           USC(a1)
+          SCO(c1)
           SCOU(w1);
-    POS on SCO
+    POS on Gender Age Edu Marriage
            DSC(a2)
+           SCO(c2)
            SCOD(w2);
-    LS on USC
+    LS on Gender Age Edu Marriage
+          USC
           DSC
           SCO(c)
           RD(b1)

@@ -3,12 +3,13 @@ TITLE:
     Moderator is SCS;
    
 DATA:
-FILE = "./OUTPUT/SEM/Mplus/SEM.mod.SCS_ee0e1081432d0e4df98864fdafd0c696.dat";
+FILE = "./OUTPUT/SEM/Mplus/SEM.mod.SCS_BASE_a21acdf7a11fec28c98e67499faa89e1.dat";
  
 VARIABLE:
-NAMES = Blue1 Blue2 Blue3 Blue4 Blue5 Blue6 Blue7 DI1 DI2 DI3 DC1 DC2 DC3 UI1 UI2
-     UI3 UC1 UC2 UC3 ASC1 ASC2 ASC3 ASC4 ASC5 OSC1 OSC2 OSC3 OSC4 OSC6 OSC7 POS1
-     POS2 POS3 POS5 POS6 RD1 RD2 RD3 RD4 RD5 LS1 LS2 LS3 LS4 LS5; 
+NAMES = Gender Age Edu Marriage Blue1 Blue2 Blue3 Blue4 Blue5 Blue6 Blue7 DI1 DI2
+     DI3 DC1 DC2 DC3 UI1 UI2 UI3 UC1 UC2 UC3 ASC1 ASC2 ASC3 ASC4 ASC5 OSC1 OSC2 OSC3
+     OSC4 OSC6 OSC7 POS1 POS2 POS3 POS5 POS6 RD1 RD2 RD3 RD4 RD5 LS1 LS2 LS3 LS4
+     LS5; 
  MISSING=.;
  
 ANALYSIS:
@@ -17,6 +18,7 @@ ANALYSIS:
     estimator=BAYES; 
     ALGORITHM=INTEGRATION;
     convergence=0.01;
+    process=16;
    
 MODEL:
   
@@ -36,15 +38,18 @@ MODEL:
     
     LS by LS1-LS5;
     
-    RD on Blue
+    RD on Gender Age Edu Marriage
+          Blue
           SCO(c1)
           UI(a1i)
           UC(a1c);
-    POS on Blue
+    POS on Gender Age Edu Marriage
+           Blue
            SCO(c2)
            DI(a2i)
            DC(a2c);
-    LS on Blue
+    LS on Gender Age Edu Marriage
+          Blue
           UI 
           UC
           DI 

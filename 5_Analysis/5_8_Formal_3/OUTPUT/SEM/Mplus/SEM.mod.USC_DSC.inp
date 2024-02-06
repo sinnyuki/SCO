@@ -3,12 +3,12 @@ TITLE:
     Moderator is USC DSC;
    
 DATA:
-FILE = "./OUTPUT/SEM/Mplus/SEM.mod.USC_DSC_BASE_b9bad1f39354471880f006ecee1f2520.dat";
+FILE = "./OUTPUT/SEM/Mplus/SEM.mod.USC_DSC_BASE_f2b4232a9b8ba3e5c23f70346d16c2c6.dat";
  
 VARIABLE:
-NAMES = Blue1 Blue2 Blue3 Blue4 Blue5 Blue6 Blue7 USC DSC ASC1 ASC2 ASC3 ASC4 ASC5
-     OSC1 OSC2 OSC3 OSC4 OSC6 OSC7 POS1 POS2 POS3 POS5 POS6 RD1 RD2 RD3 RD4 RD5 LS1
-     LS2 LS3 LS4 LS5; 
+NAMES = Gender Age Edu Marriage Blue1 Blue2 Blue3 Blue4 Blue5 Blue6 Blue7 USC DSC
+     ASC1 ASC2 ASC3 ASC4 ASC5 OSC1 OSC2 OSC3 OSC4 OSC6 OSC7 POS1 POS2 POS3 POS5 POS6
+     RD1 RD2 RD3 RD4 RD5 LS1 LS2 LS3 LS4 LS5; 
  MISSING=.;
  
 ANALYSIS:
@@ -17,7 +17,8 @@ ANALYSIS:
     estimator=BAYES; 
     ALGORITHM=INTEGRATION;
     convergence=0.01;
-   
+    process=16;
+
 MODEL:
   
     Blue by Blue1-Blue7;
@@ -36,15 +37,18 @@ MODEL:
     
     LS by LS1-LS5;
     
-    RD on Blue
+    RD on Gender Age Edu Marriage
+          Blue
           USC(a1)
           SCO(c1)
           SCOU(w1);
-    POS on Blue
+    POS on Gender Age Edu Marriage
+           Blue
            DSC(a2)
            SCO(c2)
            SCOD(w2);
-    LS on Blue
+    LS on Gender Age Edu Marriage
+          Blue
           USC
           DSC
           SCO(c)

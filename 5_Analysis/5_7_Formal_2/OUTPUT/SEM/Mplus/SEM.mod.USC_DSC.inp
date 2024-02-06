@@ -3,11 +3,11 @@ TITLE:
     Moderator is USC DSC;
    
 DATA:
-FILE = "./OUTPUT/SEM/Mplus/SEM.mod.USC_DSC_b1d11211bb68dadca71d2ce38af35d0b.dat";
+FILE = "./OUTPUT/SEM/Mplus/SEM.mod.USC_DSC_BASE_9a2b45a65d4c8296c5cb8b72cacbca72.dat";
  
 VARIABLE:
-NAMES = ASC1 ASC2 ASC3 ASC4 ASC5 OSC1 OSC2 OSC3 OSC4 OSC6 OSC7 RD1 RD2 RD3 RD4 RD5
-     POS1 POS2 POS3 POS5 POS6 LS1 LS2 LS3 LS4 LS5 USC DSC; 
+NAMES = Gender Age Edu Marriage ASC1 ASC2 ASC3 ASC4 ASC5 OSC1 OSC2 OSC3 OSC4 OSC6
+     OSC7 RD1 RD2 RD3 RD4 RD5 POS1 POS2 POS3 POS5 POS6 LS1 LS2 LS3 LS4 LS5 USC DSC; 
  MISSING=.;
  
 ANALYSIS:
@@ -33,13 +33,16 @@ MODEL:
     
     LS by LS1-LS5;
     
-    RD on SCO
+    RD on Gender Age Edu Marriage
           USC(a1)
+          SCO(c1)
           SCOU(w1);
-    POS on SCO
+    POS on Gender Age Edu Marriage
            DSC(a2)
+           SCO(c2)
            SCOD(w2);
-    LS on USC
+    LS on Gender Age Edu Marriage
+          USC
           DSC
           SCO(c)
           RD(b1)
@@ -85,9 +88,9 @@ MODEL CONSTRAINT:
      JN_U
      JN_D
     );
-    LOOP(WVAL,1,7,0.1);
-     JN_U = a1+w1*WVAL;
-     JN_D = a2+w2*WVAL;
+    LOOP(WVAL,-3,3,0.1);
+     JN_U = (a1+w1*WVAL)*b1;
+     JN_D = (a2+w2*WVAL)*b2;
    
 MODEL PRIORS:
 

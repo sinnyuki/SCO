@@ -3,12 +3,12 @@ TITLE:
     Mediation;
    
 DATA:
-FILE = "./OUTPUT/SEM/Mplus/SEM.med.SCS_738104b65425523c8e6e3157c421e731.dat";
+FILE = "./OUTPUT/SEM/Mplus/SEM.med.SCS_e93fc9b538d68b98315a24d657a50de6.dat";
  
 VARIABLE:
-NAMES = Blue1 Blue2 Blue3 Blue4 Blue5 Blue6 Blue7 DI1 DI2 DI3 DC1 DC2 DC3 UI1 UI2
-     UI3 UC1 UC2 UC3 POS1 POS2 POS3 POS5 POS6 RD1 RD2 RD3 RD4 RD5 LS1 LS2 LS3 LS4
-     LS5; 
+NAMES = Gender Age Edu Marriage Blue1 Blue2 Blue3 Blue4 Blue5 Blue6 Blue7 DI1 DI2
+     DI3 DC1 DC2 DC3 UI1 UI2 UI3 UC1 UC2 UC3 POS1 POS2 POS3 POS5 POS6 RD1 RD2 RD3
+     RD4 RD5 LS1 LS2 LS3 LS4 LS5; 
  MISSING=.;
  
 ANALYSIS:
@@ -31,13 +31,16 @@ MODEL:
     
     LS by LS1-LS5;
     
-    RD on Blue
+    RD on Gender Age Edu Marriage
+          Blue
           UI(a1i)
           UC(a1c);
-    POS on Blue
+    POS on Gender Age Edu Marriage
+           Blue
            DI(a2i)
            DC(a2c);
-    LS on Blue
+    LS on Gender Age Edu Marriage
+          Blue
           UI 
           UC
           DI 

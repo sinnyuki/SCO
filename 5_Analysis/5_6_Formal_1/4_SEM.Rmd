@@ -27,7 +27,7 @@ rm(result.SEM.med)
 ```
 
 ```{r Mediation SEM Mplus}
-SEM.med <- mplusObject(
+SEM <- MplusAutomation::mplusObject(
    TITLE = "
     Mediation;
    ",
@@ -42,9 +42,12 @@ SEM.med <- mplusObject(
     
     LS by LS1-LS5;
    
-    RD on SCD(a1);
-    POS on SCD(a2);
-    LS on SCD(c)
+    RD on Gender Age Edu Marriage
+          SCD(a1);
+    POS on Gender Age Edu Marriage
+          SCD(a2);
+    LS on Gender Age Edu Marriage
+          SCD(c)
           RD(b1)
           POS(b2);
    ",
@@ -60,6 +63,8 @@ SEM.med <- mplusObject(
     STDYX",
    rdata = df.raw)
 
-mplusModeler(SEM.med, modelout = "./OUTPUT/SEM/Mplus/SEM.med.inp", run = 1L)
-rm(SEM.med)
+MplusAutomation::mplusModeler(
+  SEM, modelout = "./OUTPUT/SEM/Mplus/SEM.med.inp", run = 1L
+)
+rm(SEM)
 ```
