@@ -68,7 +68,7 @@ df.funnel <- data.frame(
 
 
 plot[[2]]  <- ggplot(aes(x = y, y = x), data = df[[7]]) +
-  xlab("Standard Error") + ylab(expression("Hedges' " * italic(g))) +
+  xlab("Standard Error") + ylab(expression(italic(r))) +
   # Fill Color Start
   geom_ribbon(data = df.funnel, aes(x = se.seq, y = estimate, ymin = -Inf, ymax = ll99, fill = "#FFFFFF")) +
   geom_ribbon(data = df.funnel, aes(x = se.seq, y = estimate, ymin = ll99, ymax = ll95, fill = "#63C2D2")) +
