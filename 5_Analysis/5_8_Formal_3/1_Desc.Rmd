@@ -5,7 +5,7 @@ date: "2023-08-12"
 output: html_document
 ---
 # Packages & WD & Read Data
-```{r ,setup, message=FALSE,warning=FALSE,error=FALSE}
+```{r setup, message=FALSE,warning=FALSE,error=FALSE}
 # clean data
 library(bruceR)
 #library(dplyr)
@@ -34,6 +34,14 @@ df.raw <-  read.csv('../../4_Data_Extraction/4_3_Formal_Data/Formal_3.csv',
     everything()
   ) %>%
   dplyr::select(-totalseconds, -index, -totalvalue, -T1, -T2, -T3, -T4, -T5, -T6)
+```
+
+```{r}
+df.raw %>%
+  dplyr::mutate_at(
+    vars(Gender, Edu, Marriage), factor
+  ) %>%
+  summary()
 ```
 
 ```{r df.mean, message = FALSE}

@@ -33,6 +33,13 @@ df.raw <-  read.csv('../../4_Data_Extraction/4_2_Pre-Analysis_Data/4_2_2_CFA_re/
   dplyr::select(Subject, Gender, Age, Edu, Marriage, everything()) %>%
   dplyr::select(-totalseconds, -index, -totalvalue)
 ```
+```{r}
+df.raw %>%
+  dplyr::mutate_at(
+    vars(Gender, Edu, Marriage), factor
+  ) %>%
+  summary()
+```
 
 ```{r df.mean, message = FALSE}
 df.mean <- df.raw %>%

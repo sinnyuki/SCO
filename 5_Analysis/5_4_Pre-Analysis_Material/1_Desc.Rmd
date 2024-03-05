@@ -27,6 +27,14 @@ df.raw <-  read.csv('../../4_Data_Extraction/4_2_Pre-Analysis_Data/4_2_3_Materia
                 DW1, DW2, DW3, DW4, DW5, DW6, DW7, DW8)
 ```
 
+```{r}
+df.raw %>%
+  dplyr::mutate_at(
+    vars(Gender, Edu, Marriage), factor
+  ) %>%
+  summary()
+```
+
 # Decriptive Statistics
 ```{r Descriptive Statistics Mean & SD, message = FALSE}
 result <- capture.output({

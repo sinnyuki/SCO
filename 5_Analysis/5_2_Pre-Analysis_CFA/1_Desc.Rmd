@@ -32,6 +32,15 @@ df.raw <-  read.csv('../../4_Data_Extraction/4_2_Pre-Analysis_Data/4_2_1_CFA/CFA
   dplyr::select(-totalseconds, -index, -totalvalue, -T1, -T2, -T3)
 ```
 
+```{r}
+df.raw %>%
+  dplyr::mutate_at(
+    vars(Gender, Edu, Marriage), factor
+  ) %>%
+  summary()
+```
+
+
 ```{r Reverse Scoring}
 # 创建反向计分函数
 reverse_score <- function(x) {
