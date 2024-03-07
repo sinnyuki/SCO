@@ -52,6 +52,25 @@ df.mean <- df.raw %>%
                 ASC = ASC_mean, OSC = OSC_mean, RD = RD_mean, POS = POS_mean)
 ```  
 
+```{r}
+alpha <- psych::alpha(df.raw[, c("ASC1", "ASC2", "ASC3", "ASC4", "ASC5")])
+alpha$total$raw_alpha
+
+alpha <- psych::alpha(df.raw[, c("OSC1", "OSC2", "OSC3", "OSC4", "OSC5", "OSC6")])
+alpha$total$raw_alpha
+
+alpha <- psych::alpha(df.raw[, c("ASC1", "ASC2", "ASC3", "ASC4", "ASC5",
+                                 "OSC1", "OSC2", "OSC3", "OSC4", "OSC5", "OSC6")])
+alpha$total$raw_alpha
+
+alpha <- psych::alpha(df.raw[, c("RD1", "RD2", "RD3", "RD4", "RD5")])
+alpha$total$raw_alpha
+
+alpha <- psych::alpha(df.raw[, c("POS1", "POS2", "POS3", "POS4", "POS5", "POS6")])
+alpha$total$raw_alpha
+```
+
+
 # Decriptive Statistics
 ```{r}
 sum(df.raw$Gender == 1)
