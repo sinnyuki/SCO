@@ -60,13 +60,13 @@ alpha <- psych::alpha(df.raw[, c("OSC1", "OSC2", "OSC3", "OSC4", "OSC5", "OSC6")
 alpha$total$raw_alpha
 
 alpha <- psych::alpha(df.raw[, c("ASC1", "ASC2", "ASC3", "ASC4", "ASC5",
-                                 "OSC1", "OSC2", "OSC3", "OSC4", "OSC5", "OSC6")])
+                                 "OSC1", "OSC2", "OSC3", "OSC4", "OSC6", "OSC6_re")])
 alpha$total$raw_alpha
 
 alpha <- psych::alpha(df.raw[, c("RD1", "RD2", "RD3", "RD4", "RD5")])
 alpha$total$raw_alpha
 
-alpha <- psych::alpha(df.raw[, c("POS1", "POS2", "POS3", "POS4", "POS5", "POS6")])
+alpha <- psych::alpha(df.raw[, c("POS1", "POS2", "POS3", "POS5", "POS6")])
 alpha$total$raw_alpha
 ```
 

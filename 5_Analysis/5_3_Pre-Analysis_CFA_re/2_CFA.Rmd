@@ -65,10 +65,10 @@ yukiCFA(
   data = df.raw,
   model = "
     ASC =~ ASC1 + ASC2 + ASC3 + ASC4 + ASC5
-    OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6
+    OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC6 + OSC6_re
     SCO =~ ASC + OSC
     RD =~ RD1 + RD2 + RD3 + RD4 + RD5
-    POS =~ POS1 + POS2 + POS3 + POS4 +POS5 + POS6
+    POS =~ POS1 + POS2 + POS3 +POS5 + POS6
   ",
   path = "./OUTPUT/CFA/CFA.md"
 )
@@ -80,7 +80,7 @@ CFA <- "
     OSC =~ OSC1 + OSC2 + OSC3 + OSC4 + OSC5 + OSC6
     SCO =~ ASC + OSC
     RD =~ RD1 + RD2 + RD3 + RD4 + RD5
-    POS =~ POS1 + POS2 + POS3 + POS4 +POS5 + POS6
+    POS =~ POS1 + POS2 + POS3 +POS5 + POS6
   " %>%
   lavaan::cfa(.,data = df.raw, estimator="ML") 
   lavaan::summary(CFA, fit.measures=TRUE, standardized=TRUE)
